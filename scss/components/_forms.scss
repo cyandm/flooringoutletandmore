@@ -1,0 +1,28 @@
+input{
+    background: none;
+    border: none;
+    color: $color-primary2;
+
+    &::placeholder{
+        color: $color-primary4;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+
+.form_control{
+    padding: 0.75rem 0.625rem 0.75rem 0.875rem;
+    background-color: $color-primary5;
+    backdrop-filter: blur(1.06rem);
+    border-radius: 0.875rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent;
+
+    &:has(input:focus){
+        border-color: #fff;
+    }
+}

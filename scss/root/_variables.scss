@@ -1,0 +1,25 @@
+/* Colors */
+
+$color-primary1 : #060606;
+$color-primary2 : #fff;
+$color-primary3 : linear-gradient(96.52deg, #000000 -2.97%, rgba(91, 80, 78, 0) 190.81%);
+$color-primary4 : rgba($color-primary2 , .6);
+$color-primary5 : rgba($color-primary2 , .2);
+$color-secondary1 : linear-gradient(90deg, #FFD43D 0%, #FFA337 108.04%);
+$color-secondary2 : #ffba3a;
+$color-secondary3 : #ffe68d;
+$color-secondary4 : linear-gradient(180deg, #FFD43D 0%, #BA551C 145%);
+$color-pointer : linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(81, 66, 49, 0.3) 100%);
+$color-disable : linear-gradient(90deg, #8D8D8D 0%, #696969 108.04%);
+$color-error : #c75757;
+$color-success: #53b757;
+
+
+$space-1 : .25rem;
+$space-2 : .375rem;
+$space-3 : .5rem;
+$space-4 : .625rem;
+$space-5 : .875rem;
+$space-6 : 1.25rem;
+$space-7 : 2.125rem;
+

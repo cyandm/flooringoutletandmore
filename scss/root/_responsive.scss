@@ -1,0 +1,11 @@
+.no-desktop{
+    @media (width >= 1024px) {
+        display: none !important;
+    }
+}
+
+.only-desktop{
+    @media (width <= 1024px) {
+        display: none !important;
+    }
+}
