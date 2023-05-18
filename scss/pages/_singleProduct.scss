@@ -1,18 +1,35 @@
+
+
 main.single-product{
     padding: 1.875rem;
+
+    max-width: 1440px;
+    margin: 0 auto;
 
     hr{
         margin: 1.5rem 0 ;
     }
 
+    h2{
+        padding: 1.125rem;
+        padding-left: 0;
+        margin-bottom: 1.675rem;
+        margin-top: 1.5rem;
+    }
+
     > .top{
         display: flex;
+        gap: 1.25rem;
 
         >div{
             flex:1;
+            max-width: 50%;
         }
 
         > .tabs{
+            display: flex;
+            flex-direction: column;
+
             > .headings{
                 display: flex;
 
@@ -21,6 +38,7 @@ main.single-product{
                     color: rgba($color-primary2 , 0.6) ;
                     display: block;
                     transition: 0.3s ease;
+                    cursor: pointer;
 
                     &.show{
                         background-color: rgba($color-primary2 , 0.2);
@@ -36,8 +54,8 @@ main.single-product{
                     backdrop-filter: blur(.875rem);
                     border-radius:  0 .875rem .875rem .875rem;
                     padding: 1.5rem;
-                    min-height: 500px;
                     transition: 0.3s;
+                    flex-grow: 1;
 
                     > div{
                         opacity: 0;
@@ -48,6 +66,7 @@ main.single-product{
                         right: 1.5rem;
                         left: 1.5rem;
                         color: rgba($color-primary2 , .6);
+                        line-height: 2em;
 
                         h2{
                             color: #fff;
@@ -66,6 +85,203 @@ main.single-product{
 
         > .product-images{
 
+            display: grid;
+            gap: 10px;
+            
+            #productGallery{
+                max-height: 400px;
+                max-width: 100%;
+
+                .swiper-wrapper{
+                    
+
+                    .swiper-slide{
+                        padding: 2rem;
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(81, 66, 49, 0.3) 100%);
+                    backdrop-filter: blur(.875rem);
+                    border-radius: .875rem;
+
+                        img{
+                            object-fit: contain;
+                        }
+                    }
+
+                    
+                }
+
+                .btn-next , .btn-prev{
+                    background-color: red;
+                    width: 30px;
+                    aspect-ratio: 1;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    z-index: 10;
+                    translate: 0 -50%;
+                }
+                .btn-next{
+                    left: unset;
+                    right: 0;
+                }
+
+
+            }
+
+            #productGalleryThumbs{
+                max-height: 120px;
+                max-width: 100%;
+
+                .swiper-slide{
+                    border-radius: .875rem;
+                    backdrop-filter: blur(.875rem);
+                    transition: border 0.3s ease-in-out,scale 0.3s ease;
+                    opacity: 0.7;
+                    scale: 0.8;
+                    cursor: pointer;
+
+
+                    &.swiper-slide-thumb-active{
+                        opacity: 1;
+                        scale: 1;
+                    }
+
+                    img{
+                        object-fit: contain;
+                    }
+                }
+            }
+            #openModal{
+                cursor: pointer;
+            }
+            #imagesModal{
+                position: fixed;
+                inset: 0;
+                background-color: #000;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                padding: 4rem;
+                gap: 1rem;
+                opacity: 0;
+                translate:0 -100% ;
+                transition: 0.3s;
+
+                &.show{
+                    translate: 0;
+                    opacity: 1;
+                }
+                
+                div{
+                    max-width: 800px;
+                }
+                
+                #closeModal{
+                    background-color: red;
+                    position: absolute;
+                    left: 4rem;
+                    top: 4rem;
+                    width: 4rem;
+                    aspect-ratio: 1;
+                    cursor: pointer;
+                }
+
+                #ProductGalleryThumbsModal{
+                    .swiper-slide{
+                        border-radius: .875rem;
+                        backdrop-filter: blur(.875rem);
+                        transition: border 0.3s ease-in-out,scale 0.3s ease;
+                        opacity: 0.7;
+                        scale: 0.8;
+                        cursor: pointer;
+    
+    
+                        &.swiper-slide-thumb-active{
+                            opacity: 1;
+                            scale: 1;
+                        }
+    
+                        img{
+                            object-fit: contain;
+                        }
+                    }
+                }
+
+
+            }
         }
+    }
+
+    > .call-to-action{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 1.25rem 0;
+        gap: .5rem;
+        margin: 1.625rem 0;
+        position: relative;
+        isolation: isolate;
+        z-index: 0;
+
+        &:after{
+            content: '';
+            position: absolute;
+            inset: 0;
+            left: -100%;
+            right: -100%;
+            background: linear-gradient(96.52deg, #000000 -2.97%, rgba(91, 80, 78, 0) 190.81%);
+            backdrop-filter: blur(1.875rem);
+            z-index: -1;
+        }
+    }
+
+    > .transitions{
+        
+
+        > div{
+            display: flex;
+            gap: 1.5rem;
+
+            > img{
+                flex:1;
+                max-width: 25%;
+                max-height: 240px;
+            }
+        }
+    }
+
+    > .products{
+        >div{
+            display: grid;
+            grid-template-columns: repeat(4 , 1fr);
+            min-height: 250px;
+        }
+    }
+
+    > .blogs{
+
+        > div{
+
+            &:nth-child(1){
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1.5rem;    
+            }
+            
+            &:nth-child(2){
+                display: grid;
+                grid-template-columns: repeat(4 , 1fr);
+                gap: 1.5rem;
+            }
+
+        }
+
+        
+
     }
 }

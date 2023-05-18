@@ -18,9 +18,12 @@ Version: 1.0
 @import './scss/components/common';
 @import './scss/components/forms';
 @import './scss/components/mouse';
+@import './scss/components/blog';
+@import './scss/components/product';
 
 /*Pages*/
 @import './scss/pages/header';
+@import './scss/pages/footer';
 @import './scss/pages/homePage';
 @import './scss/pages/singleProduct';
 

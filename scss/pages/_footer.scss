@@ -1,0 +1,40 @@
+footer{
+    display: flex;
+    border-top: 1px solid #fff;
+    background-color: $color-primary1;
+    padding: 2.5rem 2rem;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 4rem auto 0;
+
+    > div:not(#wpadminbar){
+        display: flex;
+        gap:2rem;
+
+        > div{
+            display: flex;
+            flex-direction: column;
+            gap: .675rem;
+            max-width: 170px;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: .375rem;
+        }
+
+        a[href^="tel"]{
+            color: #30A8FF;
+        }
+
+        iframe{
+            max-height: 5rem;
+            max-width: 10rem;
+            pointer-events: none;
+            filter: contrast(0.3);
+            border-radius: .5rem;
+        }
+        
+    }
+}

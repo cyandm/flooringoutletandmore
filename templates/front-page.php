@@ -226,29 +226,9 @@
             <main class="blog-wrapper">
                 <?php
                 $blogs = get_field('blogs');
-                foreach ($blogs as $article):
-                    $title = get_the_title($article);
-                    $excerpt = get_the_excerpt($article);
-                    $img_url = get_the_post_thumbnail_url($article);
-                    $url = get_permalink($article);
-                    ?>
-
-                    <article>
-                        <a data-mouse="explore" href="<?php echo $url ?>">
-                            <div>
-                                <img src="<?php echo $img_url ?>" alt="">
-                            </div>
-                            <h3>
-                                <? echo $title ?>
-                            </h3>
-                            <span>
-                                <? echo $excerpt ?>
-                            </span>
-                        </a>
-                    </article>
-
-                    <?php
-                endforeach;
+                foreach ($blogs as $article) {
+                    get_template_part('/templates/loop/article');
+                }
                 ?>
                 <a href="#" class="btn_no_icon bg_secondary1 no-desktop">view all</a>
 

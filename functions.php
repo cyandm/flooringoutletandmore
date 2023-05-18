@@ -12,7 +12,7 @@ require_once(__DIR__ . '/inc/classes/cyn-form.php');
 
 
 
-/***************************** User Login / Logut */
+/***************************** User Login / Logout */
 function cyn_logout_user()
 {
     wp_redirect(site_url());
@@ -32,6 +32,7 @@ function cyn_enqueue_files()
     wp_enqueue_style('cyn-styles', get_stylesheet_uri());
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('global-styles');
+    wp_dequeue_style('classic-theme-styles');
 
     wp_enqueue_script('swiper', get_template_directory_uri() . '/js/swiper-bundle.min.js', null, null, true);
     wp_enqueue_script('cyn-swipers', get_template_directory_uri() . '/js/swipers.js', null, null, true);

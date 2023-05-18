@@ -1,6 +1,7 @@
 body{
     background-color: $color-primary1;
     background-image: url('./imgs/body-bg.png');
+    overflow-x: hidden;
 }
 .bg{
     &_secondary1{
