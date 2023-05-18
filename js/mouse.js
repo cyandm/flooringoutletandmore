@@ -29,55 +29,58 @@ const resetCursor = () => {
   mouseCursor.dataset.mouse = 'scroll';
   mouseCursor.style.backgroundImage = '';
 };
+if (document.getElementById('homeSwiper')) {
+  /* Events */
+  window.addEventListener('mousemove', moveCursor);
+  homeSwiper.on('slideChange', resetCursor);
+  homeSwiperSlider.on('slideChange', resetCursor);
+  promotionSwiper.on('slideChange', resetCursor);
 
-/* Events */
-window.addEventListener('mousemove', moveCursor);
-homeSwiper.on('slideChange', resetCursor);
-homeSwiperSlider.on('slideChange', resetCursor);
-promotionSwiper.on('slideChange', resetCursor);
+  /* Handlers */
+  hoverElements.forEach((elm) => {
+    elm.addEventListener('mouseover', () => {
+      mouseCursor.classList.add('active');
+      mouseCursor.dataset.mouse = elm.dataset.mouse;
+    });
 
-/* Handlers */
-hoverElements.forEach((elm) => {
-  elm.addEventListener('mouseover', () => {
-    mouseCursor.classList.add('active');
-    mouseCursor.dataset.mouse = elm.dataset.mouse;
-  });
-
-  elm.addEventListener('mouseleave', () => {
-    mouseCursor.classList.remove('active');
-    mouseCursor.dataset.mouse = 'scroll';
-  });
-});
-
-hoverElementsImages.forEach((elm) => {
-  elm.addEventListener('mouseover', () => {
-    mouseCursor.classList.add('active_image');
-    mouseCursor.style.backgroundImage = `url('${elm.dataset.image}')`;
-  });
-
-  elm.addEventListener('mouseleave', () => {
-    mouseCursor.classList.remove('active_image');
-    mouseCursor.style.backgroundImage = '';
-  });
-});
-
-copyTextElements.forEach((elm) => {
-  elm.addEventListener('click', () => {
-    navigator.clipboard.writeText(elm.innerText).then(() => {
-      mouseCursor.dataset.mouse = 'copied!';
+    elm.addEventListener('mouseleave', () => {
+      mouseCursor.classList.remove('active');
+      mouseCursor.dataset.mouse = 'scroll';
     });
   });
-});
 
-nextSlideSlide.dataset.mouse = "let's go";
-nextSlideSlide.addEventListener('click', () => {
-  homeSwiper.slideNext();
-});
+  hoverElementsImages.forEach((elm) => {
+    elm.addEventListener('mouseover', () => {
+      mouseCursor.classList.add('active_image');
+      mouseCursor.dataset.mouse = '';
+      mouseCursor.style.backgroundImage = `url('${elm.dataset.image}')`;
+    });
 
-nextClickElements.forEach((el) => {
-  el.addEventListener('click', () => {
-    homeSwiperSlider.slideNext();
+    elm.addEventListener('mouseleave', () => {
+      mouseCursor.classList.remove('active_image');
+      mouseCursor.dataset.mouse = 'scroll';
+      mouseCursor.style.backgroundImage = '';
+    });
   });
-});
 
-/************************************************************* */
+  copyTextElements.forEach((elm) => {
+    elm.addEventListener('click', () => {
+      navigator.clipboard.writeText(elm.innerText).then(() => {
+        mouseCursor.dataset.mouse = 'copied!';
+      });
+    });
+  });
+
+  nextSlideSlide.dataset.mouse = "let's go";
+  nextSlideSlide.addEventListener('click', () => {
+    homeSwiper.slideNext();
+  });
+
+  nextClickElements.forEach((el) => {
+    el.addEventListener('click', () => {
+      homeSwiperSlider.slideNext();
+    });
+  });
+
+  /************************************************************* */
+}

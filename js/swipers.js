@@ -1,25 +1,29 @@
-document
-  .querySelector('#homeSwiper')
-  .style.setProperty(
-    '--header-width',
-    document.querySelector('header').clientWidth + 'px'
-  );
+if (document.getElementById('homeSwiper')) {
+  document
+    .querySelector('#homeSwiper')
+    .style.setProperty(
+      '--header-width',
+      document.querySelector('header').clientWidth + 'px'
+    );
+}
 
 /* Home Swiper */
 const breakpoint = window.matchMedia('(min-width:1024px)');
-const homeSwiper = new Swiper('#homeSwiper', {
-  enabled: true,
-  direction: 'vertical',
-  mousewheel: true,
-  speed: 600,
-});
+if (document.getElementById('homeSwiper')) {
+  const homeSwiper = new Swiper('#homeSwiper', {
+    enabled: true,
+    direction: 'vertical',
+    mousewheel: true,
+    speed: 600,
+  });
 
-if (breakpoint.matches === false) {
-  homeSwiper.destroy();
+  if (breakpoint.matches === false) {
+    homeSwiper.destroy();
 
-  document
-    .querySelector('#homeSwiper > .swiper-wrapper')
-    .classList.remove('swiper-wrapper');
+    document
+      .querySelector('#homeSwiper > .swiper-wrapper')
+      .classList.remove('swiper-wrapper');
+  }
 }
 
 /*--------------------------------------------------------------------------------- */

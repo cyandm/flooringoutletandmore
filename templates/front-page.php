@@ -4,7 +4,7 @@
 
 
 
-<?php //wp_die()?>
+<?php //wp_die() ?>
 
 <?php get_header('home') ?>
 
@@ -195,51 +195,26 @@
                 </header>
 
                 <main class="brand-wrapper">
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/hero-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/hero-2.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-2.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-3.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-4.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/sample-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-3.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/sample-3.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/slide-2.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/sample-4.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/hero-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/hero-2.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
-                    <div data-mouse data-image="<?php echo get_template_directory_uri() . '/imgs/hero-1.png' ?>">
-                        <img src="<?php echo get_template_directory_uri() . '/imgs/logo-1.png' ?>" alt="">
-                    </div>
+                    <?php
+
+                    $brands = get_terms(
+                        array(
+                            'taxonomy' => 'brands',
+                            'hide_empty' => false,
+                        )
+                    );
+
+                    foreach ($brands as $brand):
+                        $brand_id = $brand->term_id;
+                        $brand_link = get_term_link($brand_id);
+                        $brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
+                        $brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id); ?>
+
+                        <a href="<?php echo esc_url($brand_link) ?>" data-mouse="" data-image="<?php echo $brand_sample ?>">
+                            <img src="<?php echo $brand_logo ?>" alt="">
+                        </a>
+
+                    <?php endforeach; ?>
                 </main>
             </div>
         </div>
@@ -361,4 +336,4 @@
     </div>
 
 </div>
-<?php get_footer() ?>
+<?php get_footer('home') ?>

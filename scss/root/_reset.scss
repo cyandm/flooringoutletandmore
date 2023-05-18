@@ -11,18 +11,10 @@
     }
 }
 
-html,
-body,
-iframe {
-    margin: 0;
-    padding: 0;
-}
-
 p,
 address {
     display: block;
     margin: 0 0 1.25rem 0;
-    font-size: 1rem;
     text-align: justify;
     line-height: 1.5;
 
@@ -246,6 +238,7 @@ body{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     text-transform: capitalize;
+    color: $color-primary2;
 }
 
 h1 , .h1{
@@ -306,4 +299,8 @@ textarea{
 button{
     outline: none;
     border: none;
+}
+
+ul{
+    list-style: none;
 }

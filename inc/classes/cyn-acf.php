@@ -21,7 +21,8 @@ if (!class_exists('cyn_acf')) {
         public function cyn_acf_actions()
         {
             add_action('acf/init', [$this, 'cyn_front_page']);
-            add_action('acf/init', [$this, 'cyn_brand_p_type']);
+            add_action('acf/init', [$this, 'cyn_product_brand_tax']);
+            add_action('acf/init', [$this, 'cyn_product_post_type']);
         }
 
 
@@ -436,24 +437,6 @@ if (!class_exists('cyn_acf')) {
                             'placement' => 'top',
                             'endpoint' => 0,
                         ),
-                        /* Brands */
-                        array(
-                            'key' => 'key_Brands',
-                            'label' => 'Brands',
-                            'name' => '',
-                            'aria-label' => '',
-                            'type' => 'tab',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'placement' => 'top',
-                            'endpoint' => 0,
-                        ),
                         /* Blogs */
                         array(
                             'key' => 'key_blogs',
@@ -585,7 +568,7 @@ if (!class_exists('cyn_acf')) {
 
         }
 
-        public function cyn_brand_p_type()
+        public function cyn_product_brand_tax()
         {
             acf_add_local_field_group([
                 'key' => 'brand_p_type_key',
@@ -596,6 +579,8 @@ if (!class_exists('cyn_acf')) {
                         'label' => 'Brand Logo',
                         'name' => 'brand_logo',
                         'type' => 'image',
+                        'return_format' => 'url'
+
 
                     ],
                     [
@@ -603,17 +588,291 @@ if (!class_exists('cyn_acf')) {
                         'label' => 'Brand Sample',
                         'name' => 'brand_sample',
                         'type' => 'image',
+                        'return_format' => 'url'
                     ]
+                ],
+                'location' => [
+                    [
+                        [
+                            'param' => 'taxonomy',
+                            'operator' => '==',
+                            'value' => 'brands',
+                        ],
+                    ],
+                ],
+                'hide_on_screen' => array(
+                    0 => 'excerpt',
+                ),
+            ]);
+        }
+        public function cyn_product_post_type()
+        {
+            acf_add_local_field_group([
+                'key' => 'product_post_type_key',
+                'title' => 'Product',
+                'fields' => [
+                    [
+                        'key' => 'product_code_key',
+                        'label' => 'Product Code',
+                        'name' => 'product_code',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '25'
+                        ]
+
+                    ],
+                    [
+                        'key' => 'product_sid_key',
+                        'label' => 'Product SID',
+                        'name' => 'product_sid',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '25'
+                        ]
+
+                    ],
+                    [
+                        'key' => 'product_type_key',
+                        'label' => 'Product Type',
+                        'name' => 'product_type',
+                        'type' => 'select',
+                        'choices' => [
+                            'floor' => 'Floor',
+                            'mmd' => 'MMD',
+                            'mdf' => 'MDF'
+                        ],
+                        'wrapper' => [
+                            'width' => '25'
+                        ]
+                    ],
+                    [
+                        'key' => 'product_color_key',
+                        'label' => 'Product Color',
+                        'name' => 'product_color',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '25'
+                        ]
+                    ],
+                    [
+                        'key' => 'product_desc_key',
+                        'label' => 'Product Description',
+                        'name' => 'product_desc',
+                        'instructions' => 'Shown in home page layout',
+                        'type' => 'wysiwyg',
+                        'wrapper' => [
+                            'width' => '50'
+                        ]
+                    ],
+                    [
+                        'key' => 'product_technical_key',
+                        'label' => 'Product Technical',
+                        'name' => 'product_tech',
+                        'type' => 'wysiwyg',
+                        'wrapper' => [
+                            'width' => '50'
+                        ]
+                    ],
+                    [
+                        'key' => 'product_price_key',
+                        'label' => 'Product Price',
+                        'name' => 'product_price',
+                        'instructions' => 'ONLY FOR HOME-PAGE LAYOUT ',
+                        'type' => 'number',
+                        'wrapper' => [
+                            'width' => '100'
+                        ]
+                    ],
+                    [
+                        'key' => 'slider_accordion_key',
+                        'label' => 'Gallery',
+                        'name' => '',
+                        'type' => 'accordion',
+                        'endpoint' => 0
+                    ],
+                    [
+                        'key' => 'product_gallery_group_key',
+                        'label' => 'Product Gallery',
+                        'name' => 'product_gallery_group',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'sub_fields' => [
+                            [
+                                'key' => 'gallery_img_1_key',
+                                'label' => 'Gallery Image 1',
+                                'name' => 'gallery_img_1',
+                                'instructions' => 'Shown in home page layout',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_2_key',
+                                'label' => 'Gallery Image 2',
+                                'name' => 'gallery_img_2',
+                                'instructions' => 'Shown in home page layout',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_3_key',
+                                'label' => 'Gallery Image 3',
+                                'name' => 'gallery_img_3',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_4_key',
+                                'label' => 'Gallery Image 4',
+                                'name' => 'gallery_img_4',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_5_key',
+                                'label' => 'Gallery Image 5',
+                                'name' => 'gallery_img_5',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_6_key',
+                                'label' => 'Gallery Image 6',
+                                'name' => 'gallery_img_6',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_7_key',
+                                'label' => 'Gallery Image 7',
+                                'name' => 'gallery_img_7',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_8_key',
+                                'label' => 'Gallery Image 8',
+                                'name' => 'gallery_img_8',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_9_key',
+                                'label' => 'Gallery Image 9',
+                                'name' => 'gallery_img_9',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+                            ]
+                            ,
+                            [
+                                'key' => 'gallery_img_10_key',
+                                'label' => 'Gallery Image 10',
+                                'name' => 'gallery_img_10',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50',
+                                ],
+
+                            ]
+                        ],
+                    ],
+                    [
+                        'key' => 'slider_accordion_close_key',
+                        'label' => 'Gallery',
+                        'name' => '',
+                        'type' => 'accordion',
+                        'endpoint' => 1
+                    ],
+                    [
+                        'key' => 'related_group_key',
+                        'label' => 'Related',
+                        'name' => 'related_group',
+                        'type' => 'group',
+                        'sub_fields' => [
+                            [
+                                'key' => 'related_products_key',
+                                'label' => 'Related Products',
+                                'name' => 'related_products',
+                                'type' => 'post_object',
+                                'return_format' => 'id',
+                                'post_type' => [
+                                    0 => 'product',
+                                ],
+                                'post_status' => [
+                                    0 => 'publish'
+                                ],
+                                'multiple' => 1,
+                                'ui' => 1,
+                                'wrapper' => [
+                                    'width' => '50'
+                                ]
+                            ],
+                            [
+                                'key' => 'related_articles_key',
+                                'label' => 'Related Articles',
+                                'name' => 'related_articles',
+                                'type' => 'post_object',
+                                'return_format' => 'id',
+                                'post_type' => [
+                                    0 => 'post',
+                                ],
+                                'post_status' => [
+                                    0 => 'publish'
+                                ],
+                                'multiple' => 1,
+                                'ui' => 1,
+                                'wrapper' => [
+                                    'width' => '50'
+                                ]
+                            ]
+                        ]
+                    ],
+
                 ],
                 'location' => [
                     [
                         [
                             'param' => 'post_type',
                             'operator' => '==',
-                            'value' => 'brands',
-                        ],
+                            'value' => 'product'
+                        ]
                     ],
-                ],
+                ]
             ]);
         }
 

@@ -38,6 +38,7 @@ function cyn_enqueue_files()
     wp_enqueue_script('cyn-ajax-form', get_template_directory_uri() . '/js/ajax-form.js', ['jquery'], null, true);
     wp_localize_script('cyn-ajax-form', 'cynAjax', array('url' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('ajax-nonce')));
     wp_enqueue_script('cyn-mouse', get_template_directory_uri() . '/js/mouse.js', null, null, true);
+    wp_enqueue_script('cyn-single-product', get_template_directory_uri() . '/js/single-product.js', null, null, true);
     wp_enqueue_script('cyn-scripts', get_template_directory_uri() . '/js/script.js', null, null, true);
 
 }

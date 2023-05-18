@@ -155,3 +155,93 @@ body:has(.home-header){
         font-size: 30px;
     }
 }
+
+.whole-header{
+    display: flex;
+    padding: 1.875rem;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(96.52deg, #000000 -2.97%, rgba(91, 80, 78, 0) 190.81%);
+
+
+
+    img{
+        width: unset;
+        height: unset;
+    }
+
+    ul{
+        position: relative;
+        display: flex;
+        gap:2.125rem;
+
+
+        a{
+            color: $color-primary2;
+        }
+
+        li.menu-item-has-children{
+            display: flex;
+            justify-content: space-between;
+            border-radius: 0.2rem;
+
+
+            &::after{
+                font-family: 'icomoon' !important;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                content: '\e900';
+                color: #fff;
+            }
+
+            &:hover{
+
+                > ul.sub-menu{
+                    translate: 0 0;
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+
+        
+
+        ul.sub-menu{
+            min-width: 12rem;
+            top: 130%;
+            background: inherit;
+            backdrop-filter: blur(12px);
+            position: absolute;
+            translate: 0 30%;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease;
+            border-radius: 0.25rem;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+
+            ul{
+                left: 100%;
+                top: 0;
+            }
+           }
+
+    }
+
+    
+
+    div:nth-child(3){
+        display: flex;
+        gap: 1.25rem;
+
+        input{
+            max-width: 7rem;
+        }
+    }
+
+}
