@@ -49,7 +49,7 @@
     </header>
 
     <div class="home-footer only-desktop">
-        <a href="#" data-mouse="instagram"><i class="icon-Component-2-1 mobile-menu"></i></a>
-        <a href="#" data-mouse="telegram"><i class="icon-Component-2-1 mobile-menu"></i></a>
-        <a href="#" data-mouse="whats app"><i class="icon-Component-2-1 mobile-menu"></i></a>
+        <a href="#" data-mouse="instagram"><i class="icon-Component-2-1"></i></a>
+        <a href="#" data-mouse="telegram"><i class="icon-Component-2-1"></i></a>
+        <a href="#" data-mouse="whats app"><i class="icon-Component-2-1"></i></a>
     </div>

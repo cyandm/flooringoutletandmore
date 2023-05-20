@@ -85,3 +85,17 @@ $cyn_acf->cyn_acf_actions();
 $cyn_register = new cyn_register();
 
 $cyn_form = new cyn_form();
+
+
+
+
+
+
+
+/************************ */
+function livereload()
+{
+    echo '<script>document.write(\'<script src=”http://\' + (location.host || \'localhost\').split(\':\')[0] +\':35729/livereload.js?snipver=1"></\' + \'script>\')</script>';
+}
+
+add_action('wp_footer', 'livereload', 100);

@@ -6,10 +6,21 @@ footer{
     justify-content: space-between;
     max-width: 1440px;
     margin: 4rem auto 0;
+    gap: 2rem;
+
+    @media (width <= 1024px) {
+        flex-direction: column;
+
+        .w-full{
+            min-width: 100%;
+        }
+    }
 
     > div:not(#wpadminbar){
         display: flex;
         gap:2rem;
+        flex-wrap: wrap;
+
 
         > div{
             display: flex;

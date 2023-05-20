@@ -32,7 +32,7 @@ $front_page_id = get_option('page_on_front')
         </div>
     </div>
     <div>
-        <div>
+        <div class="w-full">
             <b>Our Social</b>
             <div>
                 <a href=""><i></i></a>

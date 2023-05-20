@@ -16,6 +16,8 @@
         </div>
         <div>
             <?php wp_nav_menu(['menu' => 'header']) ?>
+
+            <i class="icon-Component-2-1 mobile-menu"></i>
         </div>
         <div>
             <div>

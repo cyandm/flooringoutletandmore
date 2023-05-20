@@ -149,7 +149,7 @@ $related_products_query = new WP_Query($related_products_args);
     <div class="blogs">
         <div>
             <h2>you might also like to know</h2>
-            <a href="#" class="btn_no_icon bg_white">View All</a>
+            <a href="#" class="btn_no_icon bg_white only-desktop">View All</a>
         </div>
         <div>
             <?php
@@ -169,6 +169,7 @@ $related_products_query = new WP_Query($related_products_args);
                 }
             }
             ?>
+            <a href="#" class="btn_no_icon bg_white">View All</a>
         </div>
     </div>
 </main>
