@@ -1,30 +1,12 @@
 <?php get_header() ?>
 
 <main class="product-archive">
-	<div class="side-bar">
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
+	<div id="sideBar" class="side-bar">
+		<div class="only-mobile heading">
+			<i class="icon-place-holder" id="sideBarCloser"></i>
+			<span class="h2">
+				Filters
+			</span>
 		</div>
 		<div class="box">
 			<div class="title">
@@ -146,6 +128,44 @@
 				</div>
 			</div>
 		</div>
+		<div class="box">
+			<div class="title">
+				<span>Floor Types</span>
+				<i class="icon-arrowUP"></i>
+			</div>
+			<div class="">
+				<div class="checkbox-container">
+					<div class="checkbox-wrapper">
+						<label for="solid-wood">Solid Wood</label>
+						<div class="inner-checkbox">
+							<input type="checkbox" name="solid-wood" id="solid-wood">
+							<span class="checkmark"></span>
+						</div>
+					</div>
+					<div class="checkbox-wrapper">
+						<label for="engineered-wood">engineered wood</label>
+						<div class="inner-checkbox">
+							<input type="checkbox" name="solid-wood" id="solid-wood">
+							<span class="checkmark"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="only-mobile">
+			<button class="btn_no_icon bg_white">Cancel</button>
+			<button class="btn_no_icon bg_secondary2">Apply Filter</button>
+		</div>
+	</div>
+
+	<div class="only-mobile">
+		<button id="sideBarOpener" class="btn_icon_between bg_secondary2 sidebar-opener">
+			<span>
+				<i></i>
+				Filters
+			</span>
+			<i class="arrowLeft"></i>
+		</button>
 	</div>
 
 	<div class="products">

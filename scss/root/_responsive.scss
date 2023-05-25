@@ -1,11 +1,17 @@
-.no-desktop{
-    @media (width >= 1024px) {
-        display: none !important;
-    }
+.no-desktop {
+  @media (width >= 1024px) {
+    display: none !important;
+  }
 }
 
-.only-desktop{
-    @media (width <= 1024px) {
-        display: none !important;
-    }
+.only-desktop {
+  @media (width <= 1024px) {
+    display: none !important;
+  }
+}
+
+.only-mobile {
+  @media (width >= 768px) {
+    display: none !important;
+  }
 }
