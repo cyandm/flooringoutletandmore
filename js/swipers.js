@@ -95,13 +95,13 @@ const promotionSwiper = new Swiper('#homeSwiper_promotion', {
 
 /********************************************************************************** */
 
-var productGalleryThumbs = new Swiper('#productGalleryThumbs', {
+const productGalleryThumbs = new Swiper('#productGalleryThumbs', {
   spaceBetween: 10,
   slidesPerView: 4,
   freeMode: true,
   watchSlidesProgress: 1,
 });
-var ProductGallery = new Swiper('#productGallery', {
+const ProductGallery = new Swiper('#productGallery', {
   spaceBetween: 10,
   navigation: {
     nextEl: '.btn-next',

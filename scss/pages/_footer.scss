@@ -1,51 +1,53 @@
-footer{
+footer {
+  border-top: 1px solid #fff;
+  background-color: $color-primary1;
+  padding: 2.5rem 2rem;
+  margin-block-start: 4rem;
+  gap: 2rem;
+
+  @media (width <= 1024px) {
+    flex-direction: column;
+
+    .w-full {
+      min-width: 100%;
+    }
+  }
+
+  > .wrapper {
     display: flex;
-    border-top: 1px solid #fff;
-    background-color: $color-primary1;
-    padding: 2.5rem 2rem;
     justify-content: space-between;
     max-width: 1440px;
-    margin: 4rem auto 0;
-    gap: 2rem;
+    margin-inline: auto;
 
-    @media (width <= 1024px) {
-        flex-direction: column;
+    > div:not(#wpadminbar) {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
 
-        .w-full{
-            min-width: 100%;
-        }
-    }
-
-    > div:not(#wpadminbar){
+      > div {
         display: flex;
-        gap:2rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0.675rem;
+        max-width: 170px;
+      }
 
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+      }
 
-        > div{
-            display: flex;
-            flex-direction: column;
-            gap: .675rem;
-            max-width: 170px;
-        }
+      a[href^='tel'] {
+        color: #30a8ff;
+      }
 
-        ul{
-            display: flex;
-            flex-direction: column;
-            gap: .375rem;
-        }
-
-        a[href^="tel"]{
-            color: #30A8FF;
-        }
-
-        iframe{
-            max-height: 5rem;
-            max-width: 10rem;
-            pointer-events: none;
-            filter: contrast(0.3);
-            border-radius: .5rem;
-        }
-        
+      iframe {
+        max-height: 5rem;
+        max-width: 10rem;
+        pointer-events: none;
+        filter: contrast(0.3);
+        border-radius: 0.5rem;
+      }
     }
+  }
 }

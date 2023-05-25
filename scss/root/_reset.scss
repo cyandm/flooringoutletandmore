@@ -2,92 +2,92 @@
 *,
 ::after,
 ::before {
-    box-sizing: border-box
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion:no-preference) {
-    :root {
-        scroll-behavior: smooth
-    }
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
 }
 
 p,
 address {
-    display: block;
-    margin: 0 0 1.25rem 0;
-    text-align: justify;
-    line-height: 1.5;
-
+  display: block;
+  margin: 0 0 1.25rem 0;
+  text-align: justify;
+  line-height: 1.5;
 }
 
 hr {
-    margin: 1rem 0;
-    background-color: currentColor;
-    border: 0;
-    opacity: 1;
+  margin: 1rem 0;
+  background-color: currentColor;
+  border: 0;
+  opacity: 1;
 }
 
 hr:not([size]) {
-    height: 1px
+  height: 1px;
 }
 
 b,
 strong {
-    font-weight: bolder
+  font-weight: bolder;
 }
 
 small {
-    font-size: .875em
+  font-size: 0.875em;
 }
 
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
-    color: inherit;
-    text-decoration: none
+  color: inherit;
+  text-decoration: none;
 }
 
 code,
 kbd,
 pre,
 samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 1em;
-    direction: ltr;
-    unicode-bidi: bidi-override
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 1em;
+  direction: ltr;
+  unicode-bidi: bidi-override;
 }
 
 pre {
-    display: block;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    overflow: auto;
-    font-size: .875em
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  font-size: 0.875em;
 }
 
 pre code {
-    font-size: inherit;
-    color: inherit;
-    word-break: normal
+  font-size: inherit;
+  color: inherit;
+  word-break: normal;
 }
 
 code {
-    font-size: .875em;
-    word-wrap: break-word
+  font-size: 0.875em;
+  word-wrap: break-word;
 }
 
 img,
 svg {
-    vertical-align: middle;
-    height: auto;
+  vertical-align: middle;
+  height: auto;
 }
 
 figure {
-    margin: auto;
+  margin: auto;
 }
 
 table {
-    caption-side: bottom;
-    border-collapse: collapse
+  caption-side: bottom;
+  border-collapse: collapse;
 }
 
 tbody,
@@ -96,17 +96,17 @@ tfoot,
 th,
 thead,
 tr {
-    border-color: inherit;
-    border-style: solid;
-    border-width: 0
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
 }
 
 label {
-    display: inline-block
+  display: inline-block;
 }
 
 button:focus:not(:focus-visible) {
-    outline: 0
+  outline: 0;
 }
 
 button,
@@ -114,54 +114,54 @@ input,
 optgroup,
 select,
 textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 button,
 select {
-    text-transform: none
+  text-transform: none;
 }
 
-[role=button] {
-    cursor: pointer
+[role='button'] {
+  cursor: pointer;
 }
 
 select {
-    word-wrap: normal
+  word-wrap: normal;
 }
 
 select:disabled {
-    opacity: 1
+  opacity: 1;
 }
 
 [list]::-webkit-calendar-picker-indicator {
-    display: none
+  display: none;
 }
 
-[type=button],
-[type=reset],
-[type=submit],
+[type='button'],
+[type='reset'],
+[type='submit'],
 button {
-    -webkit-appearance: button
+  -webkit-appearance: button;
 }
 
-[type=button]:not(:disabled),
-[type=reset]:not(:disabled),
-[type=submit]:not(:disabled),
+[type='button']:not(:disabled),
+[type='reset']:not(:disabled),
+[type='submit']:not(:disabled),
 button:not(:disabled) {
-    cursor: pointer
+  cursor: pointer;
 }
 
 ::-moz-focus-inner {
-    padding: 0;
-    border-style: none
+  padding: 0;
+  border-style: none;
 }
 
 textarea {
-    resize: vertical
+  resize: vertical;
 }
 
 ::-webkit-datetime-edit-day-field,
@@ -171,136 +171,141 @@ textarea {
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-year-field {
-    padding: 0
+  padding: 0;
 }
 
 ::-webkit-inner-spin-button {
-    height: auto
+  height: auto;
 }
 
-[type=search] {
-    outline-offset: -2px;
-    -webkit-appearance: textfield
+[type='search'] {
+  outline-offset: -2px;
+  -webkit-appearance: textfield;
 }
 
-[type=email],
-[type=number],
-[type=tel],
-[type=url] {
-    direction: ltr
+[type='email'],
+[type='number'],
+[type='tel'],
+[type='url'] {
+  direction: ltr;
 }
 
 ::-webkit-search-decoration {
-    -webkit-appearance: none
+  -webkit-appearance: none;
 }
 
 ::-webkit-color-swatch-wrapper {
-    padding: 0
+  padding: 0;
 }
 
 ::file-selector-button {
-    font: inherit
+  font: inherit;
 }
 
 ::-webkit-file-upload-button {
-    font: inherit;
-    -webkit-appearance: button
+  font: inherit;
+  -webkit-appearance: button;
 }
 
 [hidden] {
-    display: none !important
+  display: none !important;
 }
 
 .clearfix {
-    &::after {
-        content: "";
-        display: block;
-        clear: both;
-    }
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 /*Font Styles*/
 
-.title{
-    font-family: 'Barlow';
-    font-size: 4.625rem;
+.title {
+  font-family: 'Barlow';
+  font-size: 4.625rem;
 }
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'OpenSans';
-    font-size: .875rem;
-    height: 100vh;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-    text-transform: capitalize;
-    color: $color-primary2;
+body {
+  font-family: 'OpenSans';
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: capitalize;
+  color: $color-primary2;
 }
 
-h1 , .h1{
-    font-size: 2.125rem;
-    text-transform: capitalize;
+h1,
+.h1 {
+  font-size: 2.125rem;
+  text-transform: capitalize;
 }
 
-h2 , .h2{
-    font-size: 1.5rem;
-    text-transform: capitalize;
+h2,
+.h2 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }
 
-h3 , .h3{
-    font-size: 1.25rem;
-    text-transform: capitalize;
+h3,
+.h3 {
+  font-size: 1.25rem;
+  text-transform: capitalize;
 }
 
-h4 , .h4{
-    font-size: 1rem;
-    text-transform: capitalize;
+h4,
+.h4 {
+  font-size: 1rem;
+  text-transform: capitalize;
 }
 
-h5 , .h5{
-    font-size: 0.875rem;
-    text-transform: capitalize;
+h5,
+.h5 {
+  font-size: 0.875rem;
+  text-transform: capitalize;
 }
 
-
-i{
-    font-size: 1.5rem;
+i {
+  font-size: 1.5rem;
 }
 
 :root {
-    --swiper-theme-color: none !important;
+  --swiper-theme-color: none !important;
 }
 
-a{
-    color:unset;
-    text-decoration: none;
+a {
+  color: unset;
+  text-decoration: none;
 }
 
-img{
-    width: 100%;
-    height: 100%;
+img {
+  width: 100%;
+  height: 100%;
 }
 
-textarea{
-    outline: none;
-    border: none;
-    resize: none;
-    color:$color-primary2;
+textarea {
+  outline: none;
+  border: none;
+  resize: none;
+  color: $color-primary2;
 }
 
-::placeholder{
-    text-transform: capitalize;
+::placeholder {
+  text-transform: capitalize;
 }
 
-button{
-    outline: none;
-    border: none;
+button {
+  outline: none;
+  border: none;
 }
 
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }

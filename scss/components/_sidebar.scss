@@ -1,0 +1,103 @@
+.side-bar {
+  /* @delete */
+  min-width: 290px;
+  display: grid;
+  gap: 0.875rem;
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(#fff, 0.2);
+    backdrop-filter: blur(0.75rem);
+    border-radius: 0.875rem;
+    padding: 0.625rem 1.5rem;
+
+    > div:nth-child(2) {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: all 0.3s ease-in-out;
+
+      > div {
+        overflow: hidden;
+      }
+
+      &.open {
+        margin-top: 0.875rem;
+        grid-template-rows: 1fr;
+      }
+    }
+
+    .title {
+      @extend .h4;
+      display: flex;
+      justify-content: space-between;
+      padding-block: 0.625rem;
+      i {
+        background-color: red;
+        width: 16px;
+        aspect-ratio: 1;
+        cursor: pointer;
+      }
+    }
+    .checkbox-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .checkbox-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .inner-checkbox {
+          position: relative;
+          cursor: pointer;
+          user-select: none;
+          display: block;
+          width: 1.5rem;
+          height: 1.5rem;
+
+          .checkmark {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: rgba(#fff, 0.2);
+            border-radius: 0.25rem;
+
+            &:hover {
+              background-color: rgba(#fff, 0.4);
+            }
+          }
+
+          input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            inset: 0;
+            z-index: 5;
+
+            &:checked {
+              + .checkmark {
+                background: $color-secondary1;
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  display: block;
+                  left: 9px;
+                  top: 3px;
+                  width: 7px;
+                  height: 15px;
+                  border: solid #000;
+                  border-width: 0 2px 2px 0;
+                  rotate: 45deg;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

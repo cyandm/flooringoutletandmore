@@ -4,8 +4,8 @@ Theme Url: https://cyandm.com
 Author Name: Cyan Digital Marketing Agency
 Version: 1.0
 */
-@use "sass:math";
-@use "sass:map";
+@use 'sass:math';
+@use 'sass:map';
 @import './scss/root/fonts';
 @import './scss/root/variables';
 @import './scss/root/reset';
@@ -20,11 +20,11 @@ Version: 1.0
 @import './scss/components/mouse';
 @import './scss/components/blog';
 @import './scss/components/product';
+@import './scss/components/sidebar';
 
 /*Pages*/
 @import './scss/pages/header';
 @import './scss/pages/footer';
 @import './scss/pages/homePage';
 @import './scss/pages/singleProduct';
-
-
+@import './scss/pages/productArchive';
