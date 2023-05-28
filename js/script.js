@@ -1,19 +1,34 @@
+const dropDownOpener = document.querySelector('#dropDownOpener');
+
+if (dropDownOpener) {
+  dropDownOpener.addEventListener('click', () => {
+    dropDownOpener.querySelector('.virtual-options').classList.toggle('open');
+  });
+}
+
+/****************************************** Side Bar */
 const sideBar = document.querySelector('#sideBar');
-const sideBarHandlers = sideBar.querySelectorAll('.title');
+if (sideBar) {
+  const sideBarHandlers = sideBar.querySelectorAll('.title');
+}
 
 const sideBarOpener = document.querySelector('#sideBarOpener');
 const sideBarCloser = document.querySelector('#sideBarCloser');
 
-sideBarHandlers.forEach((handler) => {
-  handler.addEventListener('click', () => {
-    handler.nextElementSibling.classList.toggle('open');
+if (sideBarHandlers) {
+  sideBarHandlers.forEach((handler) => {
+    handler.addEventListener('click', () => {
+      handler.nextElementSibling.classList.toggle('open');
+    });
   });
-});
+}
 
-sideBarOpener.addEventListener('click', () => {
-  sideBar.classList.add('open');
-});
+if (sideBarOpener) {
+  sideBarOpener.addEventListener('click', () => {
+    sideBar.classList.add('open');
+  });
 
-sideBarCloser.addEventListener('click', () => {
-  sideBar.classList.remove('open');
-});
+  sideBarCloser.addEventListener('click', () => {
+    sideBar.classList.remove('open');
+  });
+}

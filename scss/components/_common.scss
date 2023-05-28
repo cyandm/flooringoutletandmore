@@ -2,9 +2,15 @@ body {
   background-color: $color-primary1;
   background-image: url('./imgs/body-bg.png');
   overflow-x: hidden;
+  padding-inline: 1.875rem;
 }
 body:has(.side-bar.open) {
   overflow-y: hidden;
+}
+
+main {
+  max-width: 1440px;
+  margin-inline: auto;
 }
 .bg {
   &_secondary1 {
