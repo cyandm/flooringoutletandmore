@@ -34,8 +34,23 @@ main.product-archive {
     .filter-chips {
       display: flex;
       gap: 0.5rem;
-      overflow-x: scroll;
+      overflow-x: auto;
       min-width: fit-content;
+      padding-block-end: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: $color-secondary2 #333;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+        height: 4px;
+        border-radius: 4px;
+        background-color: #333;
+
+        &-thumb {
+          background-color: $color-secondary2;
+          border-radius: 4px;
+        }
+      }
 
       .filter-chip {
         display: flex;
