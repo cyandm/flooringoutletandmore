@@ -153,7 +153,8 @@ body:has(.home-header) {
 }
 
 .whole-header {
-  padding-block: 1.875rem;
+  margin-inline: -1.875rem;
+  padding: 1.875rem;
   align-items: center;
   background: linear-gradient(
     96.52deg,

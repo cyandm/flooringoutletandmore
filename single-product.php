@@ -44,6 +44,7 @@ $related_products_args = [
 $related_products_query = new WP_Query( $related_products_args );
 
 
+
 ?>
 
 <?php //wp_die() ?>
@@ -168,7 +169,7 @@ $related_products_query = new WP_Query( $related_products_args );
 				}
 			}
 			?>
-			<a href="#" class="btn_no_icon bg_white">View All</a>
+			<a href="#" class="btn_no_icon bg_white only-mobile">View All</a>
 		</div>
 	</div>
 </main>

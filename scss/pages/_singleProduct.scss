@@ -1,370 +1,338 @@
+main.single-product {
+  max-width: 1440px;
+  margin: 0 auto;
 
+  @media (width <= 1024px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
 
-main.single-product{
-    padding: 1.875rem;
-
-    max-width: 1440px;
-    margin: 0 auto;
+  hr {
+    margin: 1.5rem 0;
 
     @media (width <= 1024px) {
-        h1{
-            font-size: 1.5rem;
-        }
+      margin: 0.875rem 0;
+    }
+  }
+
+  h2 {
+    padding: 1.125rem;
+    padding-left: 0 !important;
+    margin-bottom: 1.675rem;
+    margin-top: 1.5rem;
+
+    @media (width <= 1024px) {
+      font-size: 1rem;
+      padding: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  > .top {
+    display: flex;
+    gap: 1.25rem;
+
+    @media (width<=1024px) {
+      flex-direction: column-reverse;
     }
 
-    hr{
-        margin: 1.5rem 0 ;
-
-        @media (width <= 1024px) {
-            margin: .875rem 0;
-        }
+    > div {
+      flex: 1;
+      max-width: 50%;
+      @media (width<=1024px) {
+        max-width: none !important;
+      }
     }
 
-    h2{
-        padding: 1.125rem;
-        padding-left: 0 !important;
-        margin-bottom: 1.675rem;
-        margin-top: 1.5rem;
+    > .tabs {
+      display: flex;
+      flex-direction: column;
 
-        @media (width <= 1024px) {
-                font-size: 1rem;
-                padding: 1rem;
-                margin-bottom: 0;
-        }
-    }
-
-    > .top{
+      > .headings {
         display: flex;
-        gap: 1.25rem;
+
+        > span {
+          padding: 0.875rem;
+          color: rgba($color-primary2, 0.6);
+          display: block;
+          transition: 0.3s ease;
+          cursor: pointer;
+
+          &.show {
+            background-color: rgba($color-primary2, 0.2);
+            color: $color-primary2;
+            backdrop-filter: blur(0.875rem);
+            border-radius: 0.875rem 0.875rem 0 0;
+          }
+        }
+      }
+
+      > .content {
+        background-color: rgba($color-primary2, 0.2);
+        backdrop-filter: blur(0.875rem);
+        border-radius: 0 0.875rem 0.875rem 0.875rem;
+        padding: 1.5rem;
+        transition: 0.3s;
+        flex-grow: 1;
+
+        > div {
+          opacity: 0;
+          translate: 0 100px;
+          transition: 0.3s ease-in-out;
+          visibility: hidden;
+          position: absolute;
+          right: 1.5rem;
+          left: 1.5rem;
+          color: rgba($color-primary2, 0.6);
+          line-height: 2em;
+
+          @media (width <= 1024px) {
+            min-width: 100%;
+            position: relative;
+            inset: unset;
+            display: none;
+          }
+
+          h2 {
+            color: #fff;
+            margin: 0 0 0.875rem;
+            padding: 0;
+          }
+
+          &.show {
+            opacity: 1;
+            translate: 0;
+            visibility: visible;
+            display: block;
+          }
+        }
+      }
+    }
+
+    > .product-images {
+      @media (width <= 1024px) {
+        min-width: 100%;
+      }
+
+      display: grid;
+      gap: 10px;
+
+      #productGallery {
+        max-height: 400px;
+        max-width: 100%;
+
+        .swiper-wrapper {
+          .swiper-slide {
+            padding: 2rem;
+            background: linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.3) 0%,
+              rgba(81, 66, 49, 0.3) 100%
+            );
+            backdrop-filter: blur(0.875rem);
+            border-radius: 0.875rem;
+
+            img {
+              object-fit: contain;
+            }
+          }
+        }
+
+        .btn-next,
+        .btn-prev {
+          background-color: red;
+          width: 30px;
+          aspect-ratio: 1;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          z-index: 10;
+          translate: 0 -50%;
+        }
+        .btn-next {
+          left: unset;
+          right: 0;
+        }
+      }
+
+      #productGalleryThumbs {
+        max-height: 120px;
+        max-width: 100%;
+
+        .swiper-slide {
+          border-radius: 0.875rem;
+          backdrop-filter: blur(0.875rem);
+          transition: border 0.3s ease-in-out, scale 0.3s ease;
+          opacity: 0.7;
+          scale: 0.8;
+          cursor: pointer;
+
+          &.swiper-slide-thumb-active {
+            opacity: 1;
+            scale: 1;
+          }
+
+          img {
+            object-fit: contain;
+          }
+        }
+      }
+      #openModal {
+        cursor: pointer;
+      }
+      #imagesModal {
+        position: fixed;
+        inset: 0;
+        background-color: #000;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        padding: 4rem;
+        gap: 1rem;
+        opacity: 0;
+        translate: 0 -100%;
+        transition: 0.3s;
 
         @media (width<=1024px) {
-            flex-direction: column-reverse;
+          padding: 1rem;
         }
 
-
-        >div{
-            flex:1;
-            max-width: 50%;
-            @media (width<=1024px) {
-                max-width: none !important;
-            }
+        &.show {
+          translate: 0;
+          opacity: 1;
         }
 
-        > .tabs{
-            display: flex;
-            flex-direction: column;
+        div {
+          max-width: 800px;
 
-            > .headings{
-                display: flex;
-
-                > span{
-                    padding: .875rem;
-                    color: rgba($color-primary2 , 0.6) ;
-                    display: block;
-                    transition: 0.3s ease;
-                    cursor: pointer;
-
-                    &.show{
-                        background-color: rgba($color-primary2 , 0.2);
-                        color: $color-primary2;
-                        backdrop-filter: blur(.875rem);
-                        border-radius: .875rem .875rem 0 0;
-                    }
-                }
-            }
-
-            > .content{
-                    background-color: rgba($color-primary2 , 0.2);    
-                    backdrop-filter: blur(.875rem);
-                    border-radius:  0 .875rem .875rem .875rem;
-                    padding: 1.5rem;
-                    transition: 0.3s;
-                    flex-grow: 1;
-                    
-
-                    > div{
-                        opacity: 0;
-                        translate: 0 100px;
-                        transition: 0.3s ease-in-out;
-                        visibility: hidden;
-                        position: absolute;
-                        right: 1.5rem;
-                        left: 1.5rem;
-                        color: rgba($color-primary2 , .6);
-                        line-height: 2em;
-
-                        @media (width <= 1024px) {
-                            min-width: 100%;
-                            position: relative;
-                            inset: unset;
-                            display: none;
-                        }
-
-                        h2{
-                            color: #fff;
-                            margin:0 0 .875rem;
-                            padding: 0;
-
-                        }
-
-                        &.show{
-                            opacity: 1;
-                            translate: 0;
-                            visibility: visible;
-                            display: block;
-                        }
-
-                    }
-            }
+          @media (width<=1024px) {
+            max-width: 300px;
+          }
         }
 
-        > .product-images{
-
-            @media (width <= 1024px) {
-                min-width: 100%;
-            }
-
-            display: grid;
-            gap: 10px;
-            
-            #productGallery{
-                max-height: 400px;
-                max-width: 100%;
-
-                .swiper-wrapper{
-                    
-
-                    .swiper-slide{
-                        padding: 2rem;
-                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(81, 66, 49, 0.3) 100%);
-                    backdrop-filter: blur(.875rem);
-                    border-radius: .875rem;
-
-                        img{
-                            object-fit: contain;
-                        }
-                    }
-
-                    
-                }
-
-                .btn-next , .btn-prev{
-                    background-color: red;
-                    width: 30px;
-                    aspect-ratio: 1;
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    z-index: 10;
-                    translate: 0 -50%;
-                }
-                .btn-next{
-                    left: unset;
-                    right: 0;
-                }
-
-
-            }
-
-            #productGalleryThumbs{
-                max-height: 120px;
-                max-width: 100%;
-
-                .swiper-slide{
-                    border-radius: .875rem;
-                    backdrop-filter: blur(.875rem);
-                    transition: border 0.3s ease-in-out,scale 0.3s ease;
-                    opacity: 0.7;
-                    scale: 0.8;
-                    cursor: pointer;
-
-
-                    &.swiper-slide-thumb-active{
-                        opacity: 1;
-                        scale: 1;
-                    }
-
-                    img{
-                        object-fit: contain;
-                    }
-                }
-            }
-            #openModal{
-                cursor: pointer;
-            }
-            #imagesModal{
-                position: fixed;
-                inset: 0;
-                background-color: #000;
-                z-index: 1000;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                width: 100vw;
-                padding: 4rem;
-                gap: 1rem;
-                opacity: 0;
-                translate:0 -100% ;
-                transition: 0.3s;
-
-                @media (width<=1024px) {
-                    padding: 1rem;
-                }
-
-                &.show{
-                    translate: 0;
-                    opacity: 1;
-                }
-                
-                div{
-                    max-width: 800px;
-
-                    @media (width<=1024px) {
-                        max-width: 300px;
-                    }
-                }
-                
-                #closeModal{
-                    background-color: red;
-                    position: absolute;
-                    left: 4rem;
-                    top: 4rem;
-                    width: 4rem;
-                    aspect-ratio: 1;
-                    cursor: pointer;
-                }
-
-                #ProductGalleryThumbsModal{
-                    .swiper-slide{
-                        border-radius: .875rem;
-                        backdrop-filter: blur(.875rem);
-                        transition: border 0.3s ease-in-out,scale 0.3s ease;
-                        opacity: 0.7;
-                        scale: 0.8;
-                        cursor: pointer;
-    
-    
-                        &.swiper-slide-thumb-active{
-                            opacity: 1;
-                            scale: 1;
-                        }
-    
-                        img{
-                            object-fit: contain;
-                        }
-                    }
-                }
-
-
-            }
+        #closeModal {
+          background-color: red;
+          position: absolute;
+          left: 4rem;
+          top: 4rem;
+          width: 4rem;
+          aspect-ratio: 1;
+          cursor: pointer;
         }
+
+        #ProductGalleryThumbsModal {
+          .swiper-slide {
+            border-radius: 0.875rem;
+            backdrop-filter: blur(0.875rem);
+            transition: border 0.3s ease-in-out, scale 0.3s ease;
+            opacity: 0.7;
+            scale: 0.8;
+            cursor: pointer;
+
+            &.swiper-slide-thumb-active {
+              opacity: 1;
+              scale: 1;
+            }
+
+            img {
+              object-fit: contain;
+            }
+          }
+        }
+      }
     }
+  }
 
-    > .call-to-action{
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        padding: 1.25rem 0;
-        gap: .5rem;
-        margin: 1.625rem 0;
-        position: relative;
-        isolation: isolate;
-        background: linear-gradient(96.52deg, #000000 -2.97%, rgba(91, 80, 78, 0) 190.81%);
+  > .call-to-action {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 1.25rem 0;
+    gap: 0.5rem;
+    margin: 1.625rem 0;
+    position: relative;
+    isolation: isolate;
+    @media (width <= 1024px) {
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 1rem;
+      font-weight: bold;
+
+      a {
+        width: 100%;
+        font-weight: normal;
+      }
+    }
+  }
+
+  > .transitions {
+    > div {
+      display: flex;
+      gap: 1.5rem;
+
+      @media (width <= 1024px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      > img {
+        flex: 1;
+        max-width: 25%;
+        max-height: 240px;
         @media (width <= 1024px) {
-            flex-direction: column;
-            justify-content: start;
-            align-items: start;
-            gap: 1rem;
-            font-weight: bold;
-
-            a{
-                width: 100%;
-                font-weight: normal;
-            }
+          max-width: fit-content;
         }
-
+      }
     }
+  }
 
-    > .transitions{
+  > .products {
+    > div {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
 
-        
-        
+      @media (width<= 1024px) {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
 
-        > div{
-            display: flex;
-            gap: 1.5rem;
+      > a {
+        min-height: 250px;
 
-            @media (width <= 1024px) {
-                display: grid;
-                grid-template-columns: 1fr 1fr;   
-                gap: 1rem;
-            }
-
-            
-
-            > img{
-                flex:1;
-                max-width: 25%;
-                max-height: 240px;
-                @media (width <= 1024px) {
-                    max-width: fit-content;
-                }
-            }
+        @media (width <= 1024px) {
+          min-height: 190px;
         }
+      }
     }
+  }
 
-    > .products{
-        >div{
-            display: grid;
-            grid-template-columns: repeat(4 , 1fr);
-            gap: 1.5rem;
-            
-            @media (width<= 1024px) {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
+  > .blogs {
+    > div {
+      &:nth-child(1) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+      }
 
-                
-            }
+      &:nth-child(2) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
 
-            > a{
-                min-height: 250px;
-
-                @media (width <= 1024px) {
-                    min-height: 190px;
-                }
-            }
-
+        @media (width <= 1024px) {
+          grid-template-columns: 1fr;
         }
+      }
     }
-
-    > .blogs{
-
-        > div{
-
-            &:nth-child(1){
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 1.5rem;    
-
-            }
-            
-            &:nth-child(2){
-                display: grid;
-                grid-template-columns: repeat(4 , 1fr);
-                gap: 1.5rem;
-
-                @media (width <= 1024px) {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-        }
-
-        
-
-    }
+  }
 }
