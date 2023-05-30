@@ -36,7 +36,7 @@ const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
   effect: 'creative',
   loop: false,
   autoplay: {
-    delay: 2500,
+    delay: 5000,
     disableOnInteraction: false,
     stopOnLastSlide: true,
   },

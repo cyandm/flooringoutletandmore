@@ -1,18 +1,133 @@
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-  
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .icon-Component-2-1:before {
-    content: "\e900";
-  }
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'flooring-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clear-filter:before {
+  content: "\e91c";
+}
+
+.icon-instagram:before {
+  content: "\e914";
+}
+
+.icon-instagram-bigger:before {
+  content: "\e915";
+}
+
+.icon-telegram:before {
+  content: "\e916";
+}
+
+.icon-telegram-bgger:before {
+  content: "\e917";
+}
+
+.icon-whatsapp .path1:before {
+  content: "\e918";
+}
+
+.icon-whatsapp .path2:before {
+  content: "\e919";
+  margin-left: -1em;
+}
+
+.icon-whatsapp-bigger .path1:before {
+  content: "\e91a";
+}
+
+.icon-whatsapp-bigger .path2:before {
+  content: "\e91b";
+  margin-left: -1em;
+}
+
+.icon-arrow-down-2:before {
+  content: "\e900";
+}
+
+.icon-arrow-left:before {
+  content: "\e901";
+}
+
+.icon-arrow-left-2:before {
+  content: "\e902";
+}
+
+.icon-arrow-left-bigger:before {
+  content: "\e903";
+}
+
+.icon-arrow-right:before {
+  content: "\e904";
+}
+
+.icon-arrow-right-2:before {
+  content: "\e905";
+}
+
+.icon-arrow-right-bigger:before {
+  content: "\e906";
+}
+
+.icon-arrowup-2:before {
+  content: "\e907";
+}
+
+.icon-category:before {
+  content: "\e908";
+}
+
+.icon-check:before {
+  content: "\e909";
+}
+
+.icon-close:before {
+  content: "\e90a";
+}
+
+.icon-filter:before {
+  content: "\e90b";
+}
+
+.icon-loading:before {
+  content: "\e90c";
+}
+
+.icon-login:before {
+  content: "\e90d";
+}
+
+.icon-menu:before {
+  content: "\e90e";
+}
+
+.icon-phone:before {
+  content: "\e90f";
+}
+
+.icon-search:before {
+  content: "\e910";
+}
+
+.icon-send:before {
+  content: "\e911";
+}
+
+.icon-time:before {
+  content: "\e912";
+}
+
+.icon-write:before {
+  content: "\e913";
+}

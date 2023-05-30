@@ -1,0 +1,12 @@
+{
+  "name": "flooring-outlet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "watch-css": "sass style.scss style.css -w --style=expanded",
+    "build-css": "sass style.scss style.css --source-map --style=compressed"
+  },
+  "author": "CyanDM",
+  "license": "ISC"
+}

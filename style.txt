@@ -1,0 +1,7 @@
+/**
+ * Theme Name: Flooring Outlet
+ * Theme Url: 
+ * Author: Cyan Digital Marketing Agency
+ * Author URI: https://cyandm.com
+ * Version: 1.1.0
+ */

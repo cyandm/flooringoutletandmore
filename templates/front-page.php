@@ -1,8 +1,6 @@
-<?php
-/*Template Name: Front-Page*/
-?>
+<?php /*Template Name: Front-Page*/ ?>
 
-<?php get_header( 'home' ) ?>
+<?php get_header('home') ?>
 
 <div id="homeSwiper" class="swiper">
 	<div class="swiper-wrapper">
@@ -10,31 +8,29 @@
 			<div id="homeSwiper_slider" class="swiper">
 				<div class="swiper-wrapper">
 					<?php
-					if ( have_rows( "sliders" ) ) {
-						while ( have_rows( "sliders" ) ) {
+					if (have_rows("sliders")) {
+						while (have_rows("sliders")) {
 							the_row();
-							$sliders = get_field( 'sliders' );
+							$sliders = get_field('sliders');
 
-							foreach ( $sliders as $slider ) :
+							foreach ($sliders as $slider) {
 								$title = $slider['title'];
 								$sub_title = $slider['sub_title'];
 								$img_url = $slider['background_image']; ?>
 
-								<div class="swiper-slide clickNext" data-mouse="next"
-									style="background-image: url(<?php echo esc_url( $img_url ) ?>)">
+								<div class="swiper-slide clickNext" data-mouse="next" style="background-image: url(<?php echo esc_url($img_url) ?>)">
 									<div class="slide-inner">
 										<h1>
-											<?php echo __( $title ) ?>
+											<?php echo __($title) ?>
 										</h1>
 										<span class="h2">
-											<?php echo __( $sub_title ) ?>
+											<?php echo __($sub_title) ?>
 										</span>
 									</div>
 								</div>
 
-							<? endforeach;
-
-
+					<?
+							};
 						}
 					}
 
@@ -200,14 +196,13 @@
 						)
 					);
 
-					foreach ( $brands as $brand ) :
+					foreach ($brands as $brand) :
 						$brand_id = $brand->term_id;
-						$brand_link = get_term_link( $brand_id );
-						$brand_logo = get_field( 'brand_logo', 'brands' . '_' . $brand_id );
-						$brand_sample = get_field( 'brand_sample', 'brands' . '_' . $brand_id ); ?>
+						$brand_link = get_term_link($brand_id);
+						$brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
+						$brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id); ?>
 
-						<a href="<?php echo esc_url( $brand_link ) ?>" data-mouse=""
-							data-image="<?php echo $brand_sample ?>">
+						<a href="<?php echo esc_url($brand_link) ?>" data-mouse="" data-image="<?php echo $brand_sample ?>">
 							<img src="<?php echo $brand_logo ?>" alt="">
 						</a>
 
@@ -222,9 +217,9 @@
 			</header>
 			<main class="blog-wrapper">
 				<?php
-				$blogs = get_field( 'blogs' );
-				foreach ( $blogs as $article ) {
-					get_template_part( '/templates/loop/article' );
+				$blogs = get_field('blogs');
+				foreach ($blogs as $article) {
+					get_template_part('/templates/loop/article');
 				}
 				?>
 				<a href="#" class="btn_no_icon bg_secondary1 no-desktop">view all</a>
@@ -295,22 +290,21 @@
 						our phone number
 					</h3>
 					<div class="flex-row">
-						<span> <a href="tel: <?php echo __( get_field( 'phone_number_1' ) ) ?>" data-mouse="call"><?php echo get_field( 'phone_number_1' ) ?></a></span>
-						<span> <a href="tel: <?php echo __( get_field( 'phone_number_2' ) ) ?>" data-mouse="call"><?php echo get_field( 'phone_number_2' ) ?></a></span>
+						<span> <a href="tel: <?php echo __(get_field('phone_number_1')) ?>" data-mouse="call"><?php echo get_field('phone_number_1') ?></a></span>
+						<span> <a href="tel: <?php echo __(get_field('phone_number_2')) ?>" data-mouse="call"><?php echo get_field('phone_number_2') ?></a></span>
 					</div>
 
 					<h3>our address</h3>
 					<span data-mouse="copy">
-						<?php echo __( get_field( 'our_address' ) ) ?>
+						<?php echo __(get_field('our_address')) ?>
 					</span>
 					<h3>our location</h3>
-					<a href="<?php echo esc_url( get_field( 'map_url' ) ) ?>" target="_blank" data-mouse="open">
-						<?php echo __( get_field( 'google_map' ) ); ?>
+					<a href="<?php echo esc_url(get_field('map_url')) ?>" target="_blank" data-mouse="open">
+						<?php echo __(get_field('google_map')); ?>
 					</a>
 				</div>
 			</main>
 		</div>
 	</div>
-
 </div>
-<?php get_footer( 'home' ) ?>
+<?php get_footer('home') ?>

@@ -5,12 +5,10 @@ define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/inc/acf/' );
 include_once( MY_ACF_PATH . 'acf.php' );
 
 /****************************** Required Files */
+require_once( __DIR__ . '/inc/classes/cyn-options.php' );
 require_once( __DIR__ . '/inc/classes/cyn-acf.php' );
 require_once( __DIR__ . '/inc/classes/cyn-register.php' );
 require_once( __DIR__ . '/inc/classes/cyn-form.php' );
-
-
-
 
 /***************************** User Login / Logout */
 function cyn_logout_user() {

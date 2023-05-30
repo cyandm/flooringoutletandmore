@@ -5,16 +5,16 @@ if (!class_exists('cyn_register')) {
     {
         function __construct()
         {
-
             add_action('init', [$this, 'cyn_register_products']);
             add_action('init', [$this, 'cyn_register_product_cats']);
             add_action('init', [$this, 'cyn_register_product_brands']);
-            add_action('init', [$this, 'cyn_register_product_collections']);
-
         }
 
         public function cyn_register_products()
         {
+            $postType = "product";
+            $GLOBALS["product-post-type"] = $postType;
+
             $labels = array(
                 'name' => _x('Product', 'Post type general name', 'Product'),
                 'singular_name' => _x('Product', 'Post type singular name', 'Product'),
@@ -59,10 +59,15 @@ if (!class_exists('cyn_register')) {
                 'show_in_rest' => false
             );
 
-            register_post_type('product', $args);
+            register_post_type($postType, $args);
         }
+
         public function cyn_register_product_cats()
         {
+            $taxonomyName = "product-cat";
+            $postTypes = array($GLOBALS["product-post-type"]);
+            $GLOBALS["roduct-cat-tax"] = $taxonomyName;
+
             $labels = array(
                 'name' => _x('Categories', 'taxonomy general name', 'textdomain'),
                 'singular_name' => _x('Category', 'taxonomy singular name', 'textdomain'),
@@ -76,7 +81,6 @@ if (!class_exists('cyn_register')) {
                 'new_item_name' => __('New Category Name', 'textdomain'),
                 'menu_name' => __('Category', 'textdomain'),
             );
-
             $args = array(
                 'hierarchical' => true,
                 'labels' => $labels,
@@ -86,10 +90,15 @@ if (!class_exists('cyn_register')) {
                 'rewrite' => array('slug' => 'product-cat'),
             );
 
-            register_taxonomy('product-cat', array('product'), $args);
+            register_taxonomy($taxonomyName, $postTypes, $args);
         }
+
         public function cyn_register_product_brands()
         {
+            $taxonomyName = "brands";
+            $postTypes = array($GLOBALS["product-post-type"]);
+            $GLOBALS["brands-tax"] = $taxonomyName;
+
             $labels = array(
                 'name' => _x('Brands', 'taxonomy general name', 'textdomain'),
                 'singular_name' => _x('Brand', 'taxonomy singular name', 'textdomain'),
@@ -103,7 +112,6 @@ if (!class_exists('cyn_register')) {
                 'new_item_name' => __('New Brand Name', 'textdomain'),
                 'menu_name' => __('Brand', 'textdomain'),
             );
-
             $args = array(
                 'hierarchical' => true,
                 'labels' => $labels,
@@ -113,34 +121,7 @@ if (!class_exists('cyn_register')) {
                 'rewrite' => array('slug' => 'brands'),
             );
 
-            register_taxonomy('brands', array('product'), $args);
-        }
-        public function cyn_register_product_collections()
-        {
-            $labels = array(
-                'name' => _x('Collections', 'taxonomy general name', 'textdomain'),
-                'singular_name' => _x('Collection', 'taxonomy singular name', 'textdomain'),
-                'search_items' => __('Search Collections', 'textdomain'),
-                'all_items' => __('All Collections', 'textdomain'),
-                'parent_item' => __('Parent Collection', 'textdomain'),
-                'parent_item_colon' => __('Parent Collection:', 'textdomain'),
-                'edit_item' => __('Edit Collection', 'textdomain'),
-                'update_item' => __('Update Collection', 'textdomain'),
-                'add_new_item' => __('Add New Collection', 'textdomain'),
-                'new_item_name' => __('New Collection Name', 'textdomain'),
-                'menu_name' => __('Collection', 'textdomain'),
-            );
-
-            $args = array(
-                'hierarchical' => true,
-                'labels' => $labels,
-                'show_ui' => true,
-                'show_admin_column' => true,
-                'query_var' => true,
-                'rewrite' => array('slug' => 'collections'),
-            );
-
-            register_taxonomy('collections', array('product'), $args);
+            register_taxonomy($taxonomyName, $postTypes, $args);
         }
     }
 }
