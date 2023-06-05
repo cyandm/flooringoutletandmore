@@ -7,7 +7,9 @@ if (!class_exists('cyn_register')) {
         {
             add_action('init', [$this, 'cyn_register_products']);
             add_action('init', [$this, 'cyn_register_product_cats']);
+            add_action('init', [$this, 'cyn_register_product_filters']);
             add_action('init', [$this, 'cyn_register_product_brands']);
+            add_action('pre_get_posts', [$this, 'cyn_archive_pre_get_posts']);
         }
 
         public function cyn_register_products()
@@ -65,8 +67,8 @@ if (!class_exists('cyn_register')) {
         public function cyn_register_product_cats()
         {
             $taxonomyName = "product-cat";
+            $GLOBALS["product-cat-tax"] = $taxonomyName;
             $postTypes = array($GLOBALS["product-post-type"]);
-            $GLOBALS["roduct-cat-tax"] = $taxonomyName;
 
             $labels = array(
                 'name' => _x('Categories', 'taxonomy general name', 'textdomain'),
@@ -93,11 +95,42 @@ if (!class_exists('cyn_register')) {
             register_taxonomy($taxonomyName, $postTypes, $args);
         }
 
+        public function cyn_register_product_filters()
+        {
+            $taxonomyName = "filters";
+            $GLOBALS["filters-tax"] = $taxonomyName;
+            $postTypes = array($GLOBALS["product-post-type"]);
+
+            $labels = array(
+                'name' => _x('Filters', 'taxonomy general name', 'textdomain'),
+                'singular_name' => _x('Filter', 'taxonomy singular name', 'textdomain'),
+                'search_items' => __('Search Filters', 'textdomain'),
+                'all_items' => __('All Filters', 'textdomain'),
+                'parent_item' => __('Parent Filter', 'textdomain'),
+                'parent_item_colon' => __('Parent Filter:', 'textdomain'),
+                'edit_item' => __('Edit Filter', 'textdomain'),
+                'update_item' => __('Update Filter', 'textdomain'),
+                'add_new_item' => __('Add New Filter', 'textdomain'),
+                'new_item_name' => __('New Filter Name', 'textdomain'),
+                'menu_name' => __('Filter', 'textdomain'),
+            );
+            $args = array(
+                'hierarchical' => true,
+                'labels' => $labels,
+                'show_ui' => true,
+                'show_admin_column' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => 'filter'),
+            );
+
+            register_taxonomy($taxonomyName, $postTypes, $args);
+        }
+
         public function cyn_register_product_brands()
         {
             $taxonomyName = "brands";
-            $postTypes = array($GLOBALS["product-post-type"]);
             $GLOBALS["brands-tax"] = $taxonomyName;
+            $postTypes = array($GLOBALS["product-post-type"]);
 
             $labels = array(
                 'name' => _x('Brands', 'taxonomy general name', 'textdomain'),
@@ -122,6 +155,46 @@ if (!class_exists('cyn_register')) {
             );
 
             register_taxonomy($taxonomyName, $postTypes, $args);
+        }
+
+        public function cyn_archive_pre_get_posts($query)
+        {
+            if ($query->is_archive && $query->is_main_query() && !is_admin()) {
+                $cynOptions = new cyn_options();
+
+                $getCats     = $cynOptions->cyn_getProdactTerms(false, true, 'product-cat');
+                $getFilters  = $cynOptions->cyn_getProdactTerms(false, true, 'filters');
+                $catTerms    = array();
+                $filterTerms = array();
+                $tax_query   = $query->tax_query->queries;
+                $tax_query['relation'] = "AND";
+
+                foreach ($getCats as $catId)
+                    if (isset($_GET["cat-" . $catId]))
+                        $catTerms[] = $catId;
+
+                foreach ($getFilters as $filterId)
+                    if (isset($_GET["cat-" . $filterId]))
+                        $filterTerms[] = $filterId;
+
+                if (count($catTerms) > 0) {
+                    $tax_query[] = array(
+                        'taxonomy' => 'product-cat',
+                        'field' => "id",
+                        'terms' => $catTerms
+                    );
+                }
+
+                if (count($filterTerms) > 0) {
+                    $tax_query[] = array(
+                        'taxonomy' => 'filters',
+                        'field' => "id",
+                        'terms' => $filterTerms,
+                    );
+                }
+
+                $query->set('tax_query', $tax_query);
+            }
         }
     }
 }

@@ -45,6 +45,7 @@ if (!class_exists('cyn_options')) {
       $termsAttr["name"]   = $wpTerm->name;
       $termsAttr["slug"]   = $wpTerm->slug;
       $termsAttr["parent"] = $wpTerm->parent;
+      $termsAttr["count"]  = $wpTerm->count;
       $termsAttr["url"]    = $termUrl;
 
       /*

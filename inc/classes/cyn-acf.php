@@ -5,7 +5,6 @@ if (!class_exists('cyn_acf')) {
     {
         function __construct()
         {
-
         }
 
         public static function cyn_initialize_acf()
@@ -23,8 +22,8 @@ if (!class_exists('cyn_acf')) {
             add_action('acf/init', [$this, 'cyn_front_page']);
             add_action('acf/init', [$this, 'cyn_product_brand_tax']);
             add_action('acf/init', [$this, 'cyn_product_post_type']);
+            add_action('acf/init', [$this, 'cyn_product_cat']);
         }
-
 
         public function cyn_front_page()
         {
@@ -564,8 +563,6 @@ if (!class_exists('cyn_acf')) {
                     'show_in_rest' => 0,
                 )
             );
-
-
         }
 
         public function cyn_product_brand_tax()
@@ -605,6 +602,7 @@ if (!class_exists('cyn_acf')) {
                 ),
             ]);
         }
+
         public function cyn_product_post_type()
         {
             acf_add_local_field_group([
@@ -707,8 +705,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_2_key',
                                 'label' => 'Gallery Image 2',
@@ -719,8 +716,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_3_key',
                                 'label' => 'Gallery Image 3',
@@ -730,8 +726,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_4_key',
                                 'label' => 'Gallery Image 4',
@@ -741,8 +736,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_5_key',
                                 'label' => 'Gallery Image 5',
@@ -752,8 +746,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_6_key',
                                 'label' => 'Gallery Image 6',
@@ -763,8 +756,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_7_key',
                                 'label' => 'Gallery Image 7',
@@ -774,8 +766,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_8_key',
                                 'label' => 'Gallery Image 8',
@@ -785,8 +776,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_9_key',
                                 'label' => 'Gallery Image 9',
@@ -796,8 +786,7 @@ if (!class_exists('cyn_acf')) {
                                 'wrapper' => [
                                     'width' => '50',
                                 ],
-                            ]
-                            ,
+                            ],
                             [
                                 'key' => 'gallery_img_10_key',
                                 'label' => 'Gallery Image 10',
@@ -876,5 +865,138 @@ if (!class_exists('cyn_acf')) {
             ]);
         }
 
+        public function cyn_product_cat()
+        {
+            acf_add_local_field_group([
+                'key' => 'cat_p_type_key',
+                'title' => '',
+                'fields' => [
+                    [
+                        'key' => 'p_cat_details_accordion',
+                        'label' => 'Details',
+                        'name' => '',
+                        'type' => 'accordion',
+                        'endpoint' => 0
+                    ],
+                    [
+                        'key' => 'p_cat_img_key',
+                        'label' => 'Category Image',
+                        'name' => 'p_cat_img_key',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                        'wrapper' => [
+                            'width' => '100'
+                        ]
+                    ],
+                    [
+                        'key' => 'p_cat_main_gallery_group_key',
+                        'label' => 'Main Page Gallery',
+                        'name' => 'p_cat_main_gallery_group',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'sub_fields' => [
+                            [
+                                'key' => 'p_cat_gallery_img_1_key',
+                                'label' => 'Gallery Image 1',
+                                'name' => 'p_cat_gallery_img_1',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '100'
+                                ]
+                            ],
+                            [
+                                'key' => 'p_cat_gallery_img_2_key',
+                                'label' => 'Gallery Image 2',
+                                'name' => 'p_cat_gallery_img_2',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50'
+                                ]
+                            ],
+                            [
+                                'key' => 'p_cat_gallery_img_3_key',
+                                'label' => 'Gallery Image 3',
+                                'name' => 'p_cat_gallery_img_3',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '50'
+                                ]
+                            ]
+                        ],
+                    ],
+                    [
+                        'key' => 'p_cat_main_top_section_group_key',
+                        'label' => 'Main Page Top Sections',
+                        'name' => 'p_cat_main_top_section_group',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'sub_fields' => [
+                            [
+                                'key' => 'p_cat_top_section_editor_key',
+                                'label' => 'Product Top Description',
+                                'name' => 'p_cat_top_section_editor',
+                                'type' => 'wysiwyg',
+                                'wrapper' => [
+                                    'width' => '100'
+                                ]
+                            ],
+                            [
+                                'key' => 'p_cat_top_section_img_key',
+                                'label' => 'Top Section Image',
+                                'name' => 'p_cat_top_section_img',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '100'
+                                ]
+                            ],
+                        ],
+                    ],
+                    [
+                        'key' => 'p_cat_main_second_section_group_key',
+                        'label' => 'Main Page Second Sections',
+                        'name' => 'p_cat_main_second_section_group',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'sub_fields' => [
+                            [
+                                'key' => 'p_cat_second_section_img_key',
+                                'label' => 'Second Section Image',
+                                'name' => 'p_cat_second_section_img',
+                                'type' => 'image',
+                                'return_format' => 'url',
+                                'wrapper' => [
+                                    'width' => '100'
+                                ]
+                            ],
+                            [
+                                'key' => 'p_cat_second_section_editor_key',
+                                'label' => 'Product Section Description',
+                                'name' => 'p_cat_second_section_editor',
+                                'type' => 'wysiwyg',
+                                'wrapper' => [
+                                    'width' => '100'
+                                ]
+                            ],
+                        ],
+                    ]
+                ],
+                'location' => [
+                    [
+                        [
+                            'param' => 'taxonomy',
+                            'operator' => '==',
+                            'value' => 'product-cat',
+                        ],
+                    ],
+                ],
+                'hide_on_screen' => array(
+                    0 => 'excerpt',
+                ),
+            ]);
+        }
     }
 }

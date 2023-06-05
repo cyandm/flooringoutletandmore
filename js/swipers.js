@@ -128,3 +128,14 @@ const productGalleryModal = new Swiper('#productGalleryModal', {
     swiper: productGalleryThumbsModal,
   },
 });
+
+/********************************************************************************** */
+const archiveProducts = new Swiper('.p-cat-swiper', {
+  spaceBetween: 12,
+  slidesPerView: 2,
+  breakpoints: {
+    1024: {
+      slidesPerView: 4,
+    },
+  }
+});

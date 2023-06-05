@@ -5,9 +5,9 @@ define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/inc/acf/' );
 include_once( MY_ACF_PATH . 'acf.php' );
 
 /****************************** Required Files */
+require_once( __DIR__ . '/inc/classes/cyn-register.php' );
 require_once( __DIR__ . '/inc/classes/cyn-options.php' );
 require_once( __DIR__ . '/inc/classes/cyn-acf.php' );
-require_once( __DIR__ . '/inc/classes/cyn-register.php' );
 require_once( __DIR__ . '/inc/classes/cyn-form.php' );
 
 /***************************** User Login / Logout */
@@ -70,12 +70,13 @@ add_filter( 'use_block_editor_for_post', '__return_false', 10 );
 add_filter( 'use_widget_block_editor', '__return_false', 10 );
 
 /***************************** Instance Classes */
+$cyn_register = new cyn_register();
+
 cyn_acf::cyn_initialize_acf();
 cyn_form::cyn_create_form_table();
 
 $cyn_acf = new cyn_acf();
 $cyn_acf->cyn_acf_actions();
 
-$cyn_register = new cyn_register();
 
 $cyn_form = new cyn_form();
