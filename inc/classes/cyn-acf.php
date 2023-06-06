@@ -20,6 +20,7 @@ if ( ! class_exists( 'cyn_acf' ) ) {
 			add_action( 'acf/init', [ $this, 'cyn_about_page' ] );
 			add_action( 'acf/init', [ $this, 'cyn_product_brand_tax' ] );
 			add_action( 'acf/init', [ $this, 'cyn_product_post_type' ] );
+			add_action( 'acf/init', [ $this, 'cyn_project_post_type' ] );
 		}
 
 
@@ -942,6 +943,165 @@ if ( ! class_exists( 'cyn_acf' ) ) {
 							'value' => 'product'
 						]
 					],
+				]
+			] );
+		}
+
+		public function cyn_project_post_type() {
+			acf_add_local_field_group( [ 
+				'key' => 'project_settings_key',
+				'title' => 'Project Settings',
+				'location' => [ 
+					[ 
+						[ 
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'project'
+						]
+					]
+				],
+				'fields' => [ 
+					[ 
+						'key' => 'project_gallery_key',
+						'name' => 'project_gallery',
+						'label' => 'Project Gallery',
+						'type' => 'group',
+						'sub_fields' => [ 
+							[ 
+								'key' => 'image_1_key',
+								'name' => 'image_1',
+								'label' => 'Image 1',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_2_key',
+								'name' => 'image_2',
+								'label' => 'Image 2',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_3_key',
+								'name' => 'image_3',
+								'label' => 'Image 3',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_4_key',
+								'name' => 'image_4',
+								'label' => 'Image 4',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_5_key',
+								'name' => 'image_5',
+								'label' => 'Image 5',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_6_key',
+								'name' => 'image_6',
+								'label' => 'Image 6',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_7_key',
+								'name' => 'image_7',
+								'label' => 'Image 7',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_8_key',
+								'name' => 'image_8',
+								'label' => 'Image 8',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_9_key',
+								'name' => 'image_9',
+								'label' => 'Image 9',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_10_key',
+								'name' => 'image_10',
+								'label' => 'Image 10',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_11_key',
+								'name' => 'image_11',
+								'label' => 'Image 11',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+							[ 
+								'key' => 'image_12_key',
+								'name' => 'image_12',
+								'label' => 'Image 12',
+								'type' => 'image',
+								'return_format' => 'object',
+								'wrapper' => [ 
+									'width' => '25'
+								],
+								'preview_size' => 'thumbnail'
+							],
+
+						]
+					]
 				]
 			] );
 		}

@@ -16,7 +16,7 @@
 				<?php the_custom_logo() ?>
 			</div>
 			<div>
-				<?php wp_nav_menu( [ 'menu' => 'header' ] ) ?>
+				<?php wp_nav_menu( [ 'menu' => 'header-menu' ] ) ?>
 
 				<i class="icon-Component-2-1 mobile-menu"></i>
 			</div>

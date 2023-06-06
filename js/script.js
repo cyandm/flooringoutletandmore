@@ -8,7 +8,7 @@ if (dropDownOpener) {
 
 /****************************************** Side Bar */
 const sideBar = document.querySelector('#sideBar');
-const sideBarHandlers = sideBar.querySelectorAll('.title');
+const sideBarHandlers = document.querySelectorAll('.title');
 
 const sideBarOpener = document.querySelector('#sideBarOpener');
 const sideBarCloser = document.querySelector('#sideBarCloser');

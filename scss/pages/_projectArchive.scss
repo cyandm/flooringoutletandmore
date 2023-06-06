@@ -1,0 +1,47 @@
+main.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  .project {
+    flex: 1 1 30%;
+    display: grid;
+    gap: 0.8rem;
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
+    cursor: pointer;
+
+    .image-placeholder {
+      height: 400px;
+      background-color: #121212;
+      border-radius: 0.875rem;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .image-sliders {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: red;
+      isolation: isolate;
+
+      .swiper-wrapper {
+        background-color: blue;
+        min-width: 100px;
+      }
+
+      > * {
+        z-index: 10;
+      }
+
+      &.show {
+        display: block;
+      }
+    }
+  }
+}

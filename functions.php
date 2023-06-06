@@ -38,6 +38,7 @@ function cyn_enqueue_files() {
 	wp_localize_script( 'cyn-ajax-form', 'cynAjax', array( 'url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'ajax-nonce' ) ) );
 	wp_enqueue_script( 'cyn-mouse', get_template_directory_uri() . '/js/mouse.js', null, null, true );
 	wp_enqueue_script( 'cyn-single-product', get_template_directory_uri() . '/js/single-product.js', null, null, true );
+	wp_enqueue_script( 'cyn-archive-project', get_template_directory_uri() . '/js/archive-project.js', null, null, true );
 	wp_enqueue_script( 'cyn-scripts', get_template_directory_uri() . '/js/script.js', null, null, true );
 
 }
@@ -56,7 +57,9 @@ function cyn_theme_setup() {
 
 	register_nav_menus( [ 
 		'header-menu' => 'Header',
-		'footer-menu' => 'Footer'
+		'footer-us' => 'Footer - Us',
+		'footer-what-we-do' => 'Footer - What We Do?',
+		'footer-know-more' => 'Footer - Know More',
 	] );
 }
 add_action( 'after_setup_theme', 'cyn_theme_setup' );

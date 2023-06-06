@@ -5,6 +5,7 @@ if ( ! class_exists( 'cyn_register' ) ) {
 		function __construct() {
 
 			add_action( 'init', [ $this, 'cyn_register_products' ] );
+			add_action( 'init', [ $this, 'cyn_register_projects' ] );
 			add_action( 'init', [ $this, 'cyn_register_product_cats' ] );
 			add_action( 'init', [ $this, 'cyn_register_product_brands' ] );
 			add_action( 'init', [ $this, 'cyn_register_product_collections' ] );
@@ -59,6 +60,54 @@ if ( ! class_exists( 'cyn_register' ) ) {
 
 			register_post_type( 'product', $args );
 		}
+
+		public function cyn_register_projects() {
+			$labels = [ 
+				'name' => _x( 'Project', 'Post type general name', 'Project' ),
+				'singular_name' => _x( 'Project', 'Post type singular name', 'Project' ),
+				'menu_name' => _x( 'Project', 'Admin Menu text', 'Project' ),
+				'name_admin_bar' => _x( 'Project', 'Add New on Toolbar', 'Project' ),
+				'add_new' => __( 'Add New', 'Project' ),
+				'add_new_item' => __( 'Add New Project', 'Project' ),
+				'new_item' => __( 'New Project', 'Project' ),
+				'edit_item' => __( 'Edit Project', 'Project' ),
+				'view_item' => __( 'View Project', 'Project' ),
+				'all_items' => __( 'All Projects', 'Project' ),
+				'search_items' => __( 'Search Project', 'Project' ),
+				'parent_item_colon' => __( 'Parent Project:', 'Project' ),
+				'not_found' => __( 'No Project found.', 'Project' ),
+				'not_found_in_trash' => __( 'No Project found in Trash.', 'Project' ),
+				'featured_image' => _x( 'Project Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'Project' ),
+				'set_featured_image' => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'Project' ),
+				'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'Project' ),
+				'use_featured_image' => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'Project' ),
+				'archives' => _x( 'Project archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'Project' ),
+				'insert_into_item' => _x( 'Insert into Project', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'Project' ),
+				'uploaded_to_this_item' => _x( 'Uploaded to this Project', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'Project' ),
+				'filter_items_list' => _x( 'Filter Project list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'Project' ),
+				'items_list_navigation' => _x( 'Project list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'Project' ),
+				'items_list' => _x( 'Project list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'Project' ),
+			];
+			$args = [ 
+				'labels' => $labels,
+				'description' => 'Project custom post type.',
+				'public' => true,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'rewrite' => array( 'slug' => 'project' ),
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'menu_position' => 20,
+				'supports' => [ 'title', 'thumbnail' ],
+				'show_in_rest' => false
+			];
+
+			register_post_type( 'project', $args );
+		}
+
 		public function cyn_register_product_cats() {
 			$labels = array(
 				'name' => _x( 'Categories', 'taxonomy general name', 'textdomain' ),
