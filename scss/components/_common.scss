@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
   padding-inline: 1.875rem;
 }
+
 body:has(.side-bar.open) {
   overflow-y: hidden;
 }
@@ -17,27 +18,33 @@ main {
   background-color: $color-secondary2;
   color: $color-primary1;
 }
+
 .bg {
   &_secondary1 {
     background-image: $color-secondary1;
     color: $color-primary1;
   }
+
   &_secondary2 {
     background-color: $color-secondary2;
     color: $color-primary1;
   }
+
   &_secondary3 {
     background-color: $color-primary1;
     color: $color-primary1;
   }
+
   &_disable {
     background-color: $color-disable;
     color: $color-primary1;
   }
+
   &_sucsess {
     background-color: $color-success;
     color: $color-primary2;
   }
+
   &_white {
     background-color: $color-primary2;
     color: $color-primary1;
@@ -63,4 +70,10 @@ main {
   width: 1rem;
   aspect-ratio: 1;
   display: inline-block;
+}
+
+.select-none {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

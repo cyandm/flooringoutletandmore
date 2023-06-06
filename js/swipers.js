@@ -8,7 +8,7 @@ if (document.getElementById('homeSwiper')) {
 }
 
 /* Home Swiper */
-const homeSwiper = new Swiper('#homeSwiper', {
+export const homeSwiper = new Swiper('#homeSwiper', {
   enabled: true,
   direction: 'vertical',
   mousewheel: true,
@@ -28,7 +28,7 @@ if (document.getElementById('homeSwiper')) {
 
 /*--------------------------------------------------------------------------------- */
 const progressCircle = document.querySelector('.autoplay-progress svg#filler');
-const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
+export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
   direction: 'horizontal',
   mousewheel: true,
   speed: 600,
@@ -80,7 +80,7 @@ const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
   },
 });
 
-const promotionSwiper = new Swiper('#homeSwiper_promotion', {
+export const promotionSwiper = new Swiper('#homeSwiper_promotion', {
   direction: 'horizontal',
   speed: 600,
   nested: true,
@@ -127,4 +127,15 @@ const productGalleryModal = new Swiper('#productGalleryModal', {
   thumbs: {
     swiper: productGalleryThumbsModal,
   },
+});
+
+/********************************************************************************** */
+const archiveProducts = new Swiper('.p-cat-swiper', {
+  spaceBetween: 12,
+  slidesPerView: 2,
+  breakpoints: {
+    1024: {
+      slidesPerView: 4,
+    },
+  }
 });

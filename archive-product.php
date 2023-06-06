@@ -1,205 +1,88 @@
 <?php get_header() ?>
 
-<main class="product-archive">
-	<div id="sideBar" class="side-bar">
-		<div class="only-mobile heading">
-			<i class="icon-place-holder" id="sideBarCloser"></i>
-			<span class="h2">
-				Filters
-			</span>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="title">
-				<span>Floor Types</span>
-				<i class="icon-arrowUP"></i>
-			</div>
-			<div class="">
-				<div class="checkbox-container">
-					<div class="checkbox-wrapper">
-						<label for="solid-wood">Solid Wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-					<div class="checkbox-wrapper">
-						<label for="engineered-wood">engineered wood</label>
-						<div class="inner-checkbox">
-							<input type="checkbox" name="solid-wood" id="solid-wood">
-							<span class="checkmark"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="only-mobile">
-			<button class="btn_no_icon bg_white">Cancel</button>
-			<button class="btn_no_icon bg_secondary2">Apply Filter</button>
-		</div>
-	</div>
+<?php
+global $wp_query;
+$cynOptions = new cyn_options();
 
-	<div class="only-mobile">
-		<button id="sideBarOpener" class="btn_icon_between bg_secondary2 sidebar-opener">
-			<span>
-				<i></i>
-				Filters
-			</span>
-			<i class="arrowLeft"></i>
-		</button>
-	</div>
+$formUrl = get_post_type_archive_link($GLOBALS["product-post-type"]);
+$getCats = $cynOptions->cyn_getProdactTerms();
+$getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+?>
+
+<main class="product-archive">
+	<?php get_template_part(
+		"templates/archiv-product",
+		"sidebar",
+		array(
+			'formUrl' => $formUrl,
+			'getCats' => $getCats,
+			'getFilters' => $getFilters
+		)
+	); ?>
 
 	<div class="products">
-		<div class="filter-chips">
-			<div class="filter-chip">
-				<span>Solid Wood</span>
-				<i class="icon-Close"></i>
-			</div>
-			<div class="filter-chip">
-				<span>Natural Wood</span>
-				<i class="icon-Close"></i>
-			</div>
+		<div id="archive-filter-chips" class="filter-chips">
+			<?php foreach ($getCats as $cat) : ?>
+				<?php if (isset($_GET['cat-' . $cat['id']])) : ?>
+					<div class="filter-chip">
+						<span><?php echo $cat['name']; ?></span>
+						<i data-filter="<?php echo 'cat-' . $cat['id'] ?>" class="icon-close"></i>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+
+			<?php foreach ($getFilters as $cat) : ?>
+				<?php if (isset($_GET['cat-' . $cat['id']])) : ?>
+					<div class="filter-chip">
+						<span><?php echo $cat['name']; ?></span>
+						<i data-filter="<?php echo 'cat-' . $cat['id'] ?>" class="icon-close"></i>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
 		</div>
-		<div>
-			<?php
-			if ( have_posts() ) {
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( '/templates/loop/product' );
+
+		<?php if (isset($_GET["filter"]) && $_GET["filter"] == "on") : ?>
+			<div class="content content-collection">
+				<?php if (have_posts()) : ?>
+					<div class="content-collection-products">
+						<?php
+						while (have_posts()) {
+							the_post();
+							echo "<div class='product-item'>";
+							get_template_part("templates/loop/product");
+							echo "</div>";
+						}
+						?>
+					</div>
+					<?php
+					echo "<div class='page-nav-container'>" . paginate_links(
+						array(
+							'total' => $wp_query->max_num_pages,
+							'prev_text' => __('<i class="icon-arrow-left"></i>'),
+							'next_text' => __('<i class="icon-arrow-right"></i>')
+						)
+					) . "</div>";
+					?>
+
+				<?php else : ?>
+					<div class="not-find">
+						<p>sorry ! we could’nt find anything</p>
+						<div class="not-find-img">
+							<img src="<?php echo get_template_directory_uri() . "/imgs/not-find.png" ?>">
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
+		<?php else : ?>
+			<div class="archive-products-cats">
+				<?php
+				foreach ($getCats as $cat) {
+					$cat["img_url"] = get_field("p_cat_img_key", "product-cat_" . $cat["id"]);
+					get_template_part("/templates/loop/archive-cat", "", array('cat_info' => $cat));
 				}
-			} ?>
-		</div>
-
-		<?php
-
-		global $wp_query;
-		echo "<div class='page-nav-container'>" . paginate_links(
-			array(
-				'total' => $wp_query->max_num_pages,
-				'prev_text' => __( '<i class="arrowPrev"><</i>' ),
-				'next_text' => __( '<i class="arrowNext">></i>' )
-			)
-		) . "</div>";
-		?>
+				?>
+			</div>
+		<?php endif; ?>
 	</div>
 </main>
 

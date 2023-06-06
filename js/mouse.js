@@ -1,3 +1,5 @@
+import { homeSwiper, homeSwiperSlider, promotionSwiper } from './swipers';
+
 /* Data Mouse For Links */
 const links = document.querySelectorAll('a');
 links.forEach((link) => {

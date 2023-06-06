@@ -1,0 +1,16 @@
+{
+  "name": "flooring-outlet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "watch-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css -w --style=expanded",
+    "build-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css --source-map --style=compressed",
+    "build-js": "esbuild ./js/index.js --bundle --minify --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11,opera55 --sourcemap"
+  },
+  "author": "CyanDM",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.17.19"
+  }
+}
