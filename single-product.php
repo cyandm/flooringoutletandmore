@@ -156,7 +156,7 @@ $related_products_query = new WP_Query( $related_products_args );
 
 			if ( $related_blogs ) {
 				foreach ( $related_blogs as $article ) {
-					get_template_part( '/templates/loop/article' );
+					get_template_part( '/templates/loop/article', null, [ 'rel' => 'follow' ] );
 				}
 			} else {
 				if ( $last_blogs_query->have_posts() ) {
@@ -164,7 +164,7 @@ $related_products_query = new WP_Query( $related_products_args );
 						$last_blogs_query->the_post();
 
 
-						get_template_part( '/templates/loop/article' );
+						get_template_part( '/templates/loop/article', null, [ 'rel' => 'follow' ] );
 					}
 				}
 			}

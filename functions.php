@@ -8,7 +8,7 @@ include_once( MY_ACF_PATH . 'acf.php' );
 require_once( __DIR__ . '/inc/classes/cyn-acf.php' );
 require_once( __DIR__ . '/inc/classes/cyn-register.php' );
 require_once( __DIR__ . '/inc/classes/cyn-form.php' );
-
+require_once( __DIR__ . '/inc/classes/cyn-common.php' );
 
 
 

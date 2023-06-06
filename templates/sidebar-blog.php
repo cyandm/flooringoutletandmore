@@ -1,3 +1,12 @@
+<?php
+$blog_term = cyn_common::blog_term();
+
+$recommend_sidebar = $blog_term['recommend_sidebar'];
+$cat_exclude = $blog_term['cat_exclude'];
+$cats = $blog_term['cats'];
+$current_terms = $blog_term['current_terms'];
+?>
+
 <aside class="side-bar blog">
 	<div class="box">
 		<div class="search">
@@ -13,79 +22,59 @@
 		<div class="categories">
 			<span class="h4">Categories</span>
 			<ul>
-				<li class="active">
-					<span>All</span>
-					<span class="caption">215</span>
-				</li>
-				<li>
-					<span>All</span>
-					<span class="caption">215</span>
-				</li>
-				<li>
-					<span>All</span>
-					<span class="caption">215</span>
-				</li>
-				<li>
-					<span>All</span>
-					<span class="caption">215</span>
-				</li>
+				<?php foreach ( $cats as $cat ) : ?>
+					<?php if ( ! in_array( $cat->name, $cat_exclude ) ) : ?>
+						<li class="<?php if ( in_array( $cat->term_id, $current_terms ) )
+							echo 'active'; ?>">
+							<span>
+								<a href="<?= get_term_link( $cat ) ?>">
+									<?= $cat->name ?>
+								</a>
+							</span>
+							<span class="caption">
+								<?= $cat->category_count ?>
+							</span>
+						</li>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>
 	<div class="box">
-		<span class="h4">Recommended</span>
+		<?php if ( $recommend_sidebar->have_posts() ) : ?>
+			<span class="h4">Recommended</span>
 
-		<article>
-			<div class="img-wrapper">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-1.png' ?>" alt="">
-			</div>
-			<div class="content">
-				<span class="h5">Ways To Decide Ways To Decide</span>
-				<span class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus hic
-					nostrum, fugiat deleniti a iusto ipsum nesciunt perspiciatis ullam eligendi obcaecati
-					consequuntur reprehenderit natus modi!</span>
-				<span class="caption">2023/05/23</span>
-			</div>
-		</article>
+			<?php while ( $recommend_sidebar->have_posts() ) : ?>
+				<?php $recommend_sidebar->the_post(); ?>
 
-		<article>
-			<div class="img-wrapper">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-1.png' ?>" alt="">
-			</div>
-			<div class="content">
-				<span class="h5">Ways To Decide Ways To Decide</span>
-				<span class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus hic
-					nostrum, fugiat deleniti a iusto ipsum nesciunt perspiciatis ullam eligendi obcaecati
-					consequuntur reprehenderit natus modi!</span>
-				<span class="caption">2023/05/23</span>
-			</div>
-		</article>
+				<article>
+					<div class="img-wrapper">
+						<a href="<?= get_the_permalink() ?>" rel="nofollow">
+							<?= get_the_post_thumbnail( null, 'thumbnail' ) ?>
+						</a>
+					</div>
+					<div class="content">
+						<span class="h5">
+							<a href="<?= get_the_permalink() ?> " rel="nofollow">
+								<?= get_the_title() ?>
+							</a>
+						</span>
+						<span class="description">
+							<?= get_the_excerpt() ?>
+						</span>
+						<span class="caption">
+							<?= get_the_date() ?>
+						</span>
+					</div>
+				</article>
 
-		<article>
-			<div class="img-wrapper">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-1.png' ?>" alt="">
-			</div>
-			<div class="content">
-				<span class="h5">Ways To Decide Ways To Decide</span>
-				<span class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus hic
-					nostrum, fugiat deleniti a iusto ipsum nesciunt perspiciatis ullam eligendi obcaecati
-					consequuntur reprehenderit natus modi!</span>
-				<span class="caption">2023/05/23</span>
-			</div>
-		</article>
+			<?php endwhile; ?>
 
-		<article>
-			<div class="img-wrapper">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/imgs/blog-1.png' ?>" alt="">
-			</div>
-			<div class="content">
-				<span class="h5">Ways To Decide Ways To Decide</span>
-				<span class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus hic
-					nostrum, fugiat deleniti a iusto ipsum nesciunt perspiciatis ullam eligendi obcaecati
-					consequuntur reprehenderit natus modi!</span>
-				<span class="caption">2023/05/23</span>
-			</div>
-		</article>
+
+			<?php wp_reset_postdata(); ?>
+		<?php endif; ?>
+
+
 	</div>
 
 </aside>

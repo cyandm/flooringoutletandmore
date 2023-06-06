@@ -1,0 +1,72 @@
+main.about {
+  max-width: 800px;
+
+  > * {
+    margin-block: 1em;
+  }
+
+  h1 {
+    @extend .title;
+    margin: 0;
+    text-align: center;
+
+    @media (width<1024px) {
+      font-size: 2rem;
+    }
+  }
+
+  img {
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .hero_image {
+    -webkit-mask-image: url(./imgs/about-hero.svg);
+    mask-image: url(./imgs/about-hero.svg);
+  }
+
+  .main_image {
+    -webkit-mask-image: url(./imgs/about-main.svg);
+    mask-image: url(./imgs/about-main.svg);
+  }
+
+  .call-to-action {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg, #000, rgba(#fff, 0.2));
+    backdrop-filter: blur(14px);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    @media (width<=768px) {
+      > * {
+        flex: 1;
+        min-width: 50%;
+        text-align: center;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    > * {
+      flex: 1;
+    }
+
+    p {
+      min-width: 30%;
+    }
+  }
+}

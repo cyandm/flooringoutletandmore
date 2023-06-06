@@ -1,0 +1,38 @@
+<svg width="480" height="597" viewBox="0 0 480 597" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="121" y="65" width="136" height="129">
+<rect x="121.033" y="65.9728" width="135.19" height="127.62" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_2_28)">
+<rect x="-106.087" width="540.761" height="616.467" fill="black"/>
+</g>
+<mask id="mask1_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="30" y="360" width="182" height="237">
+<rect x="30.1848" y="360.147" width="181.696" height="236.853" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask1_2_28)">
+<rect x="17.2065" y="-61.6467" width="500.745" height="677.033" rx="11.1522" fill="black"/>
+</g>
+<mask id="mask2_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="277" y="0" width="203" height="215">
+<rect x="277.853" width="201.163" height="214.38" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask2_2_28)">
+<rect x="-18.4837" y="1.08154" width="522.375" height="595.918" fill="black"/>
+</g>
+<mask id="mask3_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="277" y="235" width="203" height="123">
+<rect x="277.853" y="235.772" width="201.163" height="121.266" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask3_2_28)">
+<rect x="-39.0326" width="544.005" height="620.793" fill="black"/>
+</g>
+<mask id="mask4_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="229" y="378" width="251" height="219">
+<rect x="229.185" y="378.668" width="249.831" height="218.332" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask4_2_28)">
+<rect x="-36.8696" y="-11.8967" width="540.761" height="616.467" fill="black"/>
+</g>
+<mask id="mask5_2_28" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="215" width="257" height="124">
+<rect x="0.983704" y="215.223" width="255.239" height="123.293" rx="11.1522" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask5_2_28)">
+<rect x="-27.1359" y="-4.32605" width="527.783" height="601.326" fill="black"/>
+</g>
+</svg>
