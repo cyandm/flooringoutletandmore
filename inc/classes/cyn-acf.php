@@ -421,6 +421,27 @@ if (!class_exists('cyn_acf')) {
 							'placement' => 'top',
 							'endpoint' => 0,
 						),
+						array(
+							'key' => 'field_647f21d9984235',
+							'name' => 'front_page_product_category',
+							'instructions' => 'Select product category to show in home page.',
+							'type' => 'taxonomy',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'taxonomy' => 'product-cat',
+							'add_term' => 0,
+							'save_terms' => 0,
+							'load_terms' => 0,
+							'return_format' => 'object',
+							'field_type' => 'multi_select',
+							'allow_null' => 0,
+							'multiple' => 0,
+						),
 						/* Promotion */
 						array(
 							'key' => 'key_promotion',
@@ -438,6 +459,19 @@ if (!class_exists('cyn_acf')) {
 							),
 							'placement' => 'top',
 							'endpoint' => 0,
+						),
+						array(
+							'key' => 'key_promotion_36469796413',
+							'label' => '',
+							'instructions' => 'Select products to show in home page.',
+							'name' => 'front_page_promotion_product_post',
+							'type' => 'post_object',
+							'post_type' => 'product',
+							'post_status' => 'publish',
+							'taxonomy' => '',
+							'allow_null' => 0,
+							'multiple' => 1,
+							'return_format' => 'id',
 						),
 						/* Blogs */
 						array(
@@ -529,7 +563,6 @@ if (!class_exists('cyn_acf')) {
 							'name' => 'google_map',
 							'type' => 'textarea',
 						),
-
 					),
 					'location' => array(
 						array(
@@ -774,6 +807,17 @@ if (!class_exists('cyn_acf')) {
 						'type' => 'group',
 						'layout' => 'block',
 						'sub_fields' => [
+							[
+								'key' => 'gallery_img_0_key',
+								'label' => 'Gallery Cover Image',
+								'name' => 'gallery_cover_img',
+								'instructions' => 'Shown in home page layout',
+								'type' => 'image',
+								'return_format' => 'url',
+								'wrapper' => [
+									'width' => '100',
+								],
+							],
 							[
 								'key' => 'gallery_img_1_key',
 								'label' => 'Gallery Image 1',
