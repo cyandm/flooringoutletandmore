@@ -1,17 +1,18 @@
-input{
+input {
     background: none;
     border: none;
     color: $color-primary2;
 
-    &::placeholder{
+    &::placeholder {
         color: $color-primary4;
     }
-    &:focus{
+
+    &:focus {
         outline: none;
     }
 }
 
-.form_control{
+.form_control {
     padding: 0.75rem 0.625rem 0.75rem 0.875rem;
     background-color: $color-primary5;
     backdrop-filter: blur(1.06rem);
@@ -21,8 +22,9 @@ input{
     justify-content: space-between;
     align-items: center;
     border: 1px solid transparent;
+    min-width: 11rem;
 
-    &:has(input:focus){
+    &:has(input:focus) {
         border-color: #fff;
     }
 }

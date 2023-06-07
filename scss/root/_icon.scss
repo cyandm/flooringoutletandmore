@@ -14,6 +14,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-whatsapp-bigger:before {
+  content: "\e900";
+}
+
 .icon-clear-filter:before {
   content: "\e91c";
 }
@@ -34,100 +38,83 @@
   content: "\e917";
 }
 
-.icon-whatsapp .path1:before {
-  content: "\e918";
-}
-
-.icon-whatsapp .path2:before {
-  content: "\e919";
-  margin-left: -1em;
-}
-
-.icon-whatsapp-bigger .path1:before {
-  content: "\e91a";
-}
-
-.icon-whatsapp-bigger .path2:before {
-  content: "\e91b";
-  margin-left: -1em;
-}
-
 .icon-arrow-down-2:before {
-  content: "\e900";
-}
-
-.icon-arrow-left:before {
   content: "\e901";
 }
 
-.icon-arrow-left-2:before {
+.icon-arrow-left:before {
   content: "\e902";
 }
 
-.icon-arrow-left-bigger:before {
+.icon-arrow-left-2:before {
   content: "\e903";
 }
 
-.icon-arrow-right:before {
+.icon-arrow-left-bigger:before {
   content: "\e904";
 }
 
-.icon-arrow-right-2:before {
+.icon-arrow-right:before {
   content: "\e905";
 }
 
-.icon-arrow-right-bigger:before {
+.icon-arrow-right-2:before {
   content: "\e906";
 }
 
-.icon-arrowup-2:before {
+.icon-arrow-right-bigger:before {
   content: "\e907";
 }
 
-.icon-category:before {
+.icon-arrowup-2:before {
   content: "\e908";
 }
 
-.icon-check:before {
+.icon-category:before {
   content: "\e909";
 }
 
-.icon-close:before {
+.icon-check:before {
   content: "\e90a";
 }
 
-.icon-filter:before {
+.icon-close:before {
   content: "\e90b";
 }
 
-.icon-loading:before {
+.icon-filter:before {
   content: "\e90c";
 }
 
-.icon-login:before {
+.icon-loading:before {
   content: "\e90d";
 }
 
-.icon-menu:before {
+.icon-login:before {
   content: "\e90e";
 }
 
-.icon-phone:before {
+.icon-menu:before {
   content: "\e90f";
 }
 
-.icon-search:before {
+.icon-phone:before {
   content: "\e910";
+  color: #fefefe;
 }
 
-.icon-send:before {
+.icon-search:before {
   content: "\e911";
 }
 
-.icon-time:before {
+.icon-send:before {
   content: "\e912";
 }
 
-.icon-write:before {
+.icon-time:before {
   content: "\e913";
+}
+
+.icon-write:before {
+  content: "\e918";
 }

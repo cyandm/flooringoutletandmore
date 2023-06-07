@@ -7,7 +7,7 @@
     <?php
     $blogs = get_field('blogs');
     foreach ($blogs as $article) {
-      get_template_part('/templates/loop/article', null, ['rel' => 'follow']);
+      get_template_part('/templates/loop/article', null, ['rel' => 'follow', 'article' => $article]);
     }
     ?>
     <a href="#" class="btn_no_icon bg_secondary1 no-desktop">view all</a>

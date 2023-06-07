@@ -15,17 +15,19 @@
         )
       );
 
-      foreach ($brands as $brand) :
+      foreach ($brands as $brand) {
         $brand_id = $brand->term_id;
         $brand_link = get_term_link($brand_id);
         $brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
-        $brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id); ?>
+        $brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id);
 
+        ?>
         <a href="<?php echo esc_url($brand_link) ?>" data-mouse="" data-image="<?php echo $brand_sample ?>">
           <img src="<?php echo $brand_logo ?>" alt="">
         </a>
-
-      <?php endforeach; ?>
+      <?php
+      }
+      ?>
     </main>
   </div>
 </div>

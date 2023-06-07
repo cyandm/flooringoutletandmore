@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
   const archiveSideBarApply = document.querySelector("#archiveSideBarApply");
   const archiveFilterChips = document.querySelectorAll("#archive-filter-chips .icon-close");
   const archiveSideBarOpener = document.querySelectorAll("#archiveSideBarOpener, #archiveSideBarCloser, #archiveSideBarCloserMobile");
-  const archiveSideBarHidden = document.querySelector("input[type='hidden']");
+  const archiveSideBarHidden = document.querySelector("input[name='filter']");
 
   if (archiveSideBar) {
     const checkIsFiltered = () => {
@@ -75,5 +75,28 @@ jQuery(document).ready(function ($) {
         $(archiveSideBar).submit();
       });
     });
+  }
+});
+
+jQuery(document).ready(function ($) {
+  const monileMenuContainer = document.getElementById("monile-menu-container");
+  const mobileMenuOpener = document.getElementById("mobile-menu-opener");
+  const mobileMenuCloser = document.getElementById("mobile-menu-closer");
+
+  if (monileMenuContainer) {
+    mobileMenuOpener.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.body.style.overflow = "hidden";
+      monileMenuContainer.classList.toggle("open");
+    });
+
+    mobileMenuCloser.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.body.style.overflow = "";
+      monileMenuContainer.classList.remove("open");
+    });
+
+    const subMenus = $("#monile-menu-container ul.sub-menu");
+    $(subMenus).prev("a").append("<i class='icon-arrow-down-2'></i>");
   }
 });

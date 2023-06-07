@@ -14,7 +14,8 @@ main.product-archive {
     align-items: revert;
   }
 
-  .products {
+  .products,
+  .searchs {
     width: 75%;
     flex: 1 1 auto;
 
@@ -25,7 +26,7 @@ main.product-archive {
     .filter-chips {
       display: flex;
       gap: 0.5rem;
-      overflow-x: scroll;
+      overflow-x: auto;
       min-width: fit-content;
       margin-bottom: .75rem;
 

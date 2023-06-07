@@ -34,13 +34,12 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
   speed: 600,
   nested: true,
   effect: 'creative',
-  loop: false,
+  loop: true,
   autoplay: {
-    delay: 2500,
+    delay: 3500,
     disableOnInteraction: false,
     stopOnLastSlide: true,
   },
-
   creativeEffect: {
     prev: {
       shadow: true,
@@ -50,7 +49,6 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
       translate: ['100%', 0, 0],
     },
   },
-
   on: {
     autoplayTimeLeft(s, time, progress) {
       if (progress > 0) {
@@ -58,9 +56,9 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
       }
     },
   },
-
   breakpoints: {
     1025: {
+      loop: false,
       direction: 'vertical',
       creativeEffect: {
         prev: {

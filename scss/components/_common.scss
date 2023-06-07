@@ -2,7 +2,6 @@ body {
   background-color: $color-primary1;
   background-image: url('./imgs/body-bg.png');
   overflow-x: hidden;
-  padding-inline: 1.875rem;
 }
 
 body:has(.side-bar.open) {
@@ -76,4 +75,21 @@ main {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+main.not-found {
+  >div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    >img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+    }
+  }
 }

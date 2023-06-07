@@ -86,6 +86,9 @@ $getFilters = isset($args["getFilters"]) ? $args["getFilters"] : [];
     </button>
   </div>
 
+  <?php if (is_search()) : ?>
+    <input type="hidden" name="s" value="<?php the_search_query(); ?>">
+  <?php endif; ?>
   <input type="hidden" name="filter" value="on">
 </form>
 

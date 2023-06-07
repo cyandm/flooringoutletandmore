@@ -1,5 +1,7 @@
 <?php
-global $article;
+global $post;
+$article = isset($args["article"]) ? $args["article"] : $post;
+
 $title = get_the_title( $article );
 $excerpt = get_the_excerpt( $article );
 $img_url = get_the_post_thumbnail_url( $article );

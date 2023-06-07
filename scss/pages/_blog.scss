@@ -6,12 +6,13 @@ main.blog {
 
   &.archive {
     padding-block-start: 0;
+
     .category-blog {
       margin-block-start: 0;
     }
   }
 
-  > div:nth-child(2) {
+  >div:nth-child(2) {
     width: 100%;
 
     .bests {
@@ -20,7 +21,7 @@ main.blog {
       gap: 1rem;
       position: relative;
 
-      @media (width <= 768px) {
+      @media (width <=768px) {
         &::before {
           content: '';
           background: linear-gradient(90deg, rgba(#000, 0) 60%, #000 100%);
@@ -42,12 +43,12 @@ main.blog {
           'f f f f a-b a-b'
           'f f f f a-b a-b';
 
-        @media (width <= 768px) {
+        @media (width <=768px) {
           display: flex;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
 
-          > article {
+          >article {
             min-width: min(90%, 320px);
             scroll-snap-align: start;
           }
@@ -71,12 +72,15 @@ main.blog {
       }
     }
   }
+
   .category-blog {
     z-index: 0;
     margin-block-start: 2rem;
-    @media (width <= 768px) {
+
+    @media (width <=768px) {
       margin-block-start: 4rem;
     }
+
     .top {
       display: flex;
       justify-content: space-between;
@@ -88,7 +92,8 @@ main.blog {
       display: flex;
       gap: 1.25rem;
       flex-wrap: wrap;
-      @media (width <= 768px) {
+
+      @media (width <=768px) {
         flex-direction: column;
       }
 
@@ -97,7 +102,7 @@ main.blog {
         flex-basis: 31.5%;
       }
 
-      & + a {
+      &+a {
         margin-block-start: 1.25rem;
       }
     }
@@ -114,7 +119,7 @@ main.blog {
       position: relative;
       z-index: 10;
 
-      > div {
+      >div {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -128,9 +133,11 @@ main.blog {
         background-color: red;
         transition: 0.3s;
       }
+
       i:has(~ .open) {
         background-color: blue !important;
       }
+
       .virtual-options {
         position: absolute;
         padding-inline-start: 2rem;
@@ -156,7 +163,7 @@ main.blog {
           visibility: visible;
         }
 
-        > a {
+        >a {
           display: block;
           text-align: left;
           padding: 0.875rem;

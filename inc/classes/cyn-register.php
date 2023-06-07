@@ -164,7 +164,10 @@ if (!class_exists('cyn_register')) {
 
 		public function cyn_archive_pre_get_posts($query)
 		{
-			if ($query->is_archive && $query->is_main_query() && !is_admin()) {
+			$archiveCondition = $query->is_archive && $query->is_main_query() && !is_admin();
+			$searchCondition  = $query->is_search && $query->is_main_query() && !is_admin();
+
+			if ($archiveCondition || $searchCondition) {
 				$cynOptions = new cyn_options();
 
 				$getCats     = $cynOptions->cyn_getProdactTerms(false, true, 'product-cat');
@@ -199,6 +202,10 @@ if (!class_exists('cyn_register')) {
 				}
 
 				$query->set('tax_query', $tax_query);
+			}
+
+			if ($searchCondition) {
+				$query->set('post_type', 'product');
 			}
 		}
 

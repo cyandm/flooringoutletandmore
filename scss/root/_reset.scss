@@ -241,12 +241,12 @@ textarea {
 body {
   font-family: 'OpenSans';
   font-size: 0.875rem;
-  line-height: 1.5rem;
-  height: 100vh;
+  line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   text-transform: capitalize;
   color: $color-primary2;
+  padding: 0;
 }
 
 h1,
