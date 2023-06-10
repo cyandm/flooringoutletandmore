@@ -137,3 +137,30 @@ const archiveProducts = new Swiper('.p-cat-swiper', {
     },
   }
 });
+
+/********************************************************************************** */
+const archiveProjectArticles = document.querySelectorAll("main.projects .archive-project-article .image-sliders .swiper-archive-project-article");
+const archiveProjectGalleres = document.querySelectorAll("main.projects .archive-project-article .image-sliders .swiper-archive-project-gallery");
+
+archiveProjectArticles.forEach(function(article, i) {
+  const archiveProjectGallery = new Swiper(archiveProjectGalleres[i], {
+    spaceBetween: 12,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  
+  const archiveProjectArticle = new Swiper(article, {
+    slidesPerView: 1,
+    spaceBetween: 12,
+    centeredSlides: true,
+    slideToClickedSlide: true,
+    navigation: {
+      nextEl: '.swiper-next-btn',
+      prevEl: '.swiper-prev-btn'
+    },
+    thumbs: {
+      swiper: archiveProjectGallery
+    }
+  });
+});

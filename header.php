@@ -16,7 +16,7 @@
 			</div>
 			<div>
 				<?php wp_nav_menu(['menu' => 'header-menu']) ?>
-				<i class="icon-menu mobile-menu"></i>
+				<i class="icon-menu mobile-menu" id="mobile-menu-opener"></i>
 			</div>
 			<div>
 				<div>
@@ -38,3 +38,21 @@
 			</div>
 		</div>
 	</header>
+
+	<div class="only_mobile" id="monile-menu-container">
+		<div class="head">
+			<?php
+			if (function_exists('the_custom_logo')) {
+				the_custom_logo();
+			}
+			?>
+
+			<i class="icon-close" id="mobile-menu-closer"></i>
+		</div>
+		<div class="menu">
+			<?php wp_nav_menu(array(
+				'menu' => 'header-menu',
+				'container_id' => 'monile-menu-container-content'
+			)) ?>
+		</div>
+	</div>

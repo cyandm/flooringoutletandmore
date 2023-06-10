@@ -1014,7 +1014,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_1',
 								'label' => 'Image 1',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1025,7 +1025,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_2',
 								'label' => 'Image 2',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1036,7 +1036,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_3',
 								'label' => 'Image 3',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1047,7 +1047,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_4',
 								'label' => 'Image 4',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1058,7 +1058,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_5',
 								'label' => 'Image 5',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1069,7 +1069,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_6',
 								'label' => 'Image 6',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1080,7 +1080,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_7',
 								'label' => 'Image 7',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1091,7 +1091,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_8',
 								'label' => 'Image 8',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1102,7 +1102,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_9',
 								'label' => 'Image 9',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1113,7 +1113,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_10',
 								'label' => 'Image 10',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1124,7 +1124,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_11',
 								'label' => 'Image 11',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],
@@ -1135,7 +1135,7 @@ if (!class_exists('cyn_acf')) {
 								'name' => 'image_12',
 								'label' => 'Image 12',
 								'type' => 'image',
-								'return_format' => 'object',
+								'return_format' => 'url',
 								'wrapper' => [
 									'width' => '25'
 								],

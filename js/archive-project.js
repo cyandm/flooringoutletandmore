@@ -1,7 +1,19 @@
-const projects = document.querySelectorAll('article.project');
+jQuery(document).ready(function ($) {
+  const projectArchiveArticle = $('.archive-project-article .article-content');
+  const projectArchiveGalleryCloser = $('.archive-project-article .image-sliders .icon-close');
 
-for (const project of projects) {
-  project.addEventListener('click', () => {
-    console.log(project.id);
-  });
-}
+  if (projectArchiveArticle) {
+    $(projectArchiveArticle).on("click", function (e) {
+      e.preventDefault();
+      const parent = $(e.target).next(".image-sliders");
+      $(parent).addClass("show");
+    });
+
+    $(projectArchiveGalleryCloser).on("click", function (e) {
+      e.preventDefault();
+      const parent = $(e.target).parents(".image-sliders");
+      $(parent).removeClass("show");
+    });
+
+  }
+})
