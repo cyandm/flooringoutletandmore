@@ -8,26 +8,27 @@ $current_terms = $blog_term['current_terms'];
 ?>
 
 <aside class="side-bar blog">
+
 	<div class="box">
 		<div class="search">
 			<form id="homeContactForm" action="/" method="get">
 				<div class="form_control">
-					<input type="text" name="s" id="search" value="<?php the_search_query(); ?>"
-						placeholder="Quick Search" />
+					<input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Quick Search" />
 
-					<i class="icon-Component-2-1"></i>
+					<i class="icon-search"></i>
 				</div>
 			</form>
 		</div>
+
 		<div class="categories">
 			<span class="h4">Categories</span>
 			<ul>
-				<?php foreach ( $cats as $cat ) : ?>
-					<?php if ( ! in_array( $cat->name, $cat_exclude ) ) : ?>
-						<li class="<?php if ( in_array( $cat->term_id, $current_terms ) )
-							echo 'active'; ?>">
+				<?php foreach ($cats as $cat) : ?>
+					<?php if (!in_array($cat->name, $cat_exclude)) : ?>
+						<li class="<?php if (in_array($cat->term_id, $current_terms))
+													echo 'active'; ?>">
 							<span>
-								<a href="<?= get_term_link( $cat ) ?>">
+								<a href="<?= get_term_link($cat) ?>">
 									<?= $cat->name ?>
 								</a>
 							</span>
@@ -40,17 +41,18 @@ $current_terms = $blog_term['current_terms'];
 			</ul>
 		</div>
 	</div>
+
 	<div class="box">
-		<?php if ( $recommend_sidebar->have_posts() ) : ?>
+		<?php if ($recommend_sidebar->have_posts()) : ?>
 			<span class="h4">Recommended</span>
 
-			<?php while ( $recommend_sidebar->have_posts() ) : ?>
+			<?php while ($recommend_sidebar->have_posts()) : ?>
 				<?php $recommend_sidebar->the_post(); ?>
 
 				<article>
 					<div class="img-wrapper">
 						<a href="<?= get_the_permalink() ?>" rel="nofollow">
-							<?= get_the_post_thumbnail( null, 'thumbnail' ) ?>
+							<?= get_the_post_thumbnail(null, 'thumbnail') ?>
 						</a>
 					</div>
 					<div class="content">

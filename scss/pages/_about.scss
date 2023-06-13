@@ -1,7 +1,7 @@
 main.about {
   max-width: 800px;
 
-  > * {
+  >* {
     margin-block: 1em;
   }
 
@@ -25,13 +25,11 @@ main.about {
   }
 
   .hero_image {
-    -webkit-mask-image: url(./imgs/about-hero.svg);
-    mask-image: url(./imgs/about-hero.svg);
+    mask-image: url(../imgs/about-hero.svg);
   }
 
   .main_image {
-    -webkit-mask-image: url(./imgs/about-main.svg);
-    mask-image: url(./imgs/about-main.svg);
+    mask-image: url(../imgs/about-main.svg);
   }
 
   .call-to-action {
@@ -44,12 +42,14 @@ main.about {
     backdrop-filter: blur(14px);
     border-radius: 0.5rem;
     padding: 0.5rem;
+
     @media (width<=768px) {
-      > * {
+      >* {
         flex: 1;
         min-width: 50%;
         text-align: center;
       }
+
       p {
         margin: 0;
       }
@@ -61,12 +61,30 @@ main.about {
     flex-wrap: wrap;
     gap: 0.5rem;
 
-    > * {
+    >* {
       flex: 1;
     }
 
     p {
       min-width: 30%;
+    }
+  }
+}
+
+main.contact {
+  max-width: 800px;
+
+  >* {
+    margin-block: 1em;
+  }
+
+  h1 {
+    @extend .title;
+    margin: 0;
+    text-align: center;
+
+    @media (width<1024px) {
+      font-size: 2rem;
     }
   }
 }

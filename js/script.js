@@ -100,3 +100,14 @@ jQuery(document).ready(function ($) {
     $(subMenus).prev("a").append("<i class='icon-arrow-down-2'></i>");
   }
 });
+
+jQuery(document).ready(function ($) {
+  const dropDownOpener = document.getElementById("dropDownOpener");
+
+  if (dropDownOpener) {
+    dropDownOpener.addEventListener("click", function (e) {
+      
+      $(dropDownOpener).find(".virtual-options").toggleClass("open");
+    });
+  }
+});
