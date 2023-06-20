@@ -2,30 +2,30 @@
   <div id="homeSwiper_slider" class="swiper">
     <div class="swiper-wrapper">
       <?php
-      if (have_rows("sliders")) {
-        while (have_rows("sliders")) {
+      if (have_rows("sliders")) :
+        while (have_rows("sliders")) :
           the_row();
           $sliders = get_field('sliders');
 
           foreach ($sliders as $slider) :
             $title = $slider['title'];
             $sub_title = $slider['sub_title'];
-            $img_url = $slider['background_image']; ?>
-
+            $img_url = $slider['background_image'];
+            ?>
             <div class="swiper-slide clickNext" data-mouse="next" style="background-image: url(<?php echo esc_url($img_url) ?>)">
               <div class="slide-inner">
                 <h1>
                   <?php echo __($title) ?>
                 </h1>
-                <span class="h2">
+                <p class="h2">
                   <?php echo __($sub_title) ?>
-                </span>
+                </p>
               </div>
             </div>
-
-      <? endforeach;
-        }
-      }
+            <?php
+          endforeach;
+        endwhile;
+      endif;
       ?>
     </div>
 

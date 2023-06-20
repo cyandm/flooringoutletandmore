@@ -13,8 +13,7 @@ if (!class_exists('cyn_acf')) {
 				return MY_ACF_URL;
 			});
 			add_filter('acf/settings/show_updates', '__return_false', 100);
-			//add_filter('acf/settings/show_admin', '__return_false');
-
+			add_filter('acf/settings/show_admin', '__return_false');
 		}
 
 		public function cyn_acf_actions()
@@ -678,6 +677,7 @@ if (!class_exists('cyn_acf')) {
 				]
 			);
 		}
+
 		public function cyn_product_brand_tax()
 		{
 			acf_add_local_field_group([
@@ -715,22 +715,13 @@ if (!class_exists('cyn_acf')) {
 				),
 			]);
 		}
+
 		public function cyn_product_post_type()
 		{
 			acf_add_local_field_group([
 				'key' => 'product_post_type_key',
 				'title' => 'Product',
 				'fields' => [
-					[
-						'key' => 'product_code_key',
-						'label' => 'Product Code',
-						'name' => 'product_code',
-						'type' => 'text',
-						'wrapper' => [
-							'width' => '25'
-						]
-
-					],
 					[
 						'key' => 'product_sid_key',
 						'label' => 'Product SID',
@@ -742,33 +733,84 @@ if (!class_exists('cyn_acf')) {
 
 					],
 					[
-						'key' => 'product_type_key',
-						'label' => 'Product Type',
-						'name' => 'product_type',
-						'type' => 'select',
-						'choices' => [
-							'floor' => 'Floor',
-							'mmd' => 'MMD',
-							'mdf' => 'MDF'
-						],
+						'key' => 'product_code_key',
+						'label' => 'Product Code',
+						'name' => 'product_code',
+						'type' => 'text',
 						'wrapper' => [
 							'width' => '25'
 						]
+
 					],
 					[
-						'key' => 'product_color_key',
-						'label' => 'Product Color',
-						'name' => 'product_color',
+						'key' => 'product_color_code_key',
+						'label' => 'Product Color Code',
+						'name' => 'product_color_code',
 						'type' => 'text',
 						'wrapper' => [
 							'width' => '25'
 						]
 					],
 					[
+						'key' => 'product_finish_key',
+						'label' => 'Product Finish',
+						'name' => 'product_finish',
+						'type' => 'text',
+						'wrapper' => [
+							'width' => '25'
+						]
+					],
+					[
+						'key' => 'product_installation_key',
+						'label' => 'Product Installation',
+						'name' => 'product_installation',
+						'type' => 'text',
+						'wrapper' => [
+							'width' => '25'
+						]
+					],
+					[
+						'key' => 'product_sqft_box_key',
+						'label' => 'Product Sqft/Box',
+						'name' => 'product_sqft_box',
+						'type' => 'text',
+						'wrapper' => [
+							'width' => '25'
+						]
+					],
+					[
+						'key' => 'product_sqft_pallet_key',
+						'label' => 'Product Sqft/Pallet',
+						'name' => 'product_sqft_pallet',
+						'type' => 'text',
+						'wrapper' => [
+							'width' => '25'
+						]
+					],
+					[
+						'key' => 'product_box_pallet_key',
+						'label' => 'Product Box/Pallet',
+						'name' => 'product_box_pallet',
+						'type' => 'text',
+						'wrapper' => [
+							'width' => '25'
+						]
+					],
+
+					[
+						'key' => '',
+						'label' => '',
+						'name' => '',
+						'type' => '',
+						'wrapper' => [
+							'width' => '100'
+						]
+					],
+
+					[
 						'key' => 'product_desc_key',
 						'label' => 'Product Description',
 						'name' => 'product_desc',
-						'instructions' => 'Shown in home page layout',
 						'type' => 'wysiwyg',
 						'wrapper' => [
 							'width' => '50'

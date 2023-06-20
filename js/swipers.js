@@ -92,18 +92,17 @@ export const promotionSwiper = new Swiper('#homeSwiper_promotion', {
 });
 
 /********************************************************************************** */
-
 const productGalleryThumbs = new Swiper('#productGalleryThumbs', {
-  spaceBetween: 10,
+  spaceBetween: 4,
   slidesPerView: 4,
   freeMode: true,
   watchSlidesProgress: 1,
 });
 const ProductGallery = new Swiper('#productGallery', {
-  spaceBetween: 10,
+  spaceBetween: 12,
   navigation: {
-    nextEl: '.btn-next',
-    prevEl: '.btn-prev',
+    nextEl: '.swiper-next-btn',
+    prevEl: '.swiper-prev-btn',
   },
   thumbs: {
     swiper: productGalleryThumbs,
@@ -142,14 +141,14 @@ const archiveProducts = new Swiper('.p-cat-swiper', {
 const archiveProjectArticles = document.querySelectorAll("main.projects .archive-project-article .image-sliders .swiper-archive-project-article");
 const archiveProjectGalleres = document.querySelectorAll("main.projects .archive-project-article .image-sliders .swiper-archive-project-gallery");
 
-archiveProjectArticles.forEach(function(article, i) {
+archiveProjectArticles.forEach(function (article, i) {
   const archiveProjectGallery = new Swiper(archiveProjectGalleres[i], {
     spaceBetween: 12,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
   });
-  
+
   const archiveProjectArticle = new Swiper(article, {
     slidesPerView: 1,
     spaceBetween: 12,

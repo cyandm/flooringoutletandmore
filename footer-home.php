@@ -1,5 +1,5 @@
 <div class="home-footer">
-	<a href="#" data-mouse="instagram">
+	<a href="https://www.instagram.com/flooringoutletandmore/" data-mouse="instagram">
 		<i class="icon-instagram"></i>
 	</a>
 	<a href="#" data-mouse="telegram">

@@ -11,7 +11,6 @@ $products = get_field("front_page_promotion_product_post");
       <div class="swiper-wrapper">
         <?php foreach ($products as $productId) : ?>
           <?php
-          $dec = get_field("product_desc", $productId);
           $imgs = get_field("product_gallery_group", $productId);
           $price = get_field("product_price", $productId);
           ?>
@@ -24,7 +23,7 @@ $products = get_field("front_page_promotion_product_post");
 
               <h2><?php echo get_the_title($productId) ?></h2>
 
-              <?php echo $dec; ?>
+              <p><?php echo get_the_excerpt($productId); ?></p>
 
               <h3>only for a limited time</h3>
 
@@ -32,7 +31,7 @@ $products = get_field("front_page_promotion_product_post");
             </div>
 
             <div class="right">
-              <a data-mouse="explore" href="#">
+              <a data-mouse="explore" href="<?php echo get_the_permalink($productId) ?>">
                 <img src="<?php echo $imgs["gallery_cover_img"] ?>" alt="">
               </a>
             </div>

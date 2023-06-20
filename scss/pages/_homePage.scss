@@ -453,61 +453,57 @@ $p-l: var(--header-width);
         width: auto;
       }
 
-      &:has(form) {
+      form {
         display: flex;
-        align-items: center;
-      }
-
-      &:has(img) {
-        flex: auto;
-
-        img {
-          height: 100%;
-          border-radius: 0.875rem;
-        }
-      }
-    }
-
-    form {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: .25rem;
-      max-height: 34rem;
-
-      button {
-        transition: all 0.3s ease-in-out;
-
-        &.pending {
-          background: linear-gradient(90deg, #8d8d8d 0%, #696969 108.04%);
-          color: #3d3d3d;
-        }
-
-        &.success {
-          background: #53b757;
-          color: #fff;
-        }
-      }
-
-      label {
-        display: flex;
+        height: 100%;
         flex-direction: column;
-        gap: 0.25rem;
+        justify-content: space-between;
+        gap: .25rem;
+        max-height: 34rem;
 
-        input[type='checkbox'] {
-          accent-color: $color-secondary2;
-          width: 1.5rem;
+        button {
+          transition: all 0.3s ease-in-out;
+
+          &.pending {
+            background: linear-gradient(90deg, #8d8d8d 0%, #696969 108.04%);
+            color: #3d3d3d;
+          }
+
+          &.success {
+            background: #53b757;
+            color: #fff;
+          }
         }
 
-        input,
-        textarea {
-          background-color: rgba($color-primary2, 0.2);
-          backdrop-filter: blur(0.875rem);
-          padding: 0.75rem 0.875rem;
-          border-radius: 0.8rem;
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
 
-          max-height: 160px;
+          input[type='checkbox'] {
+            accent-color: $color-secondary2;
+            width: 1.5rem;
+          }
+
+          input,
+          textarea {
+            background-color: rgba($color-primary2, 0.2);
+            backdrop-filter: blur(0.875rem);
+            padding: 0.75rem 0.875rem;
+            border-radius: 0.8rem;
+
+            max-height: 160px;
+          }
+        }
+      }
+
+      &:last-child {
+        flex: 1 1 auto;
+        overflow: hidden;
+        border-radius: .875rem;
+
+        a {
+          display: block;
         }
       }
     }

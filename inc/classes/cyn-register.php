@@ -61,12 +61,12 @@ if (!class_exists('cyn_register')) {
 				'has_archive' => true,
 				'hierarchical' => false,
 				'menu_position' => 20,
-				'supports' => ['title', 'thumbnail'],
-				'taxonomies' => ['product-cat', 'collections', 'brands'],
+				'supports' => ['title', 'thumbnail', 'excerpt'],
+				'taxonomies' => ['product-cat'],
 				'show_in_rest' => false
 			);
 
-			register_post_type($postType, $args);
+			return register_post_type($postType, $args);
 		}
 
 		public function cyn_register_product_cats()
@@ -209,7 +209,6 @@ if (!class_exists('cyn_register')) {
 			}
 		}
 
-
 		public function cyn_register_projects()
 		{
 			$labels = [
@@ -251,7 +250,7 @@ if (!class_exists('cyn_register')) {
 				'has_archive' => true,
 				'hierarchical' => false,
 				'menu_position' => 20,
-				'supports' => ['title', 'thumbnail'],
+				'supports' => ['title', 'thumbnail', 'excerpt'],
 				'show_in_rest' => false
 			];
 

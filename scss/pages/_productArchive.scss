@@ -282,14 +282,16 @@ main.product-archive {
       text-align: left;
     }
   }
+}
 
+main.projects,
+main.product-archive {
   .not-find {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     justify-content: center;
-
   }
 }
 

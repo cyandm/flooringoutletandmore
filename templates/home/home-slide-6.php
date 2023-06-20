@@ -40,7 +40,7 @@
     </div>
     <div>
       <a href="#" data-mouse="call us">
-        <img src="<?php echo get_template_directory_uri() . '/imgs/contact-us.png' ?>" alt="">
+        <img src="<?php echo get_template_directory_uri() . '/imgs/contact-us.jpg' ?>" alt="">
       </a>
     </div>
   </main>

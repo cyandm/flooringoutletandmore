@@ -23,7 +23,7 @@ if (hasSingleProduct) {
     });
   });
 
-  /* Images */
+  /* Images 
   const openModal = document.querySelector('#openModal');
   const closeModal = document.querySelector('#closeModal');
   const Modal = document.querySelector('#imagesModal');
@@ -34,4 +34,5 @@ if (hasSingleProduct) {
   closeModal.addEventListener('click', () => {
     Modal.classList.remove('show');
   });
+  */
 }
