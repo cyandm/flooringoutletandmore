@@ -35,11 +35,9 @@ if (!class_exists('cyn_options')) {
 
     public function cyn_getTermAttr($termID)
     {
-      global $wpdb;
       $termsAttr = array();
       $wpTerm    = get_term($termID);
       $termUrl   = get_term_link($wpTerm);
-      //$termMeta  = $wpdb->get_row("SELECT meta_value FROM $wpdb->termmeta WHERE term_id=$termID AND meta_key='thumbnail_id'");
 
       $termsAttr["id"]     = $termID;
       $termsAttr["name"]   = $wpTerm->name;
@@ -47,16 +45,6 @@ if (!class_exists('cyn_options')) {
       $termsAttr["parent"] = $wpTerm->parent;
       $termsAttr["count"]  = $wpTerm->count;
       $termsAttr["url"]    = $termUrl;
-
-      /*
-      if (isset($termMeta)) {
-        $termAttach = wp_get_attachment_url($termMeta->meta_value);
-        $termThum = wp_get_attachment_image_url($termMeta->meta_value);
-
-        $termsAttr["attachment"] = $termAttach;
-        $termsAttr["thumbnail"] = $termThum;
-      }
-      */
 
       return $termsAttr;
     }

@@ -8,32 +8,33 @@ $front_page_id = get_option('page_on_front')
 			<div>
 				<b>Us</b>
 				<ul>
-					<?php wp_nav_menu(['menu' => 'footer-us']) ?>
+					<?php wp_nav_menu(['theme_location' => 'footer-us']) ?>
 				</ul>
 			</div>
 
 			<div>
 				<b>What We Do?</b>
 				<ul>
-					<?php wp_nav_menu(['menu' => 'footer-what-we-do']) ?>
-
+					<?php wp_nav_menu(['theme_location' => 'footer-what-we-do']) ?>
 				</ul>
 			</div>
 
 			<div>
 				<b>Know More</b>
 				<ul>
-					<?php wp_nav_menu(['menu' => 'footer-know-more']) ?>
+					<?php wp_nav_menu(['theme_location' => 'footer-know-more']) ?>
 				</ul>
 			</div>
 		</div>
 		<div>
 			<div class="w-full">
 				<b>Our Social</b>
-				<div>
-					<a href=""><i></i></a>
-					<a href=""><i></i></a>
-					<a href=""><i></i></a>
+				<div class="social">
+					<a href="https://www.instagram.com/flooringoutletandmore/">Instagram</a>
+					<a href="https://www.facebook.com/Flooring-Outlet-More-113971513839485/">Facebook</a>
+					<a href="https://www.youtube.com/@flooringoutletmoreUS">You Tube</a>
+					<a href="https://www.pinterest.com/flooringoutletandmorentd/flooring-outlet-and-more-duchateau/">Pintrest</a>
+					<a href="https://www.yelp.com/biz/flooring-outlet-and-more-san-jose-2">Yelp</a>
 				</div>
 			</div>
 			<div>

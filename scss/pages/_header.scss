@@ -82,15 +82,17 @@
       position: relative;
 
       &::after {
-        font-family: 'icomoon' !important;
-        font-size: 24px;
+        font-family: 'flooring-icons' !important;
         speak: never;
         font-style: normal;
         font-weight: normal;
         font-variant: normal;
         text-transform: none;
         line-height: 1;
-        content: '\e900';
+        font-size: 1.25rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: '\e906';
       }
 
       &:hover {
@@ -327,11 +329,21 @@ body:has(.home-header) {
           }
 
           .sub-menu {
+            display: none;
             padding-top: 0.5rem;
             padding-left: 0.875rem;
-            display: flex;
-            flex-direction: column;
-            gap: .75rem;
+
+            &.open {
+              display: block;
+            }
+
+            >li {
+              margin-top: .75rem;
+
+              &:first-child {
+                margin-top: 0;
+              }
+            }
           }
         }
       }

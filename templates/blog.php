@@ -73,5 +73,4 @@ $current_terms = $blog_term['current_terms'];
 	</div>
 </main>
 
-
 <?php get_footer() ?>

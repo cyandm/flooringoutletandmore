@@ -5,13 +5,18 @@ $articleNum = 0;
 <div class="swiper-slide">
   <div class="introduce home-wrapper">
     <header>
-      <h2>Let’s Know More</h2>
-      <span>you dont have to worry about anything</span>
+      <div>
+        <h2>Let’s Know More</h2>
+        <span>you dont have to worry about anything</span>
+      </div>
+      <a class="btn_no_icon bg_white only-desktop" href="<?php echo site_url() . '/product'; ?>">
+        view all
+      </a>
     </header>
 
     <main>
       <?php foreach ($cats as $cat) : ?>
-        <?php if ($articleNum < 3) : ?>
+        <?php if ($articleNum < 6) : ?>
           <?php
           $articleNum++;
           $termLink = get_term_link($cat);
@@ -22,8 +27,8 @@ $articleNum = 0;
               <div>
                 <button class="btn_no_icon bg-primary1">explore</button>
                 <div>
-                  <h3><?php echo $cat->name ?></h3>
-                  <p><?php echo $cat->description; ?></p>
+                  <h3 class="one-line-text"><?php echo $cat->name ?></h3>
+                  <p class="one-line-text"><?php echo $cat->description; ?></p>
                 </div>
               </div>
               <img src="<?php echo $catImg_url; ?>" alt="">
@@ -36,7 +41,7 @@ $articleNum = 0;
         ?>
       <?php endforeach; ?>
 
-      <!-- <a href="#" class="btn_no_icon bg_secondary1 no-desktop">view all</a> -->
+      <a href="<?php echo site_url() . '/product'; ?>" class="btn_no_icon bg_secondary1 no-desktop">view all</a>
     </main>
   </div>
 </div>

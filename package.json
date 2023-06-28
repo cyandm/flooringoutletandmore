@@ -16,5 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "esbuild": "^0.17.19"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 version"
+  ]
 }

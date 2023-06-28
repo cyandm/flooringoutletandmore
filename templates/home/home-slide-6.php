@@ -1,7 +1,9 @@
 <div class="swiper-slide home-wrapper contact-us">
   <header>
-    <h2>pick up the phone</h2>
-    <span>you don't have to worry about anything</span>
+    <div>
+      <h2>pick up the phone</h2>
+      <span>you don't have to worry about anything</span>
+    </div>
   </header>
 
   <main>

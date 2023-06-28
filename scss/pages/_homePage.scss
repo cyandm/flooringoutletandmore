@@ -5,7 +5,30 @@ $p-l: var(--header-width);
   height: 100vh;
 
   @media (width <=1024px) {
+    height: auto;
     overflow: visible;
+  }
+}
+
+#homeSwiper h1,
+.home-wrapper h2,
+.home-wrapper h3 {
+  font-size: revert;
+  margin-bottom: unset;
+}
+
+@media (width <=1024px) {
+  #homeSwiper p.h2 {
+    font-size: .875rem;
+    margin-bottom: 0;
+  }
+
+  #homeSwiper h1 {
+    font-size: 1.25rem;
+  }
+
+  #homeSwiper .swiper-wrapper>.swiper-slide:nth-child(1) h1 {
+    font-size: 2.125rem;
   }
 }
 
@@ -13,12 +36,12 @@ $p-l: var(--header-width);
   width: 100%;
   height: 100%;
 
-  --swiper-pagination-right: 2rem;
+  --swiper-pagination-right: 3%;
 
   .autoplay-progress {
     position: absolute;
-    right: var(--swiper-pagination-right);
-    bottom: 5.5rem;
+    right: 3%;
+    bottom: 12%;
     z-index: 10;
     width: 3rem;
     height: 3rem;
@@ -155,6 +178,9 @@ $p-l: var(--header-width);
   }
 
   header {
+    display: flex;
+    width: 100%;
+    align-items: center;
     margin: 2rem 0rem;
     padding-bottom: $space-4;
 
@@ -168,6 +194,10 @@ $p-l: var(--header-width);
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
+
+    >div {
+      flex: 1 1 auto;
+    }
   }
 
   main {
@@ -177,6 +207,92 @@ $p-l: var(--header-width);
 
     @media (width <=1024px) {
       padding: 0 1.5rem;
+      height: auto;
+    }
+  }
+}
+
+.services {
+  >main {
+    >.wrapper {
+
+      >.slide {
+
+        article {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+
+          &.rev {
+
+            >div {
+              flex-direction: row-reverse;
+            }
+          }
+
+          >div {
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+            gap: 3rem;
+
+            >img {
+              height: 100%;
+              object-fit: contain;
+            }
+
+            >div {
+
+              &.c {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .title {
+                  position: relative;
+                  isolation: isolate;
+                  margin-bottom: .75rem;
+
+                  &::before {
+                    content: attr(data-num);
+                    position: absolute;
+                    left: 6px;
+                    bottom: -4px;
+                    font-size: 3em;
+                    line-height: 1;
+                    opacity: .25;
+                    z-index: -1;
+                  }
+                }
+              }
+            }
+          }
+
+          @media (width <=1024px) {
+            gap: 3rem;
+
+            &.rev {
+              >div {
+                flex-direction: column;
+              }
+
+              >.bottom {
+                flex-direction: column-reverse;
+              }
+            }
+
+            >div {
+              flex-direction: column;
+            }
+
+            >.bottom {
+              flex-direction: column-reverse;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -184,6 +300,7 @@ $p-l: var(--header-width);
 .introduce {
   main {
     display: flex;
+    flex-wrap: wrap;
     justify-content: stretch;
     align-items: stretch;
     border-radius: 0.25rem;
@@ -194,9 +311,15 @@ $p-l: var(--header-width);
     }
 
     >article {
-      flex: 1;
+      flex: 1 1 auto;
       position: relative;
       padding: $space-4;
+      width: 33.3333%;
+      height: 50%;
+
+      @media (width <=1024px) {
+        width: 100%;
+      }
 
       a {
         display: block;
@@ -252,7 +375,7 @@ $p-l: var(--header-width);
       }
 
       &:hover img {
-        translate: 0 100px;
+        translate: 0 33.3333%;
         filter: brightness(1);
 
         @media (width <=1024px) {
@@ -340,8 +463,6 @@ $p-l: var(--header-width);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem;
-
-        img {}
       }
 
       .price {
@@ -380,6 +501,7 @@ $p-l: var(--header-width);
     gap: 1.25rem;
 
     @media (width <=1024px) {
+      //grid-template-rows: repeat(8, 1fr);
       grid-template-columns: 1fr 1fr;
       gap: 0.875rem;
     }
@@ -404,6 +526,10 @@ $p-l: var(--header-width);
         object-fit: contain;
       }
     }
+  }
+
+  >.btn_no_icon {
+    margin: 1.5rem;
   }
 }
 
@@ -511,7 +637,6 @@ $p-l: var(--header-width);
 }
 
 .about {
-
   main {
     display: flex;
     gap: 1rem;

@@ -1,8 +1,10 @@
 <div class="swiper-slide home-wrapper about">
 
   <header>
-    <h2>How to reach us</h2>
-    <span>you don't have to worry about anything</span>
+    <div>
+      <h2>How to reach us</h2>
+      <span>you don't have to worry about anything</span>
+    </div>
   </header>
 
   <main>

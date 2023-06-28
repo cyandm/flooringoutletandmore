@@ -19,7 +19,7 @@ if (hasSingleProduct) {
 
       const contentEl = tabs.querySelector('.content');
       contentEl.style.borderTopLeftRadius =
-        headingEl.dataset.tab !== 'description' ? '14px' : '0';
+        headingEl.dataset.tab !== 'specification' ? '14px' : '0';
     });
   });
 

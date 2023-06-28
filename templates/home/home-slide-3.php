@@ -4,10 +4,12 @@ $products = get_field("front_page_promotion_product_post");
 <div class="swiper-slide">
   <div class="home-wrapper promotion swiper">
     <header>
-      <h2>Special Offer</h2>
-      <p>you dont have to worry about anything</p>
+      <div>
+        <h2>Special Offer</h2>
+        <p>you dont have to worry about anything</p>
+      </div>
     </header>
-    <main id="homeSwiper_promotion" class="swiper ">
+    <main id="homeSwiper_promotion" class="swiper">
       <div class="swiper-wrapper">
         <?php foreach ($products as $productId) : ?>
           <?php

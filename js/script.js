@@ -84,20 +84,30 @@ jQuery(document).ready(function ($) {
   const mobileMenuCloser = document.getElementById("mobile-menu-closer");
 
   if (monileMenuContainer) {
-    mobileMenuOpener.addEventListener("click", function (e) {
+    $(mobileMenuOpener).on("click", function (e) {
       e.preventDefault();
       document.body.style.overflow = "hidden";
       monileMenuContainer.classList.toggle("open");
     });
 
-    mobileMenuCloser.addEventListener("click", function (e) {
+    $(mobileMenuCloser).on("click", function (e) {
       e.preventDefault();
       document.body.style.overflow = "";
       monileMenuContainer.classList.remove("open");
     });
 
-    const subMenus = $("#monile-menu-container ul.sub-menu");
-    $(subMenus).prev("a").append("<i class='icon-arrow-down-2'></i>");
+    const subMenus = $("#monile-menu-container ul .menu-item-has-children > a");
+    $(subMenus).append("<i class='icon-arrow-down-2'></i>");
+
+    const subMenusOpener = $("#monile-menu-container ul .menu-item-has-children > a > i");
+    $(subMenusOpener).on('click', function (e) {
+      const target = e.target;
+      const targetSub = $(target).parents('a').next('.sub-menu');
+
+      $(targetSub).slideToggle(300, function () {
+        $(targetSub).toggleClass('open');
+      });
+    });
   }
 });
 
@@ -106,7 +116,7 @@ jQuery(document).ready(function ($) {
 
   if (dropDownOpener) {
     dropDownOpener.addEventListener("click", function (e) {
-      
+
       $(dropDownOpener).find(".virtual-options").toggleClass("open");
     });
   }

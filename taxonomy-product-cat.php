@@ -25,14 +25,14 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
 ?>
 
 <main class="product-archive taxonomy-product-cat">
-<?php get_template_part(
-		"templates/archiv-product",
-		"sidebar",
-		array(
-			'formUrl' => $formUrl,
-			'getFilters' => $getFilters
-		)
-	); ?>
+  <?php get_template_part(
+    "templates/archiv-product",
+    "sidebar",
+    array(
+      'formUrl' => $formUrl,
+      'getFilters' => $getFilters
+    )
+  ); ?>
 
   <div class="products taxonomy-cat-products">
     <div id="archive-filter-chips" class="filter-chips">
@@ -66,15 +66,17 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
       <div class="content">
         <h1><?php echo $thisTerm->name ?></h1>
 
-        <div class="content-gallery">
-          <div>
-            <img src="<?php echo $galleryGroup["p_cat_gallery_img_1"] ?>" alt="">
+        <?php if ($galleryGroup["p_cat_gallery_img_1"] && $galleryGroup["p_cat_gallery_img_2"] && $galleryGroup["p_cat_gallery_img_3"]) : ?>
+          <div class="content-gallery">
+            <div>
+              <img src="<?php echo $galleryGroup["p_cat_gallery_img_1"] ?>" alt="">
+            </div>
+            <div>
+              <img src="<?php echo $galleryGroup["p_cat_gallery_img_2"] ?>" alt="">
+              <img src="<?php echo $galleryGroup["p_cat_gallery_img_3"] ?>" alt="">
+            </div>
           </div>
-          <div>
-            <img src="<?php echo $galleryGroup["p_cat_gallery_img_2"] ?>" alt="">
-            <img src="<?php echo $galleryGroup["p_cat_gallery_img_3"] ?>" alt="">
-          </div>
-        </div>
+        <?php endif; ?>
 
         <section class="content-sections">
           <div class="content-sections-top">
@@ -100,23 +102,37 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
           <?php foreach ($getChildCats as $childId => $childTerm) : ?>
             <?php
             $collectionGallery = get_field_object("p_cat_main_gallery_group", 'product-cat_' . $childTerm["id"])["value"];
-            ?>
-            <div class="collection">
-              <h3 class="collection-title">
-                <a href="<?php echo $childTerm['url'] ?>"><?php echo $childTerm['name'] ?></a>
-              </h3>
-              <div class="collection-gallery">
-                <?php
-                foreach ($collectionGallery as $collImg) {
-                  if (!empty($collImg)) {
-                    echo "<a class='gallery-item' href='" . $childTerm['url'] . "'>";
-                    echo "<img src='$collImg;'>";
-                    echo "</a>";
+
+            $args = array(
+              'post_type' => 'product',
+              'tax_query' => array(
+                array(
+                  'taxonomy' => 'product-cat',
+                  'field' => 'term_id',
+                  'terms' => $childId
+                )
+              )
+            );
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()) : ?>
+              <div class="collection">
+                <h3 class="collection-title">
+                  <a href="<?php echo $childTerm['url'] ?>"><?php echo $childTerm['name'] ?></a>
+                </h3>
+                <div class="collection-gallery">
+                  <?php
+                  foreach ($collectionGallery as $collImg) {
+                    if (!empty($collImg)) {
+                      echo "<a class='gallery-item' href='" . $childTerm['url'] . "'>";
+                      echo "<img src='$collImg;'>";
+                      echo "</a>";
+                    }
                   }
-                }
-                ?>
+                  ?>
+                </div>
               </div>
-            </div>
+            <?php endif; ?>
           <?php endforeach; ?>
         </section>
       </div>

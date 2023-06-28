@@ -77,6 +77,12 @@ main {
   user-select: none;
 }
 
+.one-line-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 main.not-found {
   >div {
     position: relative;

@@ -25,16 +25,34 @@ function render_slides()
 }
 
 /******************************* */
-$specification = [
-	'Product Sid' => get_field('product_sid', $productId),
-	'Product code' => get_field('product_code', $productId),
-	'color code' => get_field('product_color_code', $productId),
-	'finish' => get_field('product_finish', $productId),
-	'installation' => get_field('product_installation', $productId),
-	'sqft / box' => get_field('product_sqft_box', $productId),
-	'sqft / pallet' => get_field('product_sqft_pallet', $productId),
-	'box / pallet' => get_field('product_box_pallet', $productId),
-];
+$specification = array();
+
+$typeTerm = get_the_terms($productId, 'product-cat');
+foreach ($typeTerm as $tTerm) {
+	if ($tTerm->parent > 0) {
+		$parent = get_term($tTerm->parent);
+		$specification['Type'] = $parent->name;
+		$specification['Collection'] = $tTerm->name;
+		break;
+	}
+}
+
+$specification['Product Sid'] = get_field('product_sid', $productId);
+$specification['Product code'] = get_field('product_code', $productId);
+$specification['color code'] = get_field('product_color_code', $productId);
+$specification['finish'] = get_field('product_finish', $productId);
+$specification['installation'] = get_field('product_installation', $productId);
+$specification['sqft / box'] = get_field('product_sqft_box', $productId);
+$specification['sqft / pallet'] = get_field('product_sqft_pallet', $productId);
+$specification['box / pallet'] = get_field('product_box_pallet', $productId);
+
+$filterTerm = get_the_terms($productId, 'filters');
+foreach ($filterTerm as $fTerm) {
+	if ($fTerm->parent > 0) {
+		$parent = get_term($fTerm->parent);
+		$specification[$parent->name] = $fTerm->name;
+	}
+}
 
 /******************************* */
 $related_blogs = get_field('related_group')['related_articles'];
@@ -72,20 +90,13 @@ $related_products_query = new WP_Query($related_products_args);
 	<div class="top">
 		<div class="tabs">
 			<div class="headings">
-				<span data-tab="description" class="show">description</span>
-				<span data-tab="specification">specification</span>
-				<span data-tab="technical">technical</span>
+				<span data-tab="specification" class="show">specification</span>
+				<span data-tab="description">description</span>
+				<!-- <span data-tab="technical">technical</span> -->
 			</div>
 
 			<div class="content">
-				<div data-tab="description" class="show">
-					<h2>item description</h2>
-					<div>
-						<?php echo !empty(get_field('product_desc')) ? _(get_field('product_desc')) : ''; ?>
-					</div>
-				</div>
-
-				<div data-tab="specification">
+				<div data-tab="specification" class="show">
 					<h2>item specification</h2>
 					<div class="specification">
 						<?php foreach ($specification as $item => $value) : ?>
@@ -99,12 +110,21 @@ $related_products_query = new WP_Query($related_products_args);
 					</div>
 				</div>
 
+				<div data-tab="description">
+					<h2>item description</h2>
+					<div>
+						<?php echo !empty(get_field('product_desc')) ? _(get_field('product_desc')) : ''; ?>
+					</div>
+				</div>
+
+				<!--
 				<div data-tab="technical">
 					<h2>item technical</h2>
 					<div>
 						<?php echo !empty(get_field('product_tech')) ? _(get_field('product_tech')) : ''; ?>
 					</div>
 				</div>
+				-->
 			</div>
 		</div>
 
@@ -132,6 +152,7 @@ $related_products_query = new WP_Query($related_products_args);
 	<div class="call-to-action">
 		price:
 		<a href="#" class="btn bg_secondary1">
+			<i class="icon-phone"></i>
 			call us now
 		</a>
 		we are here for you 24/7 ,call us now
@@ -140,12 +161,26 @@ $related_products_query = new WP_Query($related_products_args);
 	<div class="transitions">
 		<h2 class="h2">transitions that comes with this product</h2>
 		<div>
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/quarter-round.png' ?> " alt="">
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/reducer.png' ?> " alt="">
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/stair-noising-1.png' ?> " alt="">
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/stair-noising-2.png' ?> " alt="">
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/t-modeling.png' ?> " alt="">
-			<img src=" <?php echo get_template_directory_uri() . '/imgs/threshold.png' ?> " alt="">
+			<div class="item">
+				<img src=" <?php echo get_template_directory_uri() . '/imgs/End_Cap_1.png' ?> " alt="">
+				<p>End Cap</p>
+			</div>
+			<div class="item">
+				<img src=" <?php echo get_template_directory_uri() . '/imgs/Quarter_Round_1.png' ?> " alt="">
+				<p>Quarter Round</p>
+			</div>
+			<div class="item">
+				<img src=" <?php echo get_template_directory_uri() . '/imgs/Reducer_1.png' ?> " alt="">
+				<p>Reducer</p>
+			</div>
+			<div class="item">
+				<img src=" <?php echo get_template_directory_uri() . '/imgs/Stair_Nose_1.png' ?> " alt="">
+				<p>Stair Nose</p>
+			</div>
+			<div class="item">
+				<img src=" <?php echo get_template_directory_uri() . '/imgs/T-Molding_1.png' ?> " alt="">
+				<p>T-Molding</p>
+			</div>
 		</div>
 	</div>
 
@@ -153,8 +188,7 @@ $related_products_query = new WP_Query($related_products_args);
 		<h2 class="h2">you might like this products too</h2>
 		<div>
 			<?php
-
-			if ($related_products) {
+			if (!empty($related_products)) {
 				foreach ($related_products as $product) {
 					get_template_part('/templates/loop/product');
 				}
@@ -167,8 +201,6 @@ $related_products_query = new WP_Query($related_products_args);
 					}
 				}
 			}
-
-
 			?>
 		</div>
 	</div>
@@ -198,4 +230,5 @@ $related_products_query = new WP_Query($related_products_args);
 		</div>
 	</div>
 </main>
+
 <?php get_footer() ?>

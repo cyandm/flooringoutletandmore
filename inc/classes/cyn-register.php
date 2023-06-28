@@ -76,17 +76,17 @@ if (!class_exists('cyn_register')) {
 			$postTypes = array($GLOBALS["product-post-type"]);
 
 			$labels = array(
-				'name' => _x('Categories', 'taxonomy general name', 'textdomain'),
-				'singular_name' => _x('Category', 'taxonomy singular name', 'textdomain'),
-				'search_items' => __('Search Categories', 'textdomain'),
-				'all_items' => __('All Categories', 'textdomain'),
-				'parent_item' => __('Parent Category', 'textdomain'),
-				'parent_item_colon' => __('Parent Category:', 'textdomain'),
-				'edit_item' => __('Edit Category', 'textdomain'),
-				'update_item' => __('Update Category', 'textdomain'),
-				'add_new_item' => __('Add New Category', 'textdomain'),
-				'new_item_name' => __('New Category Name', 'textdomain'),
-				'menu_name' => __('Category', 'textdomain'),
+				'name' => _x('Types', 'taxonomy general name', 'textdomain'),
+				'singular_name' => _x('Type', 'taxonomy singular name', 'textdomain'),
+				'search_items' => __('Search Types', 'textdomain'),
+				'all_items' => __('All Types', 'textdomain'),
+				'parent_item' => __('Parent Type', 'textdomain'),
+				'parent_item_colon' => __('Parent Type:', 'textdomain'),
+				'edit_item' => __('Edit Type', 'textdomain'),
+				'update_item' => __('Update Type', 'textdomain'),
+				'add_new_item' => __('Add New Type', 'textdomain'),
+				'new_item_name' => __('New Type Name', 'textdomain'),
+				'menu_name' => __('Type', 'textdomain'),
 			);
 			$args = array(
 				'hierarchical' => true,
@@ -171,8 +171,10 @@ if (!class_exists('cyn_register')) {
 				$cynOptions = new cyn_options();
 
 				$getCats     = $cynOptions->cyn_getProdactTerms(false, true, 'product-cat');
+				$getBrands   = $cynOptions->cyn_getProdactTerms(false, true, 'brands');
 				$getFilters  = $cynOptions->cyn_getProdactTerms(false, true, 'filters');
 				$catTerms    = array();
+				$brandTerms  = array();
 				$filterTerms = array();
 				$tax_query   = $query->tax_query->queries;
 				$tax_query['relation'] = "AND";
@@ -180,6 +182,10 @@ if (!class_exists('cyn_register')) {
 				foreach ($getCats as $catId)
 					if (isset($_GET["cat-" . $catId]))
 						$catTerms[] = $catId;
+
+				foreach ($getBrands as $catId)
+					if (isset($_GET["cat-" . $catId]))
+						$brandTerms[] = $catId;
 
 				foreach ($getFilters as $filterId)
 					if (isset($_GET["cat-" . $filterId]))
@@ -190,6 +196,14 @@ if (!class_exists('cyn_register')) {
 						'taxonomy' => 'product-cat',
 						'field' => "id",
 						'terms' => $catTerms
+					);
+				}
+
+				if (count($brandTerms) > 0) {
+					$tax_query[] = array(
+						'taxonomy' => 'brands',
+						'field' => "id",
+						'terms' => $brandTerms
 					);
 				}
 

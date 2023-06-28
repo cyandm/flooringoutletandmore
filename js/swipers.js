@@ -57,7 +57,7 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
     },
   },
   breakpoints: {
-    1025: {
+    1024: {
       loop: false,
       direction: 'vertical',
       creativeEffect: {
@@ -78,6 +78,43 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
   },
 });
 
+/********************************************************************************** */
+const desktopBreakpoint = window.matchMedia('(min-width: 1024px)');
+let servicesSwiper = undefined;
+
+window.addEventListener('resize', function (e) {
+  desktopBreakpoint.matches = window.matchMedia('(min-width: 1024px)').matches;
+  servicesSwiperInit();
+});
+
+function servicesSwiperInit() {
+  if (desktopBreakpoint.matches) {
+    servicesSwiper = new Swiper('#homeSwiper_services', {
+      direction: 'horizontal',
+      speed: 600,
+      nested: true,
+      mousewheel: true,
+      spaceBetween: 40,
+    });
+  }
+
+  if (!desktopBreakpoint.matches) {
+    const servicesSwiperWrapper = document.querySelector("#homeSwiper_services > .wrapper");
+    const servicesSwiperSlide = document.querySelectorAll("#homeSwiper_services > .wrapper > .slide");
+    if (servicesSwiperWrapper && servicesSwiperSlide) {
+      servicesSwiperWrapper.classList.remove("swiper-wrapper");
+      servicesSwiperSlide.forEach(element => {
+        element.classList.remove("swiper-slide");
+      });
+    }
+
+    if (servicesSwiper) {
+      servicesSwiper.destroy();
+    }
+  }
+}
+servicesSwiperInit();
+
 export const promotionSwiper = new Swiper('#homeSwiper_promotion', {
   direction: 'horizontal',
   speed: 600,
@@ -90,7 +127,6 @@ export const promotionSwiper = new Swiper('#homeSwiper_promotion', {
     prevEl: '.swiper-btn-prev',
   },
 });
-
 /********************************************************************************** */
 const productGalleryThumbs = new Swiper('#productGalleryThumbs', {
   spaceBetween: 4,

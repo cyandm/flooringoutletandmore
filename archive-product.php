@@ -6,7 +6,10 @@ $cynOptions = new cyn_options();
 
 $formUrl = get_post_type_archive_link($GLOBALS["product-post-type"]);
 $getCats = $cynOptions->cyn_getProdactTerms();
+$getBrands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
 $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+
+$allChips = array_merge($getCats, $getBrands, $getFilters);
 ?>
 
 <main class="product-archive">
@@ -16,22 +19,14 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
 		array(
 			'formUrl' => $formUrl,
 			'getCats' => $getCats,
+			'getBrands' => $getBrands,
 			'getFilters' => $getFilters
 		)
 	); ?>
 
 	<div class="products">
 		<div id="archive-filter-chips" class="filter-chips">
-			<?php foreach ($getCats as $cat) : ?>
-				<?php if (isset($_GET['cat-' . $cat['id']])) : ?>
-					<div class="filter-chip">
-						<span><?php echo $cat['name']; ?></span>
-						<i data-filter="<?php echo 'cat-' . $cat['id'] ?>" class="icon-close"></i>
-					</div>
-				<?php endif; ?>
-			<?php endforeach; ?>
-
-			<?php foreach ($getFilters as $cat) : ?>
+			<?php foreach ($allChips as $cat) : ?>
 				<?php if (isset($_GET['cat-' . $cat['id']])) : ?>
 					<div class="filter-chip">
 						<span><?php echo $cat['name']; ?></span>

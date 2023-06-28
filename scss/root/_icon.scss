@@ -14,6 +14,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-pinterest:before {
+  content: "\e919";
+}
+
+.icon-youtube:before {
+  content: "\e91a";
+}
+
+.icon-facebook:before {
+  content: "\e91b";
+}
+
+.icon-yelp:before {
+  content: "\e91d";
+}
+
 .icon-whatsapp-bigger:before {
   content: "\e900";
 }
@@ -100,7 +116,6 @@
 
 .icon-phone:before {
   content: "\e910";
-  color: #fefefe;
 }
 
 .icon-search:before {
