@@ -152,7 +152,7 @@ const productGalleryThumbsModal = new Swiper('#productGalleryThumbsModal', {
   watchSlidesProgress: true,
 });
 const productGalleryModal = new Swiper('#productGalleryModal', {
-  spaceBetween: 10,
+  spaceBetween: 12,
   navigation: {
     nextEl: '.btn-next',
     prevEl: '.btn-prev',
@@ -197,5 +197,28 @@ archiveProjectArticles.forEach(function (article, i) {
     thumbs: {
       swiper: archiveProjectGallery
     }
+  });
+});
+
+/********************************************************************************** */
+const accessoriesGallery = document.querySelectorAll("main.accessories > .content > .accessory > .accessory-content > .gallery .swiper-gallery");
+const accessoriesGalleryThumbs = document.querySelectorAll("main.accessories > .content > .accessory > .accessory-content > .gallery .swiper-gallery-thumbs");
+
+accessoriesGallery.forEach(function (gallery, i) {
+  const accessoryGalleryThumbs = new Swiper(accessoriesGalleryThumbs[i], {
+    spaceBetween: 4,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: 1,
+  });
+  const accessoryGallery = new Swiper(gallery, {
+    spaceBetween: 12,
+    navigation: {
+      nextEl: '.swiper-next-btn',
+      prevEl: '.swiper-prev-btn',
+    },
+    thumbs: {
+      swiper: accessoryGalleryThumbs,
+    },
   });
 });

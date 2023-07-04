@@ -8,6 +8,7 @@ if (!class_exists('cyn_register')) {
 
 			add_action('init', [$this, 'cyn_register_products']);
 			add_action('init', [$this, 'cyn_register_projects']);
+			add_action('init', [$this, 'cyn_register_accessories']);
 
 			add_action('init', [$this, 'cyn_register_product_cats']);
 			add_action('init', [$this, 'cyn_register_product_filters']);
@@ -269,6 +270,57 @@ if (!class_exists('cyn_register')) {
 			];
 
 			register_post_type('project', $args);
+		}
+
+		public function cyn_register_accessories()
+		{
+			$postType = "accessory";
+			$GLOBALS["accessory-post-type"] = $postType;
+
+			$labels = [
+				'name' => _x('Accessory', 'Post type general name', 'Accessory'),
+				'singular_name' => _x('Accessory', 'Post type singular name', 'Accessory'),
+				'menu_name' => _x('Accessory', 'Admin Menu text', 'Accessory'),
+				'name_admin_bar' => _x('Accessory', 'Add New on Toolbar', 'Accessory'),
+				'add_new' => __('Add New', 'Accessory'),
+				'add_new_item' => __('Add New Accessory', 'Accessory'),
+				'new_item' => __('New Accessory', 'Accessory'),
+				'edit_item' => __('Edit Accessory', 'Accessory'),
+				'view_item' => __('View Accessory', 'Accessory'),
+				'all_items' => __('All accessories', 'Accessory'),
+				'search_items' => __('Search Accessory', 'Accessory'),
+				'parent_item_colon' => __('Parent Accessory:', 'Accessory'),
+				'not_found' => __('No Accessory found.', 'Accessory'),
+				'not_found_in_trash' => __('No Accessory found in Trash.', 'Accessory'),
+				'featured_image' => _x('Accessory Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'Accessory'),
+				'set_featured_image' => _x('Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'Accessory'),
+				'remove_featured_image' => _x('Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'Accessory'),
+				'use_featured_image' => _x('Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'Accessory'),
+				'archives' => _x('Accessory archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'Accessory'),
+				'insert_into_item' => _x('Insert into Accessory', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'Accessory'),
+				'uploaded_to_this_item' => _x('Uploaded to this Accessory', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'Accessory'),
+				'filter_items_list' => _x('Filter Accessory list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'Accessory'),
+				'items_list_navigation' => _x('Accessory list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'Accessory'),
+				'items_list' => _x('Accessory list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'Accessory'),
+			];
+			$args = [
+				'labels' => $labels,
+				'description' => 'Accessory custom post type.',
+				'public' => true,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'accessory'),
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'menu_position' => 20,
+				'supports' => ['title', 'thumbnail', 'excerpt'],
+				'show_in_rest' => false
+			];
+
+			return register_post_type($postType, $args);
 		}
 
 		public function cyn_register_recommend_blog_cat()

@@ -116,11 +116,14 @@ main.single-product {
               width: 50%;
               flex: 1 1 auto;
               padding: .5rem;
+              display: flex;
+              align-items: center;
             }
 
             >.item {
               background-color: rgba($color-primary1, 0.5);
             }
+
           }
         }
       }
@@ -131,11 +134,21 @@ main.single-product {
         min-width: 100%;
       }
 
+      position: relative;
       display: grid;
       gap: 1.25rem;
 
       >div {
         width: 100%;
+      }
+
+      img#product-brand-logo {
+        position: absolute;
+        left: $space-3;
+        top: $space-3;
+        width: 5.5rem;
+        z-index: 75;
+        pointer-events: none;
       }
 
       #productGallery {

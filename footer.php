@@ -1,5 +1,5 @@
 <?php
-$front_page_id = get_option('page_on_front')
+$front_page_id = get_option('page_on_front');
 ?>
 
 <footer>

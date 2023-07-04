@@ -20,10 +20,11 @@ if (!class_exists('cyn_acf')) {
 		{
 			add_action('acf/init', [$this, 'cyn_front_page']);
 			add_action('acf/init', [$this, 'cyn_about_page']);
-			add_action('acf/init', [$this, 'cyn_product_brand_tax']);
 			add_action('acf/init', [$this, 'cyn_product_post_type']);
 			add_action('acf/init', [$this, 'cyn_project_post_type']);
+			add_action('acf/init', [$this, 'cyn_accessory_post_type']);
 			add_action('acf/init', [$this, 'cyn_product_cat']);
+			add_action('acf/init', [$this, 'cyn_product_brand_tax']);
 		}
 
 
@@ -317,6 +318,7 @@ if (!class_exists('cyn_acf')) {
 										),
 									),
 								),
+								/*
 								array(
 									'key' => 'field_646344bb8d5d3',
 									'label' => 'Slider 4',
@@ -400,6 +402,7 @@ if (!class_exists('cyn_acf')) {
 										),
 									),
 								),
+								*/
 							),
 						),
 						/* services */
@@ -778,6 +781,35 @@ if (!class_exists('cyn_acf')) {
 
 		public function cyn_product_post_type()
 		{
+			$productGalleryGroup = array(
+				[
+					'key' => 'gallery_img_key_0',
+					'label' => 'Gallery Cover Image',
+					'name' => 'gallery_cover_img',
+					'instructions' => 'Shown in home page layout',
+					'type' => 'image',
+					'return_format' => 'url',
+					'wrapper' => [
+						'width' => '100',
+					],
+				],
+			);
+
+			for ($i = 0; $i < 12; $i++) {
+				$j = $i;
+				$j++;
+				$productGalleryGroup[] = [
+					'key' => 'gallery_img_key_' . $j,
+					'label' => 'Gallery Image ' . $j,
+					'name' => 'gallery_img_' . $j,
+					'type' => 'image',
+					'return_format' => 'url',
+					'wrapper' => [
+						'width' => '50',
+					],
+				];
+			}
+
 			acf_add_local_field_group([
 				'key' => 'product_post_type_key',
 				'title' => 'Product',
@@ -908,122 +940,7 @@ if (!class_exists('cyn_acf')) {
 						'name' => 'product_gallery_group',
 						'type' => 'group',
 						'layout' => 'block',
-						'sub_fields' => [
-							[
-								'key' => 'gallery_img_0_key',
-								'label' => 'Gallery Cover Image',
-								'name' => 'gallery_cover_img',
-								'instructions' => 'Shown in home page layout',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '100',
-								],
-							],
-							[
-								'key' => 'gallery_img_1_key',
-								'label' => 'Gallery Image 1',
-								'name' => 'gallery_img_1',
-								'instructions' => 'Shown in home page layout',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_2_key',
-								'label' => 'Gallery Image 2',
-								'name' => 'gallery_img_2',
-								'instructions' => 'Shown in home page layout',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_3_key',
-								'label' => 'Gallery Image 3',
-								'name' => 'gallery_img_3',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_4_key',
-								'label' => 'Gallery Image 4',
-								'name' => 'gallery_img_4',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_5_key',
-								'label' => 'Gallery Image 5',
-								'name' => 'gallery_img_5',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_6_key',
-								'label' => 'Gallery Image 6',
-								'name' => 'gallery_img_6',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_7_key',
-								'label' => 'Gallery Image 7',
-								'name' => 'gallery_img_7',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_8_key',
-								'label' => 'Gallery Image 8',
-								'name' => 'gallery_img_8',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_9_key',
-								'label' => 'Gallery Image 9',
-								'name' => 'gallery_img_9',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-							],
-							[
-								'key' => 'gallery_img_10_key',
-								'label' => 'Gallery Image 10',
-								'name' => 'gallery_img_10',
-								'type' => 'image',
-								'return_format' => 'url',
-								'wrapper' => [
-									'width' => '50',
-								],
-
-							]
-						],
+						'sub_fields' => $productGalleryGroup,
 					],
 					[
 						'key' => 'slider_accordion_close_key',
@@ -1381,6 +1298,59 @@ if (!class_exists('cyn_acf')) {
 				'hide_on_screen' => array(
 					0 => 'excerpt',
 				),
+			]);
+		}
+
+		public function cyn_accessory_post_type()
+		{
+			$accessoryGalleryGroup = array();
+
+			for ($i = 0; $i < 12; $i++) {
+				$j = $i;
+				$j++;
+				$accessoryGalleryGroup[] = [
+					'key' => 'gallery_img_key_' . $j,
+					'label' => 'Gallery Image ' . $j,
+					'name' => 'gallery_img_' . $j,
+					'type' => 'image',
+					'return_format' => 'url',
+					'wrapper' => [
+						'width' => '50',
+					],
+				];
+			}
+
+			acf_add_local_field_group([
+				'key' => 'accessory_settings_key',
+				'title' => 'Accessory Settings',
+				'location' => [
+					[
+						[
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'accessory'
+						]
+					]
+				],
+				'fields' => [
+					[
+						'key' => 'accessory_desc_key',
+						'label' => 'Accessory Description',
+						'name' => 'accessory_desc',
+						'type' => 'wysiwyg',
+						'wrapper' => [
+							'width' => '100'
+						]
+					],
+					[
+						'key' => 'accessory_gallery_group_key',
+						'label' => 'Accessory Gallery',
+						'name' => 'accessory_gallery_group',
+						'type' => 'group',
+						'layout' => 'block',
+						'sub_fields' => $accessoryGalleryGroup,
+					],
+				]
 			]);
 		}
 	}

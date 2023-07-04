@@ -1,4 +1,5 @@
 <?php
+$front_page_id = get_option('page_on_front');
 $productId = get_the_ID();
 
 $imgs = [];
@@ -26,6 +27,15 @@ function render_slides()
 
 /******************************* */
 $specification = array();
+
+$brandTerm = get_the_terms($productId, 'brands');
+$brandImg = null;
+if (is_array($brandTerm) && count($brandTerm) > 0) {
+	$brand_id = $brandTerm[0]->term_id;
+	$brandImg = get_field('brand_logo', 'brands' . '_' . $brand_id);
+
+	$specification['Brand'] = $brandTerm[0]->name;
+}
 
 $typeTerm = get_the_terms($productId, 'product-cat');
 foreach ($typeTerm as $tTerm) {
@@ -129,8 +139,12 @@ $related_products_query = new WP_Query($related_products_args);
 		</div>
 
 		<div class="product-images">
+			<?php
+			if (!empty($brandImg))
+				echo "<img id='product-brand-logo' src='$brandImg'>";
+			?>
 
-			<div class="swiper" id="productGallery">
+			<div id="productGallery" class="swiper">
 				<div class="swiper-wrapper">
 					<?php render_slides() ?>
 				</div>
@@ -151,7 +165,7 @@ $related_products_query = new WP_Query($related_products_args);
 
 	<div class="call-to-action">
 		price:
-		<a href="#" class="btn bg_secondary1">
+		<a href="tel:<?= get_field('phone_number_1', $front_page_id) ?>" class="btn bg_secondary1">
 			<i class="icon-phone"></i>
 			call us now
 		</a>

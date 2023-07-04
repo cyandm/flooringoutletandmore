@@ -28,6 +28,7 @@
 			</div>
 		</div>
 	<?php endif; ?>
+  <?php wp_reset_postdata(); ?>
 </main>
 
 <?php get_footer() ?>

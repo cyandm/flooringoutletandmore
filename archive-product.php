@@ -79,6 +79,7 @@ $allChips = array_merge($getCats, $getBrands, $getFilters);
 			</div>
 		<?php endif; ?>
 	</div>
+  <?php wp_reset_postdata(); ?>
 </main>
 
 <?php get_footer() ?>

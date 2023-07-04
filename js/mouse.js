@@ -16,7 +16,7 @@ const copyTextElements = document.querySelectorAll('[data-mouse="copy"]');
 const nextClickElements = document.querySelectorAll('[data-mouse="next"]');
 
 const nextSlideSlide = document.querySelector(
-  '#homeSwiper_slider .swiper-slide:nth-child(4)'
+  '#homeSwiper_slider .swiper-slide:nth-child(3)'
 );
 
 /* Functions */

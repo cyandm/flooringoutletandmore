@@ -21,7 +21,10 @@ if (!$parentTermConditions) {
   $parentTerm = get_term($parentTermId);
 }
 
+$getBrands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
 $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+
+$allChips = array_merge($getBrands, $getFilters);
 ?>
 
 <main class="product-archive taxonomy-product-cat">
@@ -30,13 +33,14 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
     "sidebar",
     array(
       'formUrl' => $formUrl,
+      'getBrands' => $getBrands,
       'getFilters' => $getFilters
     )
   ); ?>
 
   <div class="products taxonomy-cat-products">
     <div id="archive-filter-chips" class="filter-chips">
-      <?php foreach ($getFilters as $cat) : ?>
+      <?php foreach ($allChips as $cat) : ?>
         <?php if (isset($_GET['cat-' . $cat['id']])) : ?>
           <div class="filter-chip">
             <span><?php echo $cat['name']; ?></span>
@@ -101,10 +105,9 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
         <section class="content-collections">
           <?php foreach ($getChildCats as $childId => $childTerm) : ?>
             <?php
-            $collectionGallery = get_field_object("p_cat_main_gallery_group", 'product-cat_' . $childTerm["id"])["value"];
-
-            $args = array(
+            $collectionArgs = array(
               'post_type' => 'product',
+              'posts_per_page' => 4,
               'tax_query' => array(
                 array(
                   'taxonomy' => 'product-cat',
@@ -113,21 +116,21 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
                 )
               )
             );
-            $query = new WP_Query($args);
+            $collectionQuery = new WP_Query($collectionArgs);
 
-            if ($query->have_posts()) : ?>
+            if ($collectionQuery->have_posts()) : ?>
               <div class="collection">
                 <h3 class="collection-title">
                   <a href="<?php echo $childTerm['url'] ?>"><?php echo $childTerm['name'] ?></a>
                 </h3>
-                <div class="collection-gallery">
+
+                <div class="collection-products">
                   <?php
-                  foreach ($collectionGallery as $collImg) {
-                    if (!empty($collImg)) {
-                      echo "<a class='gallery-item' href='" . $childTerm['url'] . "'>";
-                      echo "<img src='$collImg;'>";
-                      echo "</a>";
-                    }
+                  while ($collectionQuery->have_posts()) {
+                    $collectionQuery->the_post();
+                    echo "<div class='product-item'>";
+                    get_template_part("templates/loop/product");
+                    echo "</div>";
                   }
                   ?>
                 </div>

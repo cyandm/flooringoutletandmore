@@ -205,37 +205,21 @@ main.product-archive {
           margin-top: $space-7;
 
           .collection {
+            &-title {
+              margin-bottom: $space-5;
+            }
 
-            &-gallery {
+            &-products {
               display: flex;
               flex-direction: row;
-              gap: $space-5;
+              flex-wrap: wrap;
 
-              .gallery-item {
-                overflow: hidden;
-                border-radius: 0.875rem;
+              .product-item {
                 width: 25%;
+                padding: .5rem;
 
-                &:first-child {
-                  flex: 1 1 auto;
+                @media (width <=768px) {
                   width: 50%;
-                  outline: 1px solid $color-secondary2;
-                }
-
-                img {
-                  height: 100%;
-                }
-              }
-
-              @media (width <=768px) {
-                flex-direction: column;
-
-                .gallery-item {
-                  width: 100% !important;
-
-                  img {
-                    height: 17rem;
-                  }
                 }
               }
             }
