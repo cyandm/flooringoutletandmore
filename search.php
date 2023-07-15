@@ -1,6 +1,8 @@
 <?php
 global $wp_query;
 global $wpdb;
+$cynOptions  = new cyn_options();
+$cynRegister = new cyn_register(false);
 
 $searchQueryS = get_search_query();
 
@@ -48,46 +50,47 @@ foreach ($dbSearchQueryTaxIds as $tax) {
   }
 }
 
-$dbSearchQuery = array_merge($dbSearchQueryT, $dbSearchQueryM, $dbSearchQueryTerm);
+$dbSearchQuery = array_unique(array_merge($dbSearchQueryT, $dbSearchQueryM, $dbSearchQueryTerm));
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+$filters = $cynRegister->cyn_archive_pre_get_posts([]);
+
 $searchQueryArgs = array(
   'post_type' => "product",
-  'post__in'  => array_unique($dbSearchQuery),
-  'posts_per_page' => 15,
-  'paged' => $paged
+  'post__in'  => $dbSearchQuery,
+  'paged' => $paged,
+  'tax_query' => $filters
 );
 
 $searchWpQuery = new WP_Query($searchQueryArgs);
+
+
+$formUrl    = "./";
+$getCats    = $cynOptions->cyn_getProdactTerms();
+$getBrands  = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
+$getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+$allChips = array_merge($getCats, $getBrands, $getFilters);
 ?>
 
 <?php get_header() ?>
 
 <main class="product-archive search-page">
-  <?php /*
-    get_template_part(
-      "templates/archiv-product",
-      "sidebar",
-      array(
-        'formUrl' => $formUrl,
-        'getCats' => $getCats,
-        'getFilters' => $getFilters
-      )
-    );
-  */ ?>
+  <?php
+  get_template_part(
+    "templates/archiv-product",
+    "sidebar",
+    array(
+      'formUrl' => $formUrl,
+      'getCats' => $getCats,
+      'getBrands' => $getBrands,
+      'getFilters' => $getFilters
+    )
+  );
+  ?>
 
   <div class="searchs">
-    <!--
+    <div id="archive-filter-chips" class="filter-chips">
       <div id="archive-filter-chips" class="filter-chips">
-        <?php foreach ($getCats as $cat) : ?>
-          <?php if (isset($_GET['cat-' . $cat['id']])) : ?>
-            <div class="filter-chip">
-              <span><?php echo $cat['name']; ?></span>
-              <i data-filter="<?php echo 'cat-' . $cat['id'] ?>" class="icon-close"></i>
-            </div>
-          <?php endif; ?>
-        <?php endforeach; ?>
-
-        <?php foreach ($getFilters as $cat) : ?>
+        <?php foreach ($allChips as $cat) : ?>
           <?php if (isset($_GET['cat-' . $cat['id']])) : ?>
             <div class="filter-chip">
               <span><?php echo $cat['name']; ?></span>
@@ -96,11 +99,11 @@ $searchWpQuery = new WP_Query($searchQueryArgs);
           <?php endif; ?>
         <?php endforeach; ?>
       </div>
-    -->
+    </div>
 
     <div class="content content-collection">
       <h1>search results for: <?php the_search_query(); ?></h1>
-      <?php if ($searchWpQuery->have_posts()) : ?>
+      <?php if ($searchWpQuery->have_posts() && count($dbSearchQuery) > 0) : ?>
         <div class="content-collection-products">
           <?php
           while ($searchWpQuery->have_posts()) {

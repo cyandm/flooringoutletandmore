@@ -166,8 +166,8 @@ if (!class_exists('cyn_register')) {
 
 		public function cyn_archive_pre_get_posts($query)
 		{
-			$archiveCondition = $query->is_archive && $query->is_main_query() && !is_admin();
-			$searchCondition  = $query->is_search && $query->is_main_query() && !is_admin();
+			$archiveCondition = is_archive() && $query->is_main_query() && !is_admin();
+			$searchCondition  = is_search()  && !is_admin();
 
 			if ($archiveCondition || $searchCondition) {
 				$cynOptions = new cyn_options();
@@ -178,7 +178,7 @@ if (!class_exists('cyn_register')) {
 				$catTerms    = array();
 				$brandTerms  = array();
 				$filterTerms = array();
-				$tax_query   = $query->tax_query->queries;
+				$tax_query   = isset($query->tax_query->queries) ? $query->tax_query->queries : array();
 				$tax_query['relation'] = "AND";
 
 				foreach ($getCats as $catId)
@@ -217,7 +217,8 @@ if (!class_exists('cyn_register')) {
 					);
 				}
 
-				$query->set('tax_query', $tax_query);
+				if ($archiveCondition)
+					$query->set('tax_query', $tax_query);
 			}
 
 			if ($searchCondition) {
