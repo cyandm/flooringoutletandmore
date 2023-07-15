@@ -60,13 +60,13 @@ $getFilters = isset($args["getFilters"]) ? $args["getFilters"] : [];
         <div class="checkbox-container">
 
           <?php foreach ($getBrands as $cat) : ?>
-              <div class="checkbox-wrapper">
-                <label for="<?php echo 'cat-' . $cat['id'] ?>"><?php echo $cat['name']; ?></label>
-                <div class="inner-checkbox">
-                  <input type="checkbox" name="<?php echo 'cat-' . $cat['id']; ?>" id="<?php echo 'cat-' . $cat['id']; ?>" value="on" <?php echo isset($_GET['cat-' . $cat['id']]) ? "checked" : ""; ?> />
-                  <span class="checkmark"></span>
-                </div>
+            <div class="checkbox-wrapper">
+              <label for="<?php echo 'cat-' . $cat['id'] ?>"><?php echo $cat['name']; ?></label>
+              <div class="inner-checkbox">
+                <input type="checkbox" name="<?php echo 'cat-' . $cat['id']; ?>" id="<?php echo 'cat-' . $cat['id']; ?>" value="on" <?php echo isset($_GET['cat-' . $cat['id']]) ? "checked" : ""; ?> />
+                <span class="checkmark"></span>
               </div>
+            </div>
           <?php endforeach; ?>
 
         </div>
@@ -76,7 +76,7 @@ $getFilters = isset($args["getFilters"]) ? $args["getFilters"] : [];
 
   <?php foreach ($getFilters as $filterId => $filterCat) : ?>
     <?php if ($filterCat["parent"] == 0 && $filterCat['slug'] != 'species') : ?>
-      <div class="box">
+      <div class="box <?= $filterCat["name"] . '-filter' ?>">
         <div class="title">
           <span><?php echo $filterCat["name"] ?></span>
           <i class="icon-arrow-down-2"></i>

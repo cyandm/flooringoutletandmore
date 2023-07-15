@@ -20,17 +20,22 @@ $brands = get_terms(
     </header>
 
     <main class="brand-wrapper">
+      <?php $logoNumInPage = 0; ?>
       <?php foreach ($brands as $brand) : ?>
+        <?php if ($logoNumInPage < 15) : ?>
+          <?php
+          $brand_id = $brand->term_id;
+          $brand_link = get_term_link($brand_id);
+          $brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
+          $brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id);
+          ?>
+          <a href="<?php echo esc_url($brand_link) ?>" data-mouse="" data-image="<?php echo $brand_sample ?>">
+            <img src="<?php echo $brand_sample ?>" style="display: none; pointer-events: none; visibility: hidden;">
+            <img src="<?php echo $brand_logo ?>" alt="">
+          </a>
         <?php
-        $brand_id = $brand->term_id;
-        $brand_link = get_term_link($brand_id);
-        $brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
-        $brand_sample = get_field('brand_sample', 'brands' . '_' . $brand_id);
-        ?>
-        <a href="<?php echo esc_url($brand_link) ?>" data-mouse="" data-image="<?php echo $brand_sample ?>">
-          <img src="<?php echo $brand_sample ?>" style="display: none; pointer-events: none; visibility: hidden;">
-          <img src="<?php echo $brand_logo ?>" alt="">
-        </a>
+          $logoNumInPage++;
+        endif; ?>
       <?php endforeach; ?>
     </main>
 

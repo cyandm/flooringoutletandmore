@@ -1,5 +1,3 @@
-<?php get_header() ?>
-
 <?php
 global $wp_query;
 $cynOptions = new cyn_options();
@@ -11,6 +9,8 @@ $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-t
 
 $allChips = array_merge($getCats, $getBrands, $getFilters);
 ?>
+
+<?php get_header() ?>
 
 <main class="product-archive">
 	<?php get_template_part(

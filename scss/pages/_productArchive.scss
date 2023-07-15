@@ -303,3 +303,13 @@ main .page-nav-container {
     }
   }
 }
+
+main.search-page {
+  .product-item {
+    width: 20% !important;
+
+    @media (width <=768px) {
+      width: 50% !important;
+    }
+  }
+}

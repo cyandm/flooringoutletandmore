@@ -3,19 +3,20 @@
 if (!class_exists('cyn_register')) {
 	class cyn_register
 	{
-		function __construct()
+		function __construct($actions = true)
 		{
+			if ($actions == true) {
+				add_action('init', [$this, 'cyn_register_products']);
+				add_action('init', [$this, 'cyn_register_projects']);
+				add_action('init', [$this, 'cyn_register_accessories']);
 
-			add_action('init', [$this, 'cyn_register_products']);
-			add_action('init', [$this, 'cyn_register_projects']);
-			add_action('init', [$this, 'cyn_register_accessories']);
+				add_action('init', [$this, 'cyn_register_product_cats']);
+				add_action('init', [$this, 'cyn_register_product_filters']);
+				add_action('init', [$this, 'cyn_register_product_brands']);
+				add_action('init', [$this, 'cyn_register_recommend_blog_cat']);
 
-			add_action('init', [$this, 'cyn_register_product_cats']);
-			add_action('init', [$this, 'cyn_register_product_filters']);
-			add_action('init', [$this, 'cyn_register_product_brands']);
-			add_action('init', [$this, 'cyn_register_recommend_blog_cat']);
-
-			add_action('pre_get_posts', [$this, 'cyn_archive_pre_get_posts']);
+				add_action('pre_get_posts', [$this, 'cyn_archive_pre_get_posts']);
+			}
 		}
 
 		public function cyn_register_products()
@@ -220,7 +221,7 @@ if (!class_exists('cyn_register')) {
 			}
 
 			if ($searchCondition) {
-				$query->set('post_type', 'product');
+				return $tax_query;
 			}
 		}
 

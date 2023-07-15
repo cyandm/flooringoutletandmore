@@ -147,6 +147,9 @@ main.single-product {
         left: $space-3;
         top: $space-3;
         width: 5.5rem;
+        padding: .25rem;
+        border-radius: .25rem;
+        background-color: rgba($color-primary2, 0.6);
         z-index: 75;
         pointer-events: none;
       }
