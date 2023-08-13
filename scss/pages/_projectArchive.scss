@@ -57,13 +57,13 @@ main.projects .content {
       transition: translate .35s ease;
 
       &.show {
-        display: block;
+        display: flex;
         translate: 0 0;
       }
 
       &,
       * {
-        z-index: 111;
+        z-index: 9999;
       }
 
       >.image-sliders-content {
@@ -155,6 +155,10 @@ main.projects .content {
               right: 0.5rem;
             }
           }
+        }
+
+        img {
+          object-fit: contain;
         }
       }
     }

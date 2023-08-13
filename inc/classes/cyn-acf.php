@@ -20,6 +20,7 @@ if (!class_exists('cyn_acf')) {
 		{
 			add_action('acf/init', [$this, 'cyn_front_page']);
 			add_action('acf/init', [$this, 'cyn_about_page']);
+			add_action('acf/init', [$this, 'cyn_special_offer_page']);
 			add_action('acf/init', [$this, 'cyn_product_post_type']);
 			add_action('acf/init', [$this, 'cyn_project_post_type']);
 			add_action('acf/init', [$this, 'cyn_accessory_post_type']);
@@ -625,6 +626,38 @@ if (!class_exists('cyn_acf')) {
 							'name' => 'google_map',
 							'type' => 'textarea',
 						),
+						/* Head Tag */
+						array(
+							'key' => 'key_head_tags',
+							'label' => 'Head Tags',
+							'name' => '',
+							'aria-label' => '',
+							'type' => 'tab',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'placement' => 'top',
+							'endpoint' => 0,
+						),
+						array(
+							'key' => 'head_tags_key',
+							'label' => 'Google Tag',
+							'name' => 'head_tags',
+							'instructions' => '',
+							'type' => 'textarea',
+						),
+						array(
+							'key' => 'top_body_key',
+							'label' => 'Body script',
+							'name' => 'top_body',
+							'instructions' => '',
+							'type' => 'textarea',
+						),
 					),
 					'location' => array(
 						array(
@@ -711,6 +744,13 @@ if (!class_exists('cyn_acf')) {
 							'key' => 'content_three_key',
 							'type' => 'wysiwyg',
 						],
+						array(
+							'key' => 'video_iframe_key',
+							'label' => 'Video',
+							'name' => 'video_iframe',
+							'instructions' => '',
+							'type' => 'textarea',
+						),
 					],
 					'location' => [
 						[
@@ -1352,6 +1392,49 @@ if (!class_exists('cyn_acf')) {
 					],
 				]
 			]);
+		}
+
+		public function cyn_special_offer_page()
+		{
+			acf_add_local_field_group(array(
+				'key' => "special_offer_group_key",
+				'title' => 'Special Offer',
+				'fields' => array(
+					array(
+						'key' => 'special_offer_posts_key',
+						'label' => 'Special Offer',
+						'name' => 'special_offer_posts',
+						'type' => 'post_object',
+						'post_type' => 'product',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					),
+					array(
+						'key' => 'in_stok_posts_key',
+						'label' => 'In Stock',
+						'name' => 'in_stok_posts',
+						'type' => 'post_object',
+						'post_type' => 'product',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'page_template',
+							'operator' => '==',
+							'value' => 'templates/special-offer.php',
+						),
+					),
+				),
+			));
 		}
 	}
 }

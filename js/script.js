@@ -121,3 +121,44 @@ jQuery(document).ready(function ($) {
     });
   }
 });
+
+jQuery(document).ready(function ($) {
+  const inputSearch = document.querySelector("input#search");
+
+  if (inputSearch) {
+    const placeholdersTxt = [
+      "Brand",
+      "Type",
+      "Collection",
+      "Color",
+      "Thickness",
+      "Product",
+      "Name",
+      "Category",
+    ];
+    const txtMaxCount = placeholdersTxt.length;
+
+    let txtCounter = 0;
+    const placeholderInterval = setInterval(function () {
+      if (txtCounter >= txtMaxCount)
+        txtCounter = txtCounter - txtMaxCount;
+
+      let newTxt = "Search By ";
+      const newPlc = placeholdersTxt[txtCounter].split("");
+
+      let plcCounter = 0;
+      function setChar() {
+        if (plcCounter < newPlc.length) {
+          newTxt = newTxt + newPlc[plcCounter];
+          $(inputSearch).attr('placeholder', newTxt);
+          setTimeout(setChar, 120);
+        }
+        plcCounter++;
+      }
+      setChar();
+
+      txtCounter++;
+    }, 2000);
+
+  }
+});

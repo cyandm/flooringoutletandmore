@@ -3,6 +3,7 @@
 $cat_info = [];
 if (isset($args["cat_info"])) :
   $cat_info = $args["cat_info"];
+  $cat_info['url'] = site_url() . "/product?filter=on&cat-" . $cat_info["id"] . "=on";
 
   $thisCatArgs = array(
     'post_type' => 'product',
@@ -19,7 +20,7 @@ if (isset($args["cat_info"])) :
   $catProducts = new WP_Query($thisCatArgs);
 
   if ($catProducts->have_posts()) :
-?>
+  ?>
 
     <div class="archive-products-cat">
       <div class="cat-title">
@@ -28,7 +29,9 @@ if (isset($args["cat_info"])) :
       </div>
 
       <div>
-        <img src="<?php echo $cat_info["img_url"] ?>" alt="">
+        <a href="<?php echo $cat_info["url"] ?>">
+          <img src="<?php echo $cat_info["img_url"] ?>" alt="<?php echo $cat_info["name"] ?>">
+        </a>
       </div>
 
       <div class="cat-products">
@@ -44,7 +47,7 @@ if (isset($args["cat_info"])) :
       </div>
     </div>
 
-<?php
+  <?php
   endif;
   wp_reset_postdata();
 endif;

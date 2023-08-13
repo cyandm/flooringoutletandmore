@@ -1,12 +1,14 @@
 <?php /* Template Name: Brands */ ?>
 
 <?php
-$brands = get_terms(
-  array(
-    'taxonomy' => 'brands',
-    'hide_empty' => false,
-  )
-);
+$cynOptions = new cyn_options();
+$brands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
+
+usort($brands, function ($a, $b) {
+  if (str_contains($a['slug'], 'parma-floor') || str_contains($b['slug'], 'parma-floor'))
+    return 1;
+  return 0;
+});
 ?>
 
 <?php get_header() ?>
@@ -15,13 +17,12 @@ $brands = get_terms(
   <div class="content">
     <?php foreach ($brands as $brand) : ?>
       <?php
-      $brand_id = $brand->term_id;
-      $brand_link = get_term_link($brand_id);
+      $brand_id   = $brand['id'];
       $brand_logo = get_field('brand_logo', 'brands' . '_' . $brand_id);
       ?>
-        <a href="<?php echo $brand_link; ?>">
-          <img src="<?php echo $brand_logo; ?>" alt="">
-        </a>
+      <a href="<?php echo $brand['url']; ?>">
+        <img src="<?php echo $brand_logo; ?>" alt="">
+      </a>
     <?php endforeach; ?>
   </div>
 </main>

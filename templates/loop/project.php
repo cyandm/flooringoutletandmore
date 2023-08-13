@@ -5,7 +5,7 @@ $gallery = get_field("project_gallery", $postId);
 <article id="pj-<?php echo get_the_ID() ?>" class="project archive-project-article">
 	<div class="article-content">
 		<div class="image-placeholder">
-			<?php the_post_thumbnail([0, 0]) ?>
+			<?php the_post_thumbnail('full') ?>
 		</div>
 
 		<h2 class="h3">

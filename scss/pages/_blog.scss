@@ -109,7 +109,8 @@ main.blog {
 
       article {
         min-height: 220px;
-        flex-basis: 31.5%;
+        flex-basis: unset;
+        flex: 1;
       }
 
       &+a {

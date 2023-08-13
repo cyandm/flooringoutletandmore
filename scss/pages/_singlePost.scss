@@ -67,7 +67,7 @@ main.single-post {
     }
 
     .post-side-bar {
-      min-width: 270px;
+      max-width: 310px;
       gap: 1rem;
 
       @media (width<=1200px) {
@@ -80,6 +80,7 @@ main.single-post {
     margin-block-start: 2rem;
 
     .h4 {
+      display: inline-block;
       font-weight: 700;
       color: #fff;
     }

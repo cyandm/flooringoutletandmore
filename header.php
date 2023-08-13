@@ -6,9 +6,28 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head() ?>
+	<meta name="google-site-verification" content="BfWolzyunJ8F95xRi79dDJm_EECug3Mqlxsp4FFYUtI" />
+
+	<?php
+	if (function_exists('get_field')) {
+		$headField = get_field('head_tags', get_option('page_on_front'));
+		if (isset($headField)) {
+			echo $headField;
+		}
+	}
+	?>
 </head>
 
 <body>
+	<?php
+	if (function_exists('get_field')) {
+		$headField = get_field('top_body', get_option('page_on_front'));
+		if (isset($headField)) {
+			echo $headField;
+		}
+	}
+	?>
+
 	<header class="whole-header">
 		<div class="wrapper">
 			<div>
@@ -22,7 +41,7 @@
 				<div>
 					<form id="homeContactForm" action="/" method="get">
 						<div class="form_control">
-							<input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Search" />
+							<input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Search By Title" />
 							<i class="icon-search"></i>
 						</div>
 					</form>
@@ -54,5 +73,9 @@
 				'menu' => 'header-menu',
 				'container_id' => 'monile-menu-container-content'
 			)) ?>
+		</div>
+
+		<div class="social">
+			<?php get_template_part('templates/footer', 'social'); ?>
 		</div>
 	</div>

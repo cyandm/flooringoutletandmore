@@ -13,6 +13,10 @@
   transition: outline 0.3s;
   outline: 1px solid transparent;
 
+  @media (width <=1024px) {
+    min-height: 12rem;
+  }
+
   button {
     position: absolute;
     left: 50%;

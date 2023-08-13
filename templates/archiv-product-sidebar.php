@@ -1,8 +1,14 @@
 <?php
-$formUrl = isset($args["formUrl"]) ? $args["formUrl"] : "";
-$getCats = isset($args["getCats"]) ? $args["getCats"] : [];
-$getBrands = isset($args["getBrands"]) ? $args["getBrands"] : [];
+$formUrl    = isset($args["formUrl"]) ? $args["formUrl"] : "";
+$getCats    = isset($args["getCats"]) ? $args["getCats"] : [];
+$getBrands  = isset($args["getBrands"]) ? $args["getBrands"] : [];
 $getFilters = isset($args["getFilters"]) ? $args["getFilters"] : [];
+
+usort($getBrands, function ($a, $b) {
+  if (str_contains($a['slug'], 'parma-floor') || str_contains($b['slug'], 'parma-floor'))
+    return 1;
+  return 0;
+});
 ?>
 
 <form id="archiveSideBar" class="side-bar" action="<?php echo $formUrl; ?>" method="GET">

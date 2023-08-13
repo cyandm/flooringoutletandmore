@@ -60,7 +60,7 @@ main.accessories {
                   img {
                     object-fit: contain;
                     height: 100%;
-                    width: auto;
+                    width: 100%;
                   }
                 }
               }
@@ -125,6 +125,10 @@ main.accessories {
         >.description {
           padding: $space-6;
           background-color: rgba($color-primary2, 0.2);
+
+          p {
+            line-height: 26px;
+          }
         }
       }
 
@@ -141,14 +145,14 @@ main.accessories {
             rgba(0, 0, 0, 0.3) 0%,
             rgba(81, 66, 49, 0.3) 100%);
         border-radius: .5rem;
-    
+
         @media (width <=1024px) {
           flex-direction: column;
           justify-content: start;
           align-items: start;
           gap: 1rem;
           font-weight: bold;
-    
+
           a {
             width: 100%;
             font-weight: normal;

@@ -62,12 +62,30 @@ footer .social {
 
 .home-footer {
   @media (width <=1024px) {
-    flex-direction: column;
+    display: none;
+    visibility: hidden;
   }
 
   a {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+#call-action-footer {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 991;
+
+  .btn {
+    padding: .75rem;
+    border-radius: 50%;
+  }
+
+  @media (width>=1024px) {
+    display: none !important;
+    visibility: hidden !important;
   }
 }

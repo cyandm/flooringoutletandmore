@@ -6,7 +6,7 @@ $articleNum = 0;
   <div class="introduce home-wrapper">
     <header>
       <div>
-        <h2>Let’s Know More</h2>
+        <h2>our products</h2>
         <span>you dont have to worry about anything</span>
       </div>
       <a class="btn_no_icon bg_white only-desktop" href="<?php echo site_url() . '/product'; ?>">

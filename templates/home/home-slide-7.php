@@ -10,6 +10,10 @@
   <main>
     <div>
       <img src="<?php echo get_template_directory_uri() . '/imgs/about-us.png' ?>" alt="">
+      <a href="/" class="btn_no_icon" target="_blank" rel="noopener noreferrer">
+        <i class="icon-youtube"></i>
+        Watch Video
+      </a>
     </div>
 
     <div>
@@ -18,7 +22,6 @@
       </h3>
       <div class="flex-row">
         <span> <a href="tel: <?php echo __(get_field('phone_number_1')) ?>" data-mouse="call"><?php echo get_field('phone_number_1') ?></a></span>
-        <span> <a href="tel: <?php echo __(get_field('phone_number_2')) ?>" data-mouse="call"><?php echo get_field('phone_number_2') ?></a></span>
       </div>
 
       <h3>our address</h3>

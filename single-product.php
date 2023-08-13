@@ -47,14 +47,14 @@ foreach ($typeTerm as $tTerm) {
 	}
 }
 
-$specification['Product Sid'] = get_field('product_sid', $productId);
-$specification['Product code'] = get_field('product_code', $productId);
-$specification['color code'] = get_field('product_color_code', $productId);
-$specification['finish'] = get_field('product_finish', $productId);
-$specification['installation'] = get_field('product_installation', $productId);
-$specification['sqft / box'] = get_field('product_sqft_box', $productId);
+$specification['Product Sid']   = get_field('product_sid', $productId);
+$specification['Product code']  = get_field('product_code', $productId);
+$specification['color code']    = get_field('product_color_code', $productId);
+$specification['finish']        = get_field('product_finish', $productId);
+$specification['installation']  = get_field('product_installation', $productId);
+$specification['sqft / box']    = get_field('product_sqft_box', $productId);
 $specification['sqft / pallet'] = get_field('product_sqft_pallet', $productId);
-$specification['box / pallet'] = get_field('product_box_pallet', $productId);
+$specification['box / pallet']  = get_field('product_box_pallet', $productId);
 
 $filterTerm = get_the_terms($productId, 'filters');
 foreach ($filterTerm as $fTerm) {
@@ -90,10 +90,13 @@ $related_products_query = new WP_Query($related_products_args);
 <?php get_header() ?>
 
 <main class="single-product">
-	<div>
-		<h1>
-			<?php echo get_the_title() ?>
-		</h1>
+	<div class="single-title">
+		<h1><?php echo get_the_title() ?></h1>
+
+		<?php
+		if (!empty($brandImg))
+			echo "<img id='product-brand-logo' src='$brandImg'>";
+		?>
 	</div>
 	<hr>
 
@@ -139,11 +142,6 @@ $related_products_query = new WP_Query($related_products_args);
 		</div>
 
 		<div class="product-images">
-			<?php
-			if (!empty($brandImg))
-				echo "<img id='product-brand-logo' src='$brandImg'>";
-			?>
-
 			<div id="productGallery" class="swiper">
 				<div class="swiper-wrapper">
 					<?php render_slides() ?>
@@ -173,7 +171,7 @@ $related_products_query = new WP_Query($related_products_args);
 	</div>
 
 	<div class="transitions">
-		<h2 class="h2">transitions that comes with this product</h2>
+		<h2 class="h2">Transitions</h2>
 		<div>
 			<div class="item">
 				<img src=" <?php echo get_template_directory_uri() . '/imgs/End_Cap_1.png' ?> " alt="">
@@ -199,7 +197,7 @@ $related_products_query = new WP_Query($related_products_args);
 	</div>
 
 	<div class="products">
-		<h2 class="h2">you might like this products too</h2>
+		<h2 class="h2">You might also like</h2>
 		<div>
 			<?php
 			if (!empty($related_products)) {
@@ -221,7 +219,7 @@ $related_products_query = new WP_Query($related_products_args);
 
 	<div class="blogs">
 		<div>
-			<h2 class="h2">you might also like to know</h2>
+			<h2 class="h2">Related blogs</h2>
 			<a href="<?php echo site_url() . '/blog'; ?>" class="btn_no_icon bg_white only-desktop">View All</a>
 		</div>
 		<div>

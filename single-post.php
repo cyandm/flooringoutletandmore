@@ -152,4 +152,5 @@ $read_time = reading_time();
 
 	</div>
 </main>
+
 <?php get_footer() ?>

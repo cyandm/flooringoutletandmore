@@ -8,9 +8,9 @@
           $sliders = get_field('sliders');
 
           foreach ($sliders as $slider) :
-            $title = $slider['title'];
+            $title     = $slider['title'];
             $sub_title = $slider['sub_title'];
-            $img_url = $slider['background_image'];
+            $img_url   = $slider['background_image'];
             ?>
             <div class="swiper-slide clickNext" data-mouse="next" style="background-image: url(<?php echo esc_url($img_url) ?>)">
               <div class="slide-inner">

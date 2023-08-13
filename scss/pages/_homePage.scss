@@ -89,7 +89,7 @@ $p-l: var(--header-width);
     }
 
     &:nth-child(1) .slide-inner {
-      translate: 0 -8rem;
+      /* translate: 0 -8rem; */
       align-items: center;
       justify-content: center;
 
@@ -97,17 +97,16 @@ $p-l: var(--header-width);
         translate: 0 -3rem;
       }
 
-      .h2 {
-        color: $color-primary1;
-      }
-
       h1 {
         @extend .title;
-        background: linear-gradient(180deg, #000000 0%, #525250 100%);
+        /*
+        background: linear-gradient(180deg, #fff 0%, #eee 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-fill-color: transparent;
+        */
+        text-shadow: 0 0 8px #bbb;
 
         @media (width<=1024px) {
           font-size: 2.125rem;
@@ -123,24 +122,24 @@ $p-l: var(--header-width);
       height: 100%;
       padding: 2.5rem 1.25rem;
 
+      @media(width <=1024px) {
+        color: #fff;
+      }
+
       h1 {
         letter-spacing: 0.04em;
-        color: #fff;
       }
 
       .h2 {
         font-size: 1rem;
-        color: #fff;
       }
-    }
-
-    &:nth-child(3) {
 
       h1,
       .h2 {
-        color: $color-primary1;
+        color: $color-primary2;
       }
     }
+
   }
 
   .swiper-pagination-bullet {
@@ -314,7 +313,7 @@ $p-l: var(--header-width);
       flex: 1 1 auto;
       position: relative;
       padding: $space-4;
-      width: 33.3333%;
+      width: 50%;
       height: 50%;
 
       @media (width <=1024px) {
@@ -491,6 +490,8 @@ $p-l: var(--header-width);
   .btn_no_icon {
     margin: 1.25rem 1.5rem 0;
   }
+
+  
 }
 
 .brands {
@@ -501,8 +502,8 @@ $p-l: var(--header-width);
     gap: 1.25rem;
 
     @media (width <=1024px) {
-      //grid-template-rows: repeat(8, 1fr);
       grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 1fr;
       gap: 0.875rem;
     }
 
@@ -657,6 +658,16 @@ $p-l: var(--header-width);
 
     &>div:nth-child(1) {
       flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+
+      .btn_no_icon {
+        background-color: #CD201F;
+        color: $color-primary2;
+        font-weight: 600;
+      }
     }
 
     &>div:nth-child(2) {
