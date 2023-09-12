@@ -28,22 +28,34 @@ add_filter('login_errors', function () {
 /***************************** Enqueue Style And Scripts */
 function cyn_enqueue_files()
 {
-	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper-bundle.min.css');
-	wp_enqueue_style('cyn-theme', get_template_directory_uri() . '/css/cyn-theme-bundle-prefixed.css');
-	wp_enqueue_style('cyn-styles', get_stylesheet_uri());
+	wp_enqueue_style('cyn-styles', get_stylesheet_uri(), [], '1.5.1');
+	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper-bundle.min.css', [], '1.5.1');
+	wp_enqueue_style('cyn-theme', get_template_directory_uri() . '/css/cyn-theme-bundle-prefixed.css', [], '1.5.1');
 
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('global-styles');
 	wp_dequeue_style('classic-theme-styles');
 
-	wp_localize_script('cyn-ajax-form', 'cynAjax', array('url' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('ajax-nonce')));
-	wp_enqueue_script('swiper', get_template_directory_uri() . '/js/swiper-bundle.min.js', null, null, true);
-	wp_enqueue_script('scripts', get_template_directory_uri() . '/js/dist/scripts.bundle.min.js', ['jquery', 'swiper'], null, true);
+	wp_enqueue_script('swiper', get_template_directory_uri() . '/js/swiper-bundle.min.js', [], '1.5.1', true);
+	wp_enqueue_script('scripts', get_template_directory_uri() . '/js/dist/scripts.bundle.min.js', ['jquery', 'swiper'], '1.5.1', true);
 }
 add_action('wp_enqueue_scripts', 'cyn_enqueue_files');
 
 remove_action('wp-head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+
+function cyn_enqueue_head()
+{
+	echo "<script>";
+	echo "
+		var cyn_head_sceipt = {
+			url: '" . admin_url('admin-ajax.php') . "',
+			nonce: '" . wp_create_nonce('ajax-nonce') . "'
+		}
+	";
+	echo "</script>";
+}
+add_action('wp_head', 'cyn_enqueue_head');
 
 /***************************** Theme Setup*/
 function cyn_theme_setup()
@@ -103,9 +115,17 @@ function fix_svg()
 }
 add_action('admin_head', 'fix_svg');
 
+// emials content type
+function email_filter($args)
+{
+	add_filter('wp_mail_content_type', function () {
+		return "text/html";
+	});
+}
+add_filter('wp_mail', 'email_filter', 10, 1);
+
 /***************************** Instance Classes */
 cyn_acf::cyn_initialize_acf();
-cyn_form::cyn_create_form_table();
 
 $cyn_acf = new cyn_acf();
 $cyn_acf->cyn_acf_actions();

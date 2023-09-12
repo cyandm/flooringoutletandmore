@@ -10,7 +10,7 @@
   <main>
     <div>
       <img src="<?php echo get_template_directory_uri() . '/imgs/about-us.png' ?>" alt="">
-      <a href="/" class="btn_no_icon" target="_blank" rel="noopener noreferrer">
+      <a href="https://youtu.be/qBYhwH-z5hc" class="btn_no_icon" target="_blank" rel="noopener noreferrer">
         <i class="icon-youtube"></i>
         Watch Video
       </a>

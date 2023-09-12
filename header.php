@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head() ?>
-	<meta name="google-site-verification" content="BfWolzyunJ8F95xRi79dDJm_EECug3Mqlxsp4FFYUtI" />
 
 	<?php
 	if (function_exists('get_field')) {

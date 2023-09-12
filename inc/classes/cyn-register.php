@@ -9,6 +9,7 @@ if (!class_exists('cyn_register')) {
 				add_action('init', [$this, 'cyn_register_products']);
 				add_action('init', [$this, 'cyn_register_projects']);
 				add_action('init', [$this, 'cyn_register_accessories']);
+				add_action('init', [$this, 'cyn_register_contact_forms']);
 
 				add_action('init', [$this, 'cyn_register_product_cats']);
 				add_action('init', [$this, 'cyn_register_product_filters']);
@@ -16,6 +17,7 @@ if (!class_exists('cyn_register')) {
 				add_action('init', [$this, 'cyn_register_recommend_blog_cat']);
 
 				add_action('pre_get_posts', [$this, 'cyn_archive_pre_get_posts']);
+				add_action('admin_menu', [$this, 'cyn_disable_new_posts']);
 			}
 		}
 
@@ -327,8 +329,55 @@ if (!class_exists('cyn_register')) {
 
 		public function cyn_register_recommend_blog_cat()
 		{
+			/*
 			if (!category_exists('Recommend')) {
 				wp_create_category('Recommend');
+			}
+			*/
+		}
+
+		public function cyn_register_contact_forms()
+		{
+			$postType = "contact-form";
+			$GLOBALS["contact-form-post-type"] = $postType;
+
+			$labels = [
+				'name' => _x('Contact Us form', 'Post type general name', 'Contact Us form'),
+				'menu_name' => _x('Contact Us form', 'Admin Menu text', 'Contact Us form'),
+			];
+			$args = [
+				'labels' => $labels,
+				'description' => 'Contact Us form custom post type.',
+				'public' => true,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'contact-form'),
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'menu_position' => 20,
+				'supports' => ['title', 'editor'],
+				'show_in_rest' => false
+			];
+
+			return register_post_type($postType, $args);
+		}
+
+		public function cyn_disable_new_posts()
+		{
+			// Hide sidebar link
+			global $submenu;
+			unset($submenu['edit.php?post_type=contact-form'][10]);
+
+			// Hide link on listing page
+			if (isset($_GET['post_type']) && $_GET['post_type'] == 'contact-form') {
+				echo '<style type="text/css">
+        a.page-title-action {
+					display:none;
+				}
+        </style>';
 			}
 		}
 	}

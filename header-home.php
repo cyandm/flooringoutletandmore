@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head() ?>
-    <meta name="google-site-verification" content="BfWolzyunJ8F95xRi79dDJm_EECug3Mqlxsp4FFYUtI" />
 
     <?php
     if (function_exists('get_field')) {
@@ -56,12 +55,12 @@
                 </div>
             </div>
         </div>
-        <!--
-        <a href="#" class="btn_icon_between bg_secondary1">
-            login
-            <i class="icon-Component-2-1"></i>
+
+        <?php $front_page_id = get_option('page_on_front'); ?>
+        <a href="tel:<?= get_field('phone_number_1', $front_page_id) ?>" class="btn bg_secondary1 header-home-call">
+            <i class="icon-phone"></i>
+            call us now
         </a>
-        -->
     </header>
 
     <div class="only_mobile" id="monile-menu-container">

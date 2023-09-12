@@ -5,79 +5,80 @@ if (!class_exists('cyn_form')) {
     {
         function __construct()
         {
-            add_action('wp_ajax_send_form', [$this, 'cyn_send_form']);
-            add_action('wp_ajax_nopriv_send_form', [$this, 'cyn_send_form']);
-            add_action('admin_menu', [$this, 'cyn_create_menu_admin']);
+            add_action('wp_ajax_send_contactus_form', [$this, 'cyn_send_form']);
+            add_action('wp_ajax_nopriv_send_contactus_form', [$this, 'cyn_send_form']);
         }
 
+        /*
         public static function cyn_create_form_table()
         {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             global $wpdb;
 
-            $tName = $wpdb->prefix . 'cyn_form';
+            $tName = $wpdb->prefix . 'cyn_contactus';
             $charset = $wpdb->get_charset_collate();
 
             $tb = "CREATE TABLE $tName 
             (
-                id BIGINT(20) NOT NULL AUTO_INCREMENT,
-                user_phone TEXT NOT NULL,
-                user_email TEXT NOT NULL,
-                user_sub TEXT NOT NULL,
-                form_desc LONGTEXT,
+                id            BIGINT(20) NOT NULL AUTO_INCREMENT,
+                user_phone    TEXT NOT NULL,
+                user_email    TEXT NOT NULL,
+                user_describe LONGTEXT NOT NULL,
+                agreement     TEXT NOT NULL,
+                send_date     DATETIME DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (id)
-            )
-                $charset;";
+            ) $charset;";
 
             dbDelta($tb);
         }
-
-        public function cyn_save_on_form_table($user_phone, $user_email, $user_sub, $form_desc)
-        {
-            global $wpdb;
-            $tName = $wpdb->prefix . 'cyn_form';
-
-            $wpdb->show_errors();
-
-            $wpdb->insert($tName, [
-                'user_phone' => $user_phone,
-                'user_email' => $user_email,
-                'user_sub' => $user_sub,
-                'form_desc' => $form_desc
-            ]);
-
-        }
+        */
 
         public function cyn_send_form()
         {
+            if (!wp_verify_nonce($_POST['_nonce'], 'ajax-nonce'))
+                return wp_send_json_error(['verify_nonce' => false], 403);
 
-            if (!wp_verify_nonce($_POST['_nonce'], 'ajax-nonce')) {
-                echo 'Are you a hacker?';
-            } else {
-                $data = $_POST['data'];
-                $user_phone = esc_html($data['phoneNumber']);
-                $user_email = esc_html($data['email']);
-                $form_desc = esc_html($data['desc']);
+            global $wpdb;
+            $tName = $wpdb->prefix . 'cyn_contactus';
 
-                if ($data['sub'] == 'true') {
-                    $user_sub = 'yes';
-                } else {
-                    $user_sub = 'no';
-                }
+            $data = $_POST['data'];
+            $dbData = array(
+                'user_email'    => sanitize_email($data['email']),
+                'user_phone'    => sanitize_text_field($data['phone-number']),
+                'user_describe' => sanitize_textarea_field($data['describe']),
+                'agreement'     => sanitize_text_field($data['agreement'])
+            );
+
+            $msgContent = "
+                Email: " . $dbData['user_email'] . "\n
+                Phone: " . $dbData['user_phone'] . "\n
+                agreement: " . $dbData['agreement'] . "\n
+                Message: " . $dbData['user_describe'] . "
+            ";
+            $newPost = array(
+                'post_type'    => $GLOBALS["contact-form-post-type"],
+                'post_title'   => $dbData['user_email'],
+                'post_content' => $msgContent,
+                'post_status'  => 'publish',
+                'post_author'  => 1,
+            );
+
+            $insetPost = wp_insert_post($newPost);
+
+            if (is_wp_error($insetPost))
+                return wp_send_json_error(['insert_row' => false], 500);
 
 
-                $this->cyn_save_on_form_table($user_phone, $user_email, $user_sub, $form_desc);
+            $sendEmail = wp_mail(
+                'h.hojjat.h@gmail.com',
+                'Contact Us',
+                $msgContent
+            );
 
-            }
+            if ($sendEmail == false)
+                return wp_send_json_error(['send_email' => false], 500);
 
-            die();
-        }
-
-        public function cyn_create_menu_admin()
-        {
-            add_menu_page('Forms', 'Forms', 'edit_posts', 'forms', function () {
-                get_template_part('templates/admin/form');
-            }, 'dashicons-media-spreadsheet', 5);
+            return wp_send_json(['success' => true], 201);
         }
     }
 }

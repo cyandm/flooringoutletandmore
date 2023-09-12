@@ -7,36 +7,31 @@
   <div class="contact-us contact-us-template">
     <main>
       <div>
-        <form id="homeForm" action="#" method='post'>
-          <label for="phone-number">
-            phone number
-            <input required type="tel" name="phone-number" placeholder="phone number">
-            <span class="err"></span>
-          </label>
-
+        <form id="contact-us-form" action="#" method='post'>
           <label for="email">
-            email
-            <input required type="email" name="email" placeholder="email">
-            <span class="err"></span>
+            Email
+            <input type="email" name="email" id="email" placeholder="email" required>
           </label>
 
           <label for="phone-number">
+            Phone number
+            <input type="tel" name="phone-number" id="phone-number" placeholder="Phone number" required>
+          </label>
+
+          <label for="describe">
             what are you looking for
-            <textarea name="phone-number" cols="30" rows="10" placeholder="Describe"></textarea>
+            <textarea name="describe" id="describe" cols=" 30" rows="10" placeholder="Describe"></textarea>
           </label>
 
           <label for="agreement" class="flex-row">
-            <input type="checkbox" checked>
-            I want you to inform me about new products and
-            new offers
+            <input type="checkbox" name="agreement" id="agreement" value="true" checked>
+            I want you to inform me about new products and new offers
           </label>
 
-          <button type="submit" class="btn bg_secondary1">
+          <button type="submit" id="contact-us-form-submit" class="btn bg_secondary1">
             send
             <i class="icon-Component-2-1"></i>
           </button>
-
-
         </form>
       </div>
       <div>
@@ -46,6 +41,7 @@
       </div>
     </main>
   </div>
+
 </main>
 
 <?php get_footer(); ?>

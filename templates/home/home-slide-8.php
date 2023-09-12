@@ -20,8 +20,8 @@
                 <h2 data-num="1" class="title">Consultation</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_consultation');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_consultation');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>
@@ -32,8 +32,8 @@
                 <h2 data-num="2" class="title">Measurement</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_measurement');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_measurement');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>
@@ -52,8 +52,8 @@
                 <h2 data-num="3" class="title">Delivery</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_delivery');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_delivery');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>
@@ -64,8 +64,8 @@
                 <h2 data-num="4" class="title">Installation</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_installation');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_installation');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>
@@ -84,8 +84,8 @@
                 <h2 data-num="5" class="title">Removal</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_removal');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_removal');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>
@@ -93,11 +93,11 @@
 
             <div class="bottom">
               <div class="c">
-                <h2 data-num="6" class="title">Making you happy</h2>
+                <h2 data-num="6" class="title">Final inspection</h2>
                 <p>
                   <?php
-                    $txt = get_field('services_making_you_happy');
-                    echo !empty($txt) ? $txt : '';
+                  $txt = get_field('services_making_you_happy');
+                  echo !empty($txt) ? $txt : '';
                   ?>
                 </p>
               </div>

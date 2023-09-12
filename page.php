@@ -1,6 +1,9 @@
 <?php get_header() ?>
 
-<main class="single-post">
+<main class="single-page">
+  <h1>
+    <?php the_title(); ?>
+  </h1>
   <?php the_content(); ?>
 </main>
 

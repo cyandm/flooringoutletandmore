@@ -1,45 +1,45 @@
-//@need custom validating
+function objectifyFormArray(formArray) {
+  var returnArray = {};
+  for (var i = 0; i < formArray.length; i++) {
+    returnArray[formArray[i]['name']] = formArray[i]['value'];
+  }
+  return returnArray;
+}
 
 jQuery(document).ready(($) => {
-  $('#homeForm').submit((e) => {
+  const contactUsForm = $("#contact-us-form");
+  const contactUsFormSubmit = $("#contact-us-form #contact-us-form-submit");
+
+  $(contactUsForm).on('submit', (e) => {
     e.preventDefault();
+    $(contactUsFormSubmit).addClass('pending');
 
-    const submitBtn = $('#homeForm button');
-    const phoneNumber = $('#homeForm input[type="tel"]').val();
-    const email = $('#homeForm input[type="email"]').val();
-    const sub = $('#homeForm input[type="checkbox"]').is(':checked');
-    const desc = $('#homeForm textarea').val();
+    const formDataArray = $(contactUsForm).serializeArray();
+    const formData = objectifyFormArray(formDataArray);
+    if (!formData.agreement)
+      formData.agreement = 'false';
 
-    submitBtn.text('Sending');
-    submitBtn.addClass('pending');
-    //@need date
     $.ajax({
-      url: cynAjax.url,
+      url: cyn_head_sceipt.url,
       type: 'post',
       data: {
-        action: 'send_form',
-        _nonce: cynAjax.nonce,
-        data: {
-          phoneNumber: phoneNumber,
-          email: email,
-          sub: sub,
-          desc: desc,
-        },
+        action: 'send_contactus_form',
+        _nonce: cyn_head_sceipt.nonce,
+        data: formData,
       },
       success: (res) => {
-        submitBtn.removeClass('pending');
-        submitBtn.addClass('success');
-        submitBtn.text("Thank You , We'll Call You Soon");
+        $(contactUsFormSubmit).removeClass('pending');
+        $(contactUsFormSubmit).addClass('success');
+        $(contactUsFormSubmit).text("Thank You, We'll Call You Soon");
 
         setTimeout(() => {
-          submitBtn.removeClass('success');
-          submitBtn.text('Send');
+          $(contactUsFormSubmit).removeClass('success');
+          $(contactUsFormSubmit).text('Send');
         }, 2500);
       },
       error: (err) => {
-        console.log('err: ', err.response);
-        submitBtn.removeClass('pending');
-        submitBtn.addClass('error');
+        $(contactUsFormSubmit).removeClass('pending');
+        $(contactUsFormSubmit).addClass('error');
       },
     });
   });
