@@ -9,37 +9,10 @@ if (!class_exists('cyn_form')) {
             add_action('wp_ajax_nopriv_send_contactus_form', [$this, 'cyn_send_form']);
         }
 
-        /*
-        public static function cyn_create_form_table()
-        {
-            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-            global $wpdb;
-
-            $tName = $wpdb->prefix . 'cyn_contactus';
-            $charset = $wpdb->get_charset_collate();
-
-            $tb = "CREATE TABLE $tName 
-            (
-                id            BIGINT(20) NOT NULL AUTO_INCREMENT,
-                user_phone    TEXT NOT NULL,
-                user_email    TEXT NOT NULL,
-                user_describe LONGTEXT NOT NULL,
-                agreement     TEXT NOT NULL,
-                send_date     DATETIME DEFAULT CURRENT_TIMESTAMP,
-                PRIMARY KEY (id)
-            ) $charset;";
-
-            dbDelta($tb);
-        }
-        */
-
         public function cyn_send_form()
         {
             if (!wp_verify_nonce($_POST['_nonce'], 'ajax-nonce'))
                 return wp_send_json_error(['verify_nonce' => false], 403);
-
-            global $wpdb;
-            $tName = $wpdb->prefix . 'cyn_contactus';
 
             $data = $_POST['data'];
             $dbData = array(
@@ -50,10 +23,10 @@ if (!class_exists('cyn_form')) {
             );
 
             $msgContent = "
-                Email: " . $dbData['user_email'] . "\n
-                Phone: " . $dbData['user_phone'] . "\n
-                agreement: " . $dbData['agreement'] . "\n
-                Message: " . $dbData['user_describe'] . "
+                <p>Email: " . $dbData['user_email'] . "</p>
+                <p>Phone: " . $dbData['user_phone'] . "</p>
+                <p>agreement: " . $dbData['agreement'] . "</p>
+                <p>Message: " . $dbData['user_describe'] . "</p>
             ";
             $newPost = array(
                 'post_type'    => $GLOBALS["contact-form-post-type"],
@@ -68,10 +41,12 @@ if (!class_exists('cyn_form')) {
             if (is_wp_error($insetPost))
                 return wp_send_json_error(['insert_row' => false], 500);
 
+            $emailTo = "cto@cyandm.com";
+            $subject = "Contact Us";
 
             $sendEmail = wp_mail(
-                'h.hojjat.h@gmail.com',
-                'Contact Us',
+                $emailTo,
+                $subject,
                 $msgContent
             );
 

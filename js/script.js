@@ -69,7 +69,8 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         const target = e.target;
         const targetCheck = document.getElementById(target.getAttribute("data-filter"));
-        targetCheck.checked = false;
+        if (targetCheck)
+          targetCheck.checked = false;
 
         checkIsFiltered();
         $(archiveSideBar).submit();
@@ -161,4 +162,34 @@ jQuery(document).ready(function ($) {
     }, 2000);
 
   }
+});
+
+jQuery(document).ready(function ($) {
+  const faqItems = $("main.special-offer-page > .content section .faq-content .context .faq-item");
+
+  $(faqItems).on("click", function (e) {
+    const current = $(this);
+    const slideItem = $(this).find(".item-content p");
+    const btnItem = $(this).find(".btn");
+    const allSlides = $(faqItems).find(".item-content p");
+    const allBtns = $(faqItems).find(".btn");
+    const duration = 300;
+
+    if ($(current).hasClass("close")) {
+      $(faqItems).removeClass("open");
+      $(faqItems).addClass("close");
+      $(allBtns).text("+");
+      $(allSlides).slideUp(duration, function () { });
+
+      $(current).removeClass("close");
+      $(current).addClass("open");
+      $(btnItem).text("-")
+      $(slideItem).slideDown(duration, function () { });
+    } else {
+      $(current).removeClass("open");
+      $(current).addClass("close");
+      $(btnItem).text("+")
+      $(slideItem).slideUp(duration, function () { });
+    }
+  });
 });

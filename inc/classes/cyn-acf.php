@@ -1396,10 +1396,120 @@ if (!class_exists('cyn_acf')) {
 
 		public function cyn_special_offer_page()
 		{
+			$faqSubFields = [];
+			for ($i = 1; $i < 11; $i++) {
+				$faqSubFields[] = array(
+					'key' => 'field_6536574809c8e' . $i,
+					'label' => 'FAQ Detail ' . $i,
+					'name' => 'faq_detail_' . $i,
+					'type' => 'group',
+					'layout' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_6536577809c8f' . $i,
+							'label' => 'Question',
+							'name' => 'question',
+							'type' => 'text',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_6536578a09c90' . $i,
+							'label' => 'Answer',
+							'name' => 'answer',
+							'type' => 'text',
+							'maxlength' => '',
+						),
+					),
+				);
+			}
+
+			$testomonialsFields = [];
+			for ($i = 1; $i < 7; $i++) {
+				$testomonialsFields[] = array(
+					'key' => 'testomonials_detal_key_' . $i,
+					'label' => 'Testomonial Detail ' . $i,
+					'name' => 'testomonials_detal_' . $i,
+					'type' => 'group',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'layout' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_65365a8409cb7' . $i,
+							'label' => 'Title',
+							'name' => 'title',
+							'type' => 'text',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_65365a5f09cb5' . $i,
+							'label' => 'Comment',
+							'name' => 'comment',
+							'type' => 'text',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_65365a7685cb7' . $i,
+							'label' => 'Author',
+							'name' => 'author',
+							'type' => 'text',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_65365a5209cb4' . $i,
+							'label' => 'Avatar',
+							'name' => 'avatar',
+							'type' => 'image',
+							'return_format' => 'url',
+							'library' => 'all',
+							'preview_size' => 'medium',
+						),
+						array(
+							'key' => 'field_65365a7709cb6' . $i,
+							'label' => 'Date',
+							'name' => 'date',
+							'type' => 'date_picker',
+							'display_format' => 'd/m/Y',
+							'return_format' => 'd/m/Y',
+							'first_day' => 1,
+						),
+						array(
+							'key' => 'field_65365aab09cb8' . $i,
+							'label' => 'Stars',
+							'name' => 'stars',
+							'type' => 'radio',
+							'choices' => array(
+								1 => 'very bad',
+								2 => 'bad',
+								3 => 'normal',
+								4 => 'good',
+								5 => 'very good',
+							),
+							'default_value' => 5,
+							'return_format' => 'value',
+							'allow_null' => 0,
+							'other_choice' => 0,
+							'layout' => 'vertical',
+							'save_other_choice' => 0,
+						)
+					)
+				);
+			}
+
 			acf_add_local_field_group(array(
 				'key' => "special_offer_group_key",
 				'title' => 'Special Offer',
 				'fields' => array(
+					// Products
+					array(
+						'key' => 'field_special_offer_tab0',
+						'label' => 'Products',
+						'type' => 'tab',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
 					array(
 						'key' => 'special_offer_posts_key',
 						'label' => 'Special Offer',
@@ -1423,6 +1533,60 @@ if (!class_exists('cyn_acf')) {
 						'allow_null' => 0,
 						'multiple' => 1,
 						'return_format' => 'id',
+					),
+
+					// FAQ
+					array(
+						'key' => 'field_special_offer_tab1',
+						'label' => 'FAQ',
+						'type' => 'tab',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
+					array(
+						'key' => 'special_offer_faq_key',
+						'label' => 'FAQ',
+						'name' => 'special_offer_faq',
+						'type' => 'group',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'layout' => 'block',
+						'sub_fields' => $faqSubFields
+					),
+
+					// Our clients
+					array(
+						'key' => 'field_special_offer_tab2',
+						'label' => 'Our clients',
+						'type' => 'tab',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
+					array(
+						'key' => 'special_offer_clients_url_key',
+						'label' => 'Google URL',
+						'name' => 'special_offer_clients_url',
+						'type' => 'url',
+					),
+					array(
+						'key' => 'special_offer_clients_yelp_key',
+						'label' => 'Yelp URL',
+						'name' => 'special_offer_clients_yelp',
+						'type' => 'url',
+					),
+					array(
+						'key' => 'special_offer_testomonials_key',
+						'label' => 'Our clients',
+						'name' => 'special_offer_testomonials',
+						'type' => 'group',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'layout' => 'block',
+						'sub_fields' => $testomonialsFields
 					),
 				),
 				'location' => array(

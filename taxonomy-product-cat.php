@@ -25,6 +25,17 @@ $getBrands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax
 $getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
 
 $allChips = array_merge($getBrands, $getFilters);
+
+$thisTermSidebar = array(
+  $thisTerm->term_id => array(
+    "id"     => $thisTerm->term_id,
+    "name"   => $thisTerm->name,
+    "slug"   => $thisTerm->slug,
+    "parent" => $thisTerm->parent,
+    "count"  => $thisTerm->count,
+    "url"    => ""
+  )
+);
 ?>
 
 <main class="product-archive taxonomy-product-cat">
@@ -33,8 +44,10 @@ $allChips = array_merge($getBrands, $getFilters);
     "sidebar",
     array(
       'formUrl' => $formUrl,
+      'getCats' => $thisTermSidebar,
       'getBrands' => $getBrands,
-      'getFilters' => $getFilters
+      'getFilters' => $getFilters,
+      'isTypesPage' => true
     )
   ); ?>
 
