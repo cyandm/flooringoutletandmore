@@ -6,6 +6,10 @@ foreach ($categories as $category) {
 	array_push($category_names, $category->name);
 }
 
+
+$tags = get_the_tags(get_the_ID());
+
+
 $related_args = [
 	'post_type' => 'post',
 	'posts_per_page' => 3,
@@ -84,6 +88,26 @@ $read_time = reading_time();
 							<?php endforeach; ?>
 						</div>
 					</div>
+					
+				<?php if(false !== $tags):?>
+					<div>
+						<i></i>
+						<div>
+							<span class="h4">
+								Tags:
+							</span>
+							<?php
+							foreach ($tags as $tag) :
+								$tag_name = $tag->name;
+								$tag_link = get_term_link($tag->term_id); ?>
+								<span class="cat-item">
+									<a href="<?= $tag_link ?>"> <?= $tag_name ?> </a>
+								</span>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif;?>
+					
 				</div>
 			</div>
 			<div class="the-content">
@@ -138,6 +162,24 @@ $read_time = reading_time();
 						<?php endforeach; ?>
 					</div>
 				</div>
+				<?php if(false !== $tags):?>
+					<div>
+						<i></i>
+						<div>
+							<span class="h4">
+								Tags:
+							</span>
+							<?php
+							foreach ($tags as $tag) :
+								$tag_name = $tag->name;
+								$tag_link = get_term_link($tag->term_id); ?>
+								<span class="cat-item">
+									<a href="<?= $tag_link ?>"> <?= $tag_name ?> </a>
+								</span>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif;?>
 			</div>
 			<div class="related">
 				<span class="h4">you might also like</span>
