@@ -10,13 +10,13 @@ if ( ! class_exists( 'cyn_common' ) ) {
 		static public function blog_term() {
 			$cats = get_categories( [ 'hide_empty' => false,] );
 			$cat_exclude = [ 
-				'Recommend',
+				'Recommended',
 				'Uncategorized'
 			];
 
 			$recommend_sidebar = new WP_Query( [ 
 				'post_type' => 'post',
-				'category_name' => 'recommend',
+				'category_name' => 'recommended',
 				'posts_per_page' => '5'
 			] );
 			$current_terms = [];

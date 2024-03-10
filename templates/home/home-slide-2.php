@@ -24,6 +24,7 @@ $articleNum = 0;
           ?>
           <article data-mouse="explore">
             <a href="<?php echo $termLink; ?>">
+              <img src="<?php echo $catImg_url; ?>" alt="">
               <div>
                 <button class="btn_no_icon bg-primary1">explore</button>
                 <div>
@@ -31,7 +32,6 @@ $articleNum = 0;
                   <p class="one-line-text"><?php echo $cat->description; ?></p>
                 </div>
               </div>
-              <img src="<?php echo $catImg_url; ?>" alt="">
             </a>
           </article>
         <?php

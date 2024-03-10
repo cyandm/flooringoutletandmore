@@ -1,0 +1,143 @@
+main.single-page {
+  max-width: 1440px;
+  min-height: 100vh;
+  margin-top: $space-6;
+  margin-inline: auto;
+  padding: 1rem;
+
+  .title-head,
+  section .titles {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    h1,
+    h2 {
+      flex: 1 1 auto;
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+      vertical-align: middle;
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      margin: 0.5rem 0;
+    }
+
+    +.clearfix {
+      padding: 0.75rem 0;
+    }
+  }
+
+  section.offers-products {
+    .product-article {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+
+      >a {
+        width: calc(25% - .65rem);
+
+        >img {
+          position: relative;
+          display: block;
+        }
+
+        >span {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin: 1rem 0;
+          padding: .5rem 1.25rem;
+          background-image: $color-secondary1;
+          color: $color-primary1;
+
+          i {
+            font-size: 1rem;
+            font-style: normal;
+          }
+        }
+
+        >.product_desc {
+          margin: 0 0 1rem 0;
+          padding: 0 1.25rem;
+          display: -webkit-box;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+
+        @media (width <=1024px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .feature-image-container {
+    margin: 2.75rem 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.875rem;
+      object-fit: cover;
+      aspect-ratio: 21/9;
+
+      @media (width <=1024px) {
+        aspect-ratio: 16/9;
+      }
+    }
+  }
+
+  section.faq-section {
+    margin: 2.75rem 0;
+  }
+
+  .the-content {
+    img {
+      border-radius: 0.875rem;
+      height: revert;
+    }
+
+    p,
+    ul {
+      list-style: revert;
+      padding: revert;
+      margin: revert;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    blockquote {
+      padding: 0.25rem 0.75rem 0.25rem 1rem;
+      background-color: rgba(#fff, 0.1);
+      backdrop-filter: blur(14px);
+      border-radius: 0 0.25rem 0.25rem 0rem;
+      border-inline-start: 2px solid $color-secondary2;
+    }
+
+    a {
+      color: $color-secondary2;
+      text-decoration: underline;
+    }
+  }
+}

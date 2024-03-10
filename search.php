@@ -65,9 +65,9 @@ $searchWpQuery = new WP_Query($searchQueryArgs);
 
 
 $formUrl    = "./";
-$getCats    = $cynOptions->cyn_getProdactTerms();
-$getBrands  = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
-$getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+$getCats    = $cynOptions->cyn_getProductTerms();
+$getBrands  = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["brands-tax"]);
+$getFilters = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["filters-tax"]);
 $allChips = array_merge($getCats, $getBrands, $getFilters);
 ?>
 

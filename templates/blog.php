@@ -3,7 +3,7 @@
 <?php
 $recommend_posts = new WP_Query([
 	'post_type' => 'post',
-	'category_name' => 'recommend',
+	'category_name' => 'recommended',
 	'posts_per_page' => '3'
 ]);
 

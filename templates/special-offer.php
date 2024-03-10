@@ -2,9 +2,9 @@
 
 <?php
 $specialPosts = get_field('special_offer_posts');
-$inStokPosts  = get_field('in_stok_posts');
-$faqDetails   = get_field('special_offer_faq');
-$testomonials = get_field('special_offer_testomonials');
+$inStockPosts = get_field('in_stok_posts');
+$faqDetails   = get_field('special_offer_faq_posts');
+$testimonials = get_field('special_offer_testomonials');
 $clientsUrl   = get_field('special_offer_clients_url');
 $clientsYelp  = get_field('special_offer_clients_yelp');
 $frontPageId  = get_option('page_on_front');
@@ -48,14 +48,14 @@ $frontPageId  = get_option('page_on_front');
       </section>
     <?php endif; ?>
 
-    <?php if (isset($inStokPosts) && !empty($inStokPosts)) : ?>
+    <?php if (isset($inStockPosts) && !empty($inStockPosts)) : ?>
       <section>
         <div class="titles">
           <h2>In Stock Products</h2>
         </div>
 
         <div class="product-article">
-          <?php foreach ($inStokPosts as $post) : ?>
+          <?php foreach ($inStockPosts as $post) : ?>
             <?php
             $title   = get_the_title($post);
             $img_url = get_the_post_thumbnail_url($post);
@@ -81,37 +81,12 @@ $frontPageId  = get_option('page_on_front');
       </section>
     <?php endif; ?>
 
-    <?php if (isset($faqDetails) && !empty($faqDetails)) : ?>
-      <section>
-        <div class="titles">
-          <h2>Question And Answer</h2>
-        </div>
+    <?php
+    if (isset($faqDetails) && !empty($faqDetails))
+      get_template_part('templates/loop/faq-section', null, ['postsId' => $faqDetails]);
+    ?>
 
-        <div class="faq-content">
-          <div class="img">
-            <img src="<?= get_template_directory_uri() . "/imgs/faq-main.png"; ?>">
-          </div>
-
-          <div class="context">
-            <?php foreach ($faqDetails as $faq) : ?>
-              <?php if (!empty($faq['question']) && !empty($faq['answer'])) : ?>
-                <div class="faq-item close">
-                  <div class="item-content">
-                    <h4><?= $faq['question'] ?></h4>
-                    <p><?= $faq['answer'] ?></p>
-                  </div>
-
-                  <button class="btn bg_secondary1">+</button>
-                </div>
-                <hr>
-              <?php endif; ?>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      </section>
-    <?php endif; ?>
-
-    <?php if (isset($testomonials) && !empty($testomonials)) : ?>
+    <?php if (isset($testimonials) && !empty($testimonials)) : ?>
       <section>
         <div class="titles">
           <h2>What Our Clients Think</h2>
@@ -125,7 +100,7 @@ $frontPageId  = get_option('page_on_front');
         </div>
 
         <div class="our-clients">
-          <?php foreach ($testomonials as $client) : ?>
+          <?php foreach ($testimonials as $client) : ?>
             <?php
             $title   = $client['title'];
             $comment = $client['comment'];
@@ -259,7 +234,6 @@ $frontPageId  = get_option('page_on_front');
         </div>
       </div>
     </section>
-
   </div>
 </main>
 

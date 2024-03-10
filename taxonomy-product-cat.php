@@ -16,13 +16,13 @@ $topSectionGroup = get_field_object("p_cat_main_top_section_group", 'product-cat
 $secondSectionGroup = get_field_object("p_cat_main_second_section_group", 'product-cat_' . $thisTerm->term_id)["value"];
 
 if (!$parentTermConditions) {
-  $getChildCats = $cynOptions->cyn_getProdactTerms($thisTerm->term_id);
+  $getChildCats = $cynOptions->cyn_getProductTerms($thisTerm->term_id);
 } else {
   $parentTerm = get_term($parentTermId);
 }
 
-$getBrands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
-$getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+$getBrands = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["brands-tax"]);
+$getFilters = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["filters-tax"]);
 
 $allChips = array_merge($getBrands, $getFilters);
 

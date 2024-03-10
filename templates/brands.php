@@ -2,7 +2,7 @@
 
 <?php
 $cynOptions = new cyn_options();
-$brands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
+$brands = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["brands-tax"]);
 
 usort($brands, function ($a, $b) {
   if (str_contains($a['slug'], 'parma-floor') || str_contains($b['slug'], 'parma-floor'))

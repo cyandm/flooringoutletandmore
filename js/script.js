@@ -165,7 +165,7 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
-  const faqItems = $("main.special-offer-page > .content section .faq-content .context .faq-item");
+  const faqItems = $("section.faq-section .faq-content .context .faq-item");
 
   $(faqItems).on("click", function (e) {
     const current = $(this);
@@ -192,4 +192,37 @@ jQuery(document).ready(function ($) {
       $(slideItem).slideUp(duration, function () { });
     }
   });
+});
+
+/** single post table of content **/
+jQuery(document).ready(function ($) {
+  const singleTheContent = $(".single-post .post-wrapper .the-content");
+  const singleTableContent = $(".single-post .post-wrapper .table-of-content");
+
+  if (singleTheContent && singleTableContent) {
+    const headingTags = $(singleTheContent).children('h1, h2, h3, h4, h5, h6');
+
+    if (headingTags.length < 1)
+      return $(singleTableContent).remove();
+
+    for (let i = 0; i < headingTags.length; i++) {
+      const headingText = $(headingTags[i]).text();
+      const tableUl = $(singleTableContent).children("ul");
+
+      $(tableUl).html($(tableUl).html() + "<li><a href='#'>" + headingText + "</a></li>");
+    }
+
+    for (let i = 0; i < headingTags.length; i++) {
+      const headingOffset = $(headingTags[i]).offset();
+      const tableLiA = $('.table-of-content li a');
+      $(tableLiA[i]).attr('href', headingOffset.top);
+    }
+
+    $(".table-of-content li a").on("click", function (e) {
+      e.preventDefault();
+      const offsetTop = parseInt($(e.target).attr('href'));
+
+      $('html, body').scrollTop(offsetTop - 20);
+    });
+  }
 });

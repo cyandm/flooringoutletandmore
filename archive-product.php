@@ -3,9 +3,9 @@ global $wp_query;
 $cynOptions = new cyn_options();
 
 $formUrl = get_post_type_archive_link($GLOBALS["product-post-type"]);
-$getCats = $cynOptions->cyn_getProdactTerms();
-$getBrands = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["brands-tax"]);
-$getFilters = $cynOptions->cyn_getProdactTerms(false, false, $GLOBALS["filters-tax"]);
+$getCats = $cynOptions->cyn_getProductTerms();
+$getBrands = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["brands-tax"]);
+$getFilters = $cynOptions->cyn_getProductTerms(false, false, $GLOBALS["filters-tax"]);
 
 $allChips = array_merge($getCats, $getBrands, $getFilters);
 ?>

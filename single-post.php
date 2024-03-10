@@ -1,4 +1,5 @@
 <?php
+$faqDetails = get_field('posts_faq_posts', get_the_ID());
 
 $category_names = [];
 $categories = get_the_category(get_the_ID());
@@ -49,13 +50,14 @@ $read_time = reading_time();
 			<h1>
 				<?= get_the_title() ?>
 			</h1>
+
 			<div class="feature-image-container">
 				<?php the_post_thumbnail() ?>
 			</div>
+
 			<div class="only-mobile">
 				<div class="post-info">
 					<div class="read-time">
-						<i></i>
 						<span class="h4">
 							Read Time:
 						</span>
@@ -64,7 +66,6 @@ $read_time = reading_time();
 						</span>
 					</div>
 					<div>
-						<i></i>
 						<span class="h4">
 							Author:
 						</span>
@@ -73,7 +74,6 @@ $read_time = reading_time();
 						</span>
 					</div>
 					<div>
-						<i></i>
 						<div>
 							<span class="h4">
 								Category:
@@ -88,31 +88,38 @@ $read_time = reading_time();
 							<?php endforeach; ?>
 						</div>
 					</div>
-					
-				<?php if(false !== $tags):?>
-					<div>
-						<i></i>
+
+					<?php if (false !== $tags) : ?>
 						<div>
-							<span class="h4">
-								Tags:
-							</span>
-							<?php
-							foreach ($tags as $tag) :
-								$tag_name = $tag->name;
-								$tag_link = get_term_link($tag->term_id); ?>
-								<span class="cat-item">
-									<a href="<?= $tag_link ?>"> <?= $tag_name ?> </a>
+							<i></i>
+							<div>
+								<span class="h4">
+									Tags:
 								</span>
-							<?php endforeach; ?>
+								<?php
+								foreach ($tags as $tag) :
+									$tag_name = $tag->name;
+									$tag_link = get_term_link($tag->term_id); ?>
+									<span class="cat-item">
+										<a href="<?= $tag_link ?>"> <?= $tag_name ?> </a>
+									</span>
+								<?php endforeach; ?>
+							</div>
 						</div>
-					</div>
-				<?php endif;?>
-					
+					<?php endif; ?>
+
 				</div>
 			</div>
+
+			<div class="table-of-content">
+				<ul>
+				</ul>
+			</div>
+
 			<div class="the-content">
 				<?php the_content() ?>
 			</div>
+
 			<div class="only-mobile">
 				<div class="related">
 					<span class="h4">you might also like</span>
@@ -124,12 +131,26 @@ $read_time = reading_time();
 					<?php endif; ?>
 				</div>
 			</div>
+
+			<?php
+			if (isset($faqDetails) && !empty($faqDetails))
+				get_template_part('templates/loop/faq-section', null, ['postsId' => $faqDetails]);
+			?>
+
+			<div class="comments" id="comments">
+				<div class="titles">
+					<h3 class="">
+						Comments
+					</h3>
+				</div>
+
+				<?php comments_template(); ?>
+			</div>
 		</div>
 
 		<div class="post-side-bar">
 			<div class="post-info">
 				<div class="read-time">
-					<i></i>
 					<span class="h4">
 						Read Time:
 					</span>
@@ -138,7 +159,6 @@ $read_time = reading_time();
 					</span>
 				</div>
 				<div>
-					<i></i>
 					<span class="h4">
 						Author:
 					</span>
@@ -147,7 +167,6 @@ $read_time = reading_time();
 					</span>
 				</div>
 				<div>
-					<i></i>
 					<div>
 						<span class="h4">
 							Category:
@@ -162,7 +181,7 @@ $read_time = reading_time();
 						<?php endforeach; ?>
 					</div>
 				</div>
-				<?php if(false !== $tags):?>
+				<?php if (false !== $tags) : ?>
 					<div>
 						<i></i>
 						<div>
@@ -179,8 +198,9 @@ $read_time = reading_time();
 							<?php endforeach; ?>
 						</div>
 					</div>
-				<?php endif;?>
+				<?php endif; ?>
 			</div>
+
 			<div class="related">
 				<span class="h4">you might also like</span>
 				<?php if ($related->have_posts()) : ?>
@@ -191,7 +211,6 @@ $read_time = reading_time();
 				<?php endif; ?>
 			</div>
 		</div>
-
 	</div>
 </main>
 

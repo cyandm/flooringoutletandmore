@@ -24,6 +24,8 @@ if (!class_exists('cyn_acf')) {
 			add_action('acf/init', [$this, 'cyn_product_post_type']);
 			add_action('acf/init', [$this, 'cyn_project_post_type']);
 			add_action('acf/init', [$this, 'cyn_accessory_post_type']);
+			add_action('acf/init', [$this, 'cyn_posts_acf']);
+			add_action('acf/init', [$this, 'cyn_landings_acf']);
 			add_action('acf/init', [$this, 'cyn_product_cat']);
 			add_action('acf/init', [$this, 'cyn_product_brand_tax']);
 		}
@@ -657,6 +659,31 @@ if (!class_exists('cyn_acf')) {
 							'name' => 'top_body',
 							'instructions' => '',
 							'type' => 'textarea',
+						),
+						/* Reviews Links */
+						array(
+							'key' => 'key_reviews_links',
+							'label' => 'Reviews Links',
+							'name' => '',
+							'aria-label' => '',
+							'type' => 'tab',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'placement' => 'top',
+							'endpoint' => 0,
+						),
+						array(
+							'key' => 'reviews_clients_url_key',
+							'label' => 'Google URL',
+							'name' => 'reviews_clients_url',
+							'type' => 'url',
+						),
+						array(
+							'key' => 'reviews_clients_yelp_key',
+							'label' => 'Yelp URL',
+							'name' => 'reviews_clients_yelp',
+							'type' => 'url',
 						),
 					),
 					'location' => array(
@@ -1396,33 +1423,6 @@ if (!class_exists('cyn_acf')) {
 
 		public function cyn_special_offer_page()
 		{
-			$faqSubFields = [];
-			for ($i = 1; $i < 11; $i++) {
-				$faqSubFields[] = array(
-					'key' => 'field_6536574809c8e' . $i,
-					'label' => 'FAQ Detail ' . $i,
-					'name' => 'faq_detail_' . $i,
-					'type' => 'group',
-					'layout' => 'block',
-					'sub_fields' => array(
-						array(
-							'key' => 'field_6536577809c8f' . $i,
-							'label' => 'Question',
-							'name' => 'question',
-							'type' => 'text',
-							'maxlength' => '',
-						),
-						array(
-							'key' => 'field_6536578a09c90' . $i,
-							'label' => 'Answer',
-							'name' => 'answer',
-							'type' => 'text',
-							'maxlength' => '',
-						),
-					),
-				);
-			}
-
 			$testomonialsFields = [];
 			for ($i = 1; $i < 7; $i++) {
 				$testomonialsFields[] = array(
@@ -1546,14 +1546,16 @@ if (!class_exists('cyn_acf')) {
 						'endpoint' => 0,
 					),
 					array(
-						'key' => 'special_offer_faq_key',
+						'key' => 'special_offer_faq_posts_key',
 						'label' => 'FAQ',
-						'name' => 'special_offer_faq',
-						'type' => 'group',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'layout' => 'block',
-						'sub_fields' => $faqSubFields
+						'name' => 'special_offer_faq_posts',
+						'type' => 'post_object',
+						'post_type' => 'faq',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
 					),
 
 					// Our clients
@@ -1565,18 +1567,6 @@ if (!class_exists('cyn_acf')) {
 						'conditional_logic' => 0,
 						'placement' => 'top',
 						'endpoint' => 0,
-					),
-					array(
-						'key' => 'special_offer_clients_url_key',
-						'label' => 'Google URL',
-						'name' => 'special_offer_clients_url',
-						'type' => 'url',
-					),
-					array(
-						'key' => 'special_offer_clients_yelp_key',
-						'label' => 'Yelp URL',
-						'name' => 'special_offer_clients_yelp',
-						'type' => 'url',
 					),
 					array(
 						'key' => 'special_offer_testomonials_key',
@@ -1595,6 +1585,93 @@ if (!class_exists('cyn_acf')) {
 							'param' => 'page_template',
 							'operator' => '==',
 							'value' => 'templates/special-offer.php',
+						),
+					),
+				),
+			));
+		}
+
+		public function cyn_posts_acf()
+		{
+			acf_add_local_field_group(array(
+				'key' => "posts_group_key",
+				'title' => 'FAQs',
+				'fields' => array(
+					array(
+						'key' => 'posts_faq_posts_key',
+						'label' => 'FAQ',
+						'name' => 'posts_faq_posts',
+						'type' => 'post_object',
+						'post_type' => 'faq',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					)
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'post'
+						),
+					),
+				),
+			));
+		}
+
+		public function cyn_landings_acf()
+		{
+			acf_add_local_field_group(array(
+				'key' => "landing_pages_group_key",
+				'title' => 'Page Objects',
+				'fields' => array(
+					array(
+						'key' => 'page_products_title_key',
+						'label' => 'Products Title',
+						'name' => 'page_products_title',
+						'aria-label' => '',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+					),
+					array(
+						'key' => 'page_products_key',
+						'label' => 'Offers Products',
+						'name' => 'page_products',
+						'type' => 'post_object',
+						'post_type' => 'product',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					),
+
+					array(
+						'key' => 'pages_faq_posts_key',
+						'label' => 'FAQ',
+						'name' => 'pages_faq_posts',
+						'type' => 'post_object',
+						'post_type' => 'faq',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					),
+
+
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'page_template',
+							'operator' => '==',
+							'value' => 'templates/other-landings.php',
 						),
 					),
 				),

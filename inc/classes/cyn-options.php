@@ -10,7 +10,7 @@ if (!class_exists('cyn_options')) {
     }
 
     /** product terms **/
-    public function cyn_getProdactTerms($parent = 0, $onlyId = false, $taxonomy = 'product-cat')
+    public function cyn_getProductTerms($parent = 0, $onlyId = false, $taxonomy = 'product-cat')
     {
       global $wpdb;
       $terms = [];
