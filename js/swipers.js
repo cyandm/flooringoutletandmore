@@ -71,11 +71,12 @@ export const homeSwiperSlider = new Swiper('#homeSwiper_slider', {
       },
     },
   },
-
+  /*
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
+  */
 });
 
 /********************************************************************************** */

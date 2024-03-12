@@ -61,6 +61,14 @@ footer .social {
 }
 
 .home-footer {
+  position: fixed;
+  right: 2.5rem;
+  bottom: calc(50% - 9rem);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+
   @media (width <=1024px) {
     display: none;
     visibility: hidden;
@@ -70,6 +78,15 @@ footer .social {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    >i {
+      background-color: rgba(#fff, 0.3);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.75rem;
+      padding: 0.625rem;
+    }
   }
 }
 

@@ -129,28 +129,6 @@ body:has(.home-header) {
   }
 }
 
-.home-footer {
-  position: fixed;
-  right: 3%;
-  bottom: 3%;
-  z-index: 99;
-  display: flex;
-  gap: .75rem;
-
-  a {
-    display: block;
-
-    >i {
-      background-color: rgba(#fff, 0.3);
-      backdrop-filter: blur(12px);
-      color: #fff;
-      border-radius: 50%;
-      font-size: 1.45rem;
-      padding: 0.5rem;
-    }
-  }
-}
-
 .whole-header {
   //margin-inline: -1.875rem;
   padding: 1.875rem;

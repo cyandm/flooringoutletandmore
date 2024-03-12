@@ -28,16 +28,18 @@ add_filter('login_errors', function () {
 /***************************** Enqueue Style And Scripts */
 function cyn_enqueue_files()
 {
-	wp_enqueue_style('cyn-styles', get_stylesheet_uri(), [], '1.6.0');
-	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper-bundle.min.css', [], '1.6.0');
-	wp_enqueue_style('cyn-theme', get_template_directory_uri() . '/css/cyn-theme-bundle-prefixed.css', [], '1.6.0');
+	$version = "1.6.0";
+
+	wp_enqueue_style('cyn-styles', get_stylesheet_uri(), [], $version);
+	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper-bundle.min.css', [], $version);
+	wp_enqueue_style('cyn-theme', get_template_directory_uri() . '/css/cyn-theme-bundle-prefixed.css', [], $version);
 
 	wp_dequeue_style('wp-block-library');
 	wp_dequeue_style('global-styles');
 	wp_dequeue_style('classic-theme-styles');
 
-	wp_enqueue_script('swiper', get_template_directory_uri() . '/js/lib/swiper-bundle.min.js', [], '1.6.0', true);
-	wp_enqueue_script('scripts', get_template_directory_uri() . '/js/dist/scripts.bundle.min.js', ['jquery', 'swiper'], '1.6.0', true);
+	wp_enqueue_script('swiper', get_template_directory_uri() . '/js/lib/swiper-bundle.min.js', [], $version, true);
+	wp_enqueue_script('scripts', get_template_directory_uri() . '/js/dist/scripts.bundle.min.js', ['jquery', 'swiper'], $version, true);
 }
 add_action('wp_enqueue_scripts', 'cyn_enqueue_files');
 
@@ -124,3 +126,16 @@ $cyn_acf->cyn_acf_actions();
 $cyn_register = new cyn_register();
 
 $cyn_form = new cyn_form();
+
+/* Update Checker */
+require(__DIR__ . '/inc/plugin-update-checker/plugin-update-checker.php');
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$updateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cyandm/flooringoutletandmore',
+	__FILE__,
+	'flooringoutletandmore'
+);
+$updateChecker->setBranch('main');
+$updateChecker->setAuthentication('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');

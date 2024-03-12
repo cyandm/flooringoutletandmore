@@ -61,9 +61,11 @@ $front_page_id = get_option('page_on_front');
 	</a>
 </div>
 
-<div class="scrpits">
+<div class="scripts">
+	<script async id="roomvoAssistant" type="text/javascript" data-locale="en-us" data-position="bottom-right" src="https://www.roomvo.com/static/scripts/b2b/common/assistant.js"></script>
 	<?php wp_footer() ?>
 </div>
+
 </body>
 
 </html>

@@ -26,6 +26,7 @@ if (!class_exists('cyn_acf')) {
 			add_action('acf/init', [$this, 'cyn_accessory_post_type']);
 			add_action('acf/init', [$this, 'cyn_posts_acf']);
 			add_action('acf/init', [$this, 'cyn_landings_acf']);
+			add_action('acf/init', [$this, 'cyn_reviews_posts']);
 			add_action('acf/init', [$this, 'cyn_product_cat']);
 			add_action('acf/init', [$this, 'cyn_product_brand_tax']);
 		}
@@ -1423,79 +1424,6 @@ if (!class_exists('cyn_acf')) {
 
 		public function cyn_special_offer_page()
 		{
-			$testomonialsFields = [];
-			for ($i = 1; $i < 7; $i++) {
-				$testomonialsFields[] = array(
-					'key' => 'testomonials_detal_key_' . $i,
-					'label' => 'Testomonial Detail ' . $i,
-					'name' => 'testomonials_detal_' . $i,
-					'type' => 'group',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'layout' => 'block',
-					'sub_fields' => array(
-						array(
-							'key' => 'field_65365a8409cb7' . $i,
-							'label' => 'Title',
-							'name' => 'title',
-							'type' => 'text',
-							'maxlength' => '',
-						),
-						array(
-							'key' => 'field_65365a5f09cb5' . $i,
-							'label' => 'Comment',
-							'name' => 'comment',
-							'type' => 'text',
-							'maxlength' => '',
-						),
-						array(
-							'key' => 'field_65365a7685cb7' . $i,
-							'label' => 'Author',
-							'name' => 'author',
-							'type' => 'text',
-							'maxlength' => '',
-						),
-						array(
-							'key' => 'field_65365a5209cb4' . $i,
-							'label' => 'Avatar',
-							'name' => 'avatar',
-							'type' => 'image',
-							'return_format' => 'url',
-							'library' => 'all',
-							'preview_size' => 'medium',
-						),
-						array(
-							'key' => 'field_65365a7709cb6' . $i,
-							'label' => 'Date',
-							'name' => 'date',
-							'type' => 'date_picker',
-							'display_format' => 'd/m/Y',
-							'return_format' => 'd/m/Y',
-							'first_day' => 1,
-						),
-						array(
-							'key' => 'field_65365aab09cb8' . $i,
-							'label' => 'Stars',
-							'name' => 'stars',
-							'type' => 'radio',
-							'choices' => array(
-								1 => 'very bad',
-								2 => 'bad',
-								3 => 'normal',
-								4 => 'good',
-								5 => 'very good',
-							),
-							'default_value' => 5,
-							'return_format' => 'value',
-							'allow_null' => 0,
-							'other_choice' => 0,
-							'layout' => 'vertical',
-							'save_other_choice' => 0,
-						)
-					)
-				);
-			}
-
 			acf_add_local_field_group(array(
 				'key' => "special_offer_group_key",
 				'title' => 'Special Offer',
@@ -1514,18 +1442,6 @@ if (!class_exists('cyn_acf')) {
 						'key' => 'special_offer_posts_key',
 						'label' => 'Special Offer',
 						'name' => 'special_offer_posts',
-						'type' => 'post_object',
-						'post_type' => 'product',
-						'post_status' => 'publish',
-						'taxonomy' => '',
-						'allow_null' => 0,
-						'multiple' => 1,
-						'return_format' => 'id',
-					),
-					array(
-						'key' => 'in_stok_posts_key',
-						'label' => 'In Stock',
-						'name' => 'in_stok_posts',
 						'type' => 'post_object',
 						'post_type' => 'product',
 						'post_status' => 'publish',
@@ -1569,14 +1485,16 @@ if (!class_exists('cyn_acf')) {
 						'endpoint' => 0,
 					),
 					array(
-						'key' => 'special_offer_testomonials_key',
-						'label' => 'Our clients',
-						'name' => 'special_offer_testomonials',
-						'type' => 'group',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'layout' => 'block',
-						'sub_fields' => $testomonialsFields
+						'key' => 'special_offer_reviews_posts_key',
+						'label' => 'Reviews',
+						'name' => 'special_offer_reviews_posts',
+						'type' => 'post_object',
+						'post_type' => 'reviews',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
 					),
 				),
 				'location' => array(
@@ -1664,7 +1582,18 @@ if (!class_exists('cyn_acf')) {
 						'return_format' => 'id',
 					),
 
-
+					array(
+						'key' => 'pages_reviews_posts_key',
+						'label' => 'Reviews',
+						'name' => 'pages_reviews_posts',
+						'type' => 'post_object',
+						'post_type' => 'reviews',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 1,
+						'return_format' => 'id',
+					),
 				),
 				'location' => array(
 					array(
@@ -1672,6 +1601,94 @@ if (!class_exists('cyn_acf')) {
 							'param' => 'page_template',
 							'operator' => '==',
 							'value' => 'templates/other-landings.php',
+						),
+					),
+				),
+			));
+		}
+
+		public function cyn_reviews_posts()
+		{
+			acf_add_local_field_group(array(
+				'key' => "reviews_group_key",
+				'title' => 'Reviews',
+				'fields' => array(
+					array(
+						'key' => 'testimonials_detail_key',
+						'label' => 'Testimonial Detail',
+						'name' => 'testimonials_detail',
+						'type' => 'group',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'layout' => 'block',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_65365a8409cb7',
+								'label' => 'Title',
+								'name' => 'title',
+								'type' => 'text',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_65365a5f09cb5',
+								'label' => 'Comment',
+								'name' => 'comment',
+								'type' => 'text',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_65365a7685cb7',
+								'label' => 'Author',
+								'name' => 'author',
+								'type' => 'text',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_65365a5209cb4',
+								'label' => 'Avatar',
+								'name' => 'avatar',
+								'type' => 'image',
+								'return_format' => 'url',
+								'library' => 'all',
+								'preview_size' => 'medium',
+							),
+							array(
+								'key' => 'field_65365a7709cb6',
+								'label' => 'Date',
+								'name' => 'date',
+								'type' => 'date_picker',
+								'display_format' => 'd/m/Y',
+								'return_format' => 'd/m/Y',
+								'first_day' => 1,
+							),
+							array(
+								'key' => 'field_65365aab09cb8',
+								'label' => 'Stars',
+								'name' => 'stars',
+								'type' => 'radio',
+								'choices' => array(
+									1 => 'very bad',
+									2 => 'bad',
+									3 => 'normal',
+									4 => 'good',
+									5 => 'very good',
+								),
+								'default_value' => 5,
+								'return_format' => 'value',
+								'allow_null' => 0,
+								'other_choice' => 0,
+								'layout' => 'vertical',
+								'save_other_choice' => 0,
+							)
+						)
+					)
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'reviews'
 						),
 					),
 				),

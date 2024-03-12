@@ -101,14 +101,17 @@ main.single-page {
     }
   }
 
-  section.faq-section {
+  section.faq-section,
+  section.our-clients-section {
     margin: 2.75rem 0;
   }
 
   .the-content {
     img {
+      min-width: 50%;
+      margin: 0 auto;
+      height: auto;
       border-radius: 0.875rem;
-      height: revert;
     }
 
     p,

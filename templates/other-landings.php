@@ -5,7 +5,9 @@ $post_id = get_the_ID();
 
 $specialPosts = get_field('page_products', $post_id);
 $faqDetails   = get_field('pages_faq_posts', $post_id);
+$testimonials = get_field('pages_reviews_posts', $post_id);
 
+var_dump($testimonials);
 ?>
 
 <?php get_header() ?>
@@ -58,8 +60,17 @@ $faqDetails   = get_field('pages_faq_posts', $post_id);
   <div class="clearfix"></div>
 
   <?php
-  if (isset($faqDetails) && !empty($faqDetails))
+  if (isset($faqDetails) && !empty($faqDetails)) {
     get_template_part('templates/loop/faq-section', null, ['postsId' => $faqDetails, 'title' => "FAQs"]);
+    echo '<div class="clearfix"></div>';
+  }
+  ?>
+
+  <?php
+  if (isset($testimonials) && !empty($testimonials)) {
+    get_template_part('templates/loop/reviews-section', null, ['testimonials' => $testimonials]);
+    echo '<div class="clearfix"></div>';
+  }
   ?>
 
   <section class="the-content">

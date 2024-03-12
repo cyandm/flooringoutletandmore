@@ -85,8 +85,10 @@ main.single-post {
 
       .the-content {
         img {
+          min-width: 50%;
+          margin: 0 auto;
+          height: auto;
           border-radius: 0.875rem;
-          height: revert;
         }
 
         p,
@@ -137,11 +139,11 @@ main.single-post {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-    
+
           p {
             flex: 1 1 auto;
           }
-    
+
           a {
             position: relative;
             display: flex;
