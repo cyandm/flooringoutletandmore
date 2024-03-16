@@ -12,6 +12,7 @@ if (!class_exists('cyn_register')) {
 				add_action('init', [$this, 'cyn_register_contact_forms']);
 				add_action('init', [$this, 'cyn_register_faq']);
 				add_action('init', [$this, 'cyn_register_reviews']);
+				add_action('init', [$this, 'cyn_register_cta']);
 
 				add_action('init', [$this, 'cyn_register_product_cats']);
 				add_action('init', [$this, 'cyn_register_product_filters']);
@@ -19,6 +20,8 @@ if (!class_exists('cyn_register')) {
 
 				add_action('pre_get_posts', [$this, 'cyn_archive_pre_get_posts']);
 				add_action('admin_menu', [$this, 'cyn_disable_new_posts']);
+
+        add_shortcode('cyn_landings_cta', [$this, 'cyn_landings_cta_temp']);
 			}
 		}
 
@@ -415,6 +418,35 @@ if (!class_exists('cyn_register')) {
 			return register_post_type($postType, $args);
 		}
 
+		public function cyn_register_cta()
+		{
+			$postType = "cta";
+			$GLOBALS["cta-post-type"] = $postType;
+
+			$labels = [
+				'name' => _x('CTA', 'Post type general name', 'CTA'),
+				'menu_name' => _x('CTA', 'Admin Menu text', 'CTA'),
+			];
+			$args = [
+				'labels' => $labels,
+				'description' => 'CTA custom post type.',
+				'public' => true,
+				'publicly_queryable' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'query_var' => true,
+				'rewrite' => array('slug' => 'cta'),
+				'capability_type' => 'post',
+				'has_archive' => true,
+				'hierarchical' => false,
+				'menu_position' => 20,
+				'supports' => ['title'],
+				'show_in_rest' => false
+			];
+
+			return register_post_type($postType, $args);
+		}
+
 		public function cyn_disable_new_posts()
 		{
 			// Hide sidebar link
@@ -430,5 +462,12 @@ if (!class_exists('cyn_register')) {
         </style>';
 			}
 		}
+
+		public function cyn_landings_cta_temp($atts)
+    {
+      ob_start();
+      get_template_part("/templates/landings-cta-temp", null, $atts);
+      return ob_get_clean();
+    }
 	}
 }

@@ -143,4 +143,31 @@ main.single-page {
       text-decoration: underline;
     }
   }
+
+  section.cta-post {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 2.75rem 0;
+    overflow: hidden;
+
+    a {
+      position: relative;
+      position: relative;
+      display: block;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.875rem;
+        object-fit: cover;
+        aspect-ratio: 21/9;
+
+        @media (width <=1024px) {
+          aspect-ratio: 16/9;
+        }
+      }
+    }
+  }
 }

@@ -28,7 +28,7 @@ add_filter('login_errors', function () {
 /***************************** Enqueue Style And Scripts */
 function cyn_enqueue_files()
 {
-	$version = "1.6.0";
+	$version = "1.6.1";
 
 	wp_enqueue_style('cyn-styles', get_stylesheet_uri(), [], $version);
 	wp_enqueue_style('swiper', get_template_directory_uri() . '/css/swiper-bundle.min.css', [], $version);

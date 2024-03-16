@@ -27,6 +27,7 @@ if (!class_exists('cyn_acf')) {
 			add_action('acf/init', [$this, 'cyn_posts_acf']);
 			add_action('acf/init', [$this, 'cyn_landings_acf']);
 			add_action('acf/init', [$this, 'cyn_reviews_posts']);
+			add_action('acf/init', [$this, 'cyn_cta_posts']);
 			add_action('acf/init', [$this, 'cyn_product_cat']);
 			add_action('acf/init', [$this, 'cyn_product_brand_tax']);
 		}
@@ -1594,6 +1595,19 @@ if (!class_exists('cyn_acf')) {
 						'multiple' => 1,
 						'return_format' => 'id',
 					),
+
+					array(
+						'key' => 'pages_cta_posts_key',
+						'label' => 'CTA',
+						'name' => 'pages_cta_posts',
+						'type' => 'post_object',
+						'post_type' => 'cta',
+						'post_status' => 'publish',
+						'taxonomy' => '',
+						'allow_null' => 0,
+						'multiple' => 0,
+						'return_format' => 'id',
+					),
 				),
 				'location' => array(
 					array(
@@ -1601,6 +1615,46 @@ if (!class_exists('cyn_acf')) {
 							'param' => 'page_template',
 							'operator' => '==',
 							'value' => 'templates/other-landings.php',
+						),
+					),
+				),
+			));
+		}
+
+		public function cyn_cta_posts()
+		{
+			acf_add_local_field_group(array(
+				'key' => "cta_posts_group_key",
+				'title' => 'CTA',
+				'fields' => array(
+					array(
+						'key' => 'cta_post_url_key',
+						'label' => 'CTA URL',
+						'instructions' => 'This link works when user click on image.',
+						'name' => 'cta_post_url',
+						'type' => 'url',
+						'wrapper' => [
+							'width' => '50',
+						],
+					),
+					array(
+						'key' => 'cta_post_image_key',
+						'label' => 'CTA Image',
+						'instructions' => "aspect ratio 21/9",
+						'name' => 'cta_post_image',
+						'type' => 'image',
+						'return_format' => 'url',
+						'wrapper' => [
+							'width' => '50',
+						],
+					)
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'cta'
 						),
 					),
 				),
