@@ -41,7 +41,7 @@ if (!class_exists('cyn_form')) {
             if (is_wp_error($insetPost))
                 return wp_send_json_error(['insert_row' => false], 500);
 
-            $emailTo = "cto@cyandm.com";
+            $emailTo = "sales@foandmore.com";
             $subject = "Contact Us";
 
             $sendEmail = wp_mail(

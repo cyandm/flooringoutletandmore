@@ -6,8 +6,6 @@ $post_id = get_the_ID();
 $specialPosts = get_field('page_products', $post_id);
 $faqDetails   = get_field('pages_faq_posts', $post_id);
 $testimonials = get_field('pages_reviews_posts', $post_id);
-
-var_dump($testimonials);
 ?>
 
 <?php get_header() ?>

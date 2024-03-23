@@ -3,7 +3,7 @@
  * Theme Url:
  * Author:
  * Author URI:
- * Version: 1.6.1
+ * Version: 1.6.2
 */
 
 
@@ -67,4 +67,8 @@ main.about iframe {
 
 .accent-color>* {
   color: #FFD43D !important;
+}
+
+main.single-page section.offers-products .product-article>a>img {
+	height: 300px;
 }
