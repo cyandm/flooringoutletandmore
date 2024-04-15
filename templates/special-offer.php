@@ -148,6 +148,10 @@ $testimonials = get_field('special_offer_reviews_posts');
       </div>
     </section>
   </div>
+
+  <section>
+    <?php the_content()?>
+  </section>
 </main>
 
 <?php get_footer() ?>
