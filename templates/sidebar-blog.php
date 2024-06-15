@@ -3,7 +3,7 @@ $blog_term = cyn_common::blog_term();
 
 $recommend_sidebar = $blog_term['recommend_sidebar'];
 $cat_exclude = $blog_term['cat_exclude'];
-$cats = $blog_term['cats'];
+$pages = $blog_term['cats'];
 $current_terms = $blog_term['current_terms'];
 ?>
 
@@ -11,9 +11,15 @@ $current_terms = $blog_term['current_terms'];
 
 	<div class="box">
 		<div class="search">
-			<form id="homeContactForm" action="/" method="get">
+			<form id="homeContactForm"
+				  action="/"
+				  method="get">
 				<div class="form_control">
-					<input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Quick Search" />
+					<input type="text"
+						   name="s"
+						   id="search"
+						   value="<?php the_search_query(); ?>"
+						   placeholder="Quick Search" />
 
 					<i class="icon-search"></i>
 				</div>
@@ -23,12 +29,12 @@ $current_terms = $blog_term['current_terms'];
 		<div class="categories">
 			<span class="h4">Categories</span>
 			<ul>
-				<?php foreach ($cats as $cat) : ?>
-					<?php if (!in_array($cat->name, $cat_exclude)) : ?>
-						<li class="<?php if (in_array($cat->term_id, $current_terms))
-													echo 'active'; ?>">
+				<?php foreach ( $pages as $cat ) : ?>
+					<?php if ( ! in_array( $cat->name, $cat_exclude ) ) : ?>
+						<li class="<?php if ( in_array( $cat->term_id, $current_terms ) )
+							echo 'active'; ?>">
 							<span>
-								<a href="<?= get_term_link($cat) ?>">
+								<a href="<?= get_term_link( $cat ) ?>">
 									<?= $cat->name ?>
 								</a>
 							</span>
@@ -43,21 +49,23 @@ $current_terms = $blog_term['current_terms'];
 	</div>
 
 	<div class="box">
-		<?php if ($recommend_sidebar->have_posts()) : ?>
+		<?php if ( $recommend_sidebar->have_posts() ) : ?>
 			<span class="h4">Recommended</span>
 
-			<?php while ($recommend_sidebar->have_posts()) : ?>
+			<?php while ( $recommend_sidebar->have_posts() ) : ?>
 				<?php $recommend_sidebar->the_post(); ?>
 
 				<article>
 					<div class="img-wrapper">
-						<a href="<?= get_the_permalink() ?>" rel="nofollow">
-							<?= get_the_post_thumbnail(null, 'thumbnail') ?>
+						<a href="<?= get_the_permalink() ?>"
+						   rel="nofollow">
+							<?= get_the_post_thumbnail( null, 'thumbnail' ) ?>
 						</a>
 					</div>
 					<div class="content">
 						<span class="h5">
-							<a href="<?= get_the_permalink() ?> " rel="nofollow">
+							<a href="<?= get_the_permalink() ?> "
+							   rel="nofollow">
 								<?= get_the_title() ?>
 							</a>
 						</span>
@@ -73,9 +81,9 @@ $current_terms = $blog_term['current_terms'];
 			<?php endwhile; ?>
 
 
-			<?php wp_reset_postdata(); ?>
 		<?php endif; ?>
 
+		<?php wp_reset_query(); ?>
 
 	</div>
 

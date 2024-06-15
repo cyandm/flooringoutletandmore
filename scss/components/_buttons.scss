@@ -1,40 +1,42 @@
-@mixin btn($padding:'small') {
+@mixin btn($padding: 'small') {
+	@if $padding==small {
+		padding: 0.75rem 0.625rem;
+	} @else if $padding==big {
+		padding: 0.75rem 2.125rem;
 
-    @if $padding==small {
-        padding: .75rem .625rem;
-    }
+		@media (width <=1024px) {
+			padding: 0.625rem 20px;
+		}
+	}
 
-    @else if $padding==big {
-
-        padding: .75rem 2.125rem;
-
-        @media (width <=1024px) {
-            padding: .625rem 20px;
-        }
-    }
-
-    font-family: OpenSans;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: .875rem;
-    font-size: .875rem;
-    line-height: 1.625rem;
-    text-transform: capitalize;
-    gap:.625rem;
-    text-decoration: none;
-    color: $color-primary1;
+	font-family: OpenSans;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.875rem;
+	font-size: 0.875rem;
+	line-height: 1.625rem;
+	text-transform: capitalize;
+	gap: 0.625rem;
+	text-decoration: none;
+	color: $color-primary1;
 }
 
 .btn {
-    @include btn()
+	@include btn();
 }
 
 .btn_icon_between {
-    @include btn();
-    justify-content: space-between;
+	@include btn();
+	justify-content: space-between;
 }
 
 .btn_no_icon {
-    @include btn($padding:"big");
+	@include btn($padding: 'big');
+}
+
+.secondary_btn {
+	@include btn();
+	color: $color-primary2;
+	border: 1px solid $color-primary2;
 }

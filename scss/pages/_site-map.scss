@@ -1,0 +1,21 @@
+main.sitemap {
+	display: flex;
+	gap: 2rem;
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+	}
+
+	.h1 {
+		margin-top: 2rem;
+		display: block;
+	}
+
+	.loop {
+		display: grid;
+		gap: 1rem;
+		a {
+			display: block;
+		}
+	}
+}
