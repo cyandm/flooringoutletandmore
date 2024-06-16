@@ -1,10 +1,7 @@
 section.our-clients-section .our-clients {
 	position: relative;
 	display: flex;
-	// flex-wrap: wrap;
 	width: 100%;
-	gap: 1rem;
-	// justify-content: space-between;
 
 	.testimonials-item {
 		display: flex;
@@ -53,14 +50,4 @@ section.our-clients-section .our-clients {
 			}
 		}
 	}
-
-	// @media (width <=1024px) {
-	// 	overflow-x: auto;
-	// 	flex-wrap: nowrap;
-
-	// 	.testimonials-item {
-	// 		min-width: 75%;
-	// 		max-width: 75%;
-	// 	}
-	// }
 }

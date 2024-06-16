@@ -238,15 +238,17 @@ accessoriesGallery.forEach(function (gallery, i) {
 
 /********************************************************************************** */
 const ourClients = new Swiper('#ourClientSwiper', {
-	slidesPerView: 1,
+	slidesPerView: 1.2,
+	spaceBetween: 16,
+	autoHeight: true,
 
 	breakpoints: {
 		1024: {
-			slidesPerView: 2,
+			slidesPerView: 2.2,
 		},
 
 		1440: {
-			slidesPerView: 3,
+			slidesPerView: 3.2,
 		},
 	},
 });

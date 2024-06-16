@@ -22,7 +22,7 @@ $testimonials = get_field( 'pages_reviews_posts', $post_id );
 				<h2><?= get_field( 'page_products_title', get_the_ID() ) ?></h2>
 
 				<a class="btn_no_icon bg_white"
-					 href="<?php echo get_post_type_archive_link( 'product' ) ?>">see more</a>
+				   href="<?php echo get_post_type_archive_link( 'product' ) ?>">see more</a>
 			</div>
 
 			<div class="product-article">
@@ -35,19 +35,21 @@ $testimonials = get_field( 'pages_reviews_posts', $post_id );
 					$price = get_field( 'product_price', $post );
 					?>
 					<a href="<?php echo $url ?>"
-						 class="product-loop">
+					   class="product-loop">
 						<img src="<?= $img_url ?>"
-								 alt="<?= $title ?>">
+							 alt="<?= $title ?>">
 
-						<span>
-							<i>Price</i>
-							<?php if ( ! empty( $price ) ) : ?>
-								<i>$<?php echo $price ?></i>
-							<?php endif; ?>
-						</span>
+						<div class="product-loop-info">
+							<span class='product-loop-price'>
+								<i>Price</i>
+								<?php if ( ! empty( $price ) ) : ?>
+									<i>$<?php echo $price ?></i>
+								<?php endif; ?>
+							</span>
 
-						<div class="product_desc">
-							<?php echo ! empty( get_field( 'product_desc', $post ) ) ? _( get_field( 'product_desc', $post ) ) : ''; ?>
+							<div class="product_desc">
+								<?php echo ! empty( get_field( 'product_desc', $post ) ) ? _( get_field( 'product_desc', $post ) ) : ''; ?>
+							</div>
 						</div>
 					</a>
 				<?php endforeach; ?>
@@ -79,6 +81,18 @@ $testimonials = get_field( 'pages_reviews_posts', $post_id );
 	<section class="the-content">
 		<?php the_content(); ?>
 	</section>
+
+
+	<div class="comments"
+		 id="comments">
+		<div class="titles">
+			<h3 class="">
+				Did you find what you were looking for?
+			</h3>
+		</div>
+
+		<?php comments_template(); ?>
+	</div>
 </main>
 
 <?php get_footer() ?>

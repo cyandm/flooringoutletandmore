@@ -120,95 +120,6 @@ main.single-post {
 					text-decoration: underline;
 				}
 			}
-
-			.comments {
-				position: relative;
-				width: 100%;
-				padding: 0;
-				margin: 0;
-				margin-top: 2rem;
-				display: flex;
-				flex-direction: column;
-				gap: 1.5rem;
-				align-items: stretch;
-
-				.titles {
-					width: 100%;
-					margin-bottom: 2rem;
-					border-bottom: 1px solid #fff;
-					display: flex;
-					align-items: center;
-					gap: 0.5rem;
-
-					p {
-						flex: 1 1 auto;
-					}
-
-					a {
-						position: relative;
-						display: flex;
-						align-items: center;
-						line-height: 1;
-						vertical-align: middle;
-						width: 2.75rem;
-						height: 2.75rem;
-						padding: 0.5rem;
-						background-color: rgba(255, 255, 255, 0.2);
-						border-radius: 50%;
-						margin: 0.5rem 0;
-					}
-				}
-
-				form.comment-form {
-					position: relative;
-					width: 100%;
-					display: flex;
-					flex-direction: column;
-					gap: 0.75rem;
-					align-items: stretch;
-
-					.form_control {
-						> * {
-							width: 100%;
-						}
-					}
-				}
-
-				.comment-list {
-					margin-top: 0.625rem;
-					display: grid;
-					gap: 1rem;
-
-					.comment {
-						position: relative;
-						display: block;
-						width: 100%;
-						margin: 0;
-						padding: 1rem;
-						border-radius: 0.875rem;
-						background-color: rgba(255, 255, 255, 0.2);
-
-						.comment-author,
-						.comment-meta {
-							color: $color-primary4;
-						}
-
-						> p {
-							margin: 1rem 0;
-							font-size: 1rem;
-						}
-
-						.reply a {
-							color: $color-secondary2;
-						}
-
-						.comment {
-							margin-top: 1rem;
-							background-color: rgba(255, 255, 255, 0.1);
-						}
-					}
-				}
-			}
 		}
 
 		.post-side-bar {
@@ -256,5 +167,94 @@ main.single-post {
 	.article-loop {
 		min-height: 16rem;
 		margin-bottom: 1.25rem;
+	}
+}
+
+.comments {
+	position: relative;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	align-items: stretch;
+
+	.titles {
+		width: 100%;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid #fff;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+
+		p {
+			flex: 1 1 auto;
+		}
+
+		a {
+			position: relative;
+			display: flex;
+			align-items: center;
+			line-height: 1;
+			vertical-align: middle;
+			width: 2.75rem;
+			height: 2.75rem;
+			padding: 0.5rem;
+			background-color: rgba(255, 255, 255, 0.2);
+			border-radius: 50%;
+			margin: 0.5rem 0;
+		}
+	}
+
+	form.comment-form {
+		position: relative;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: stretch;
+
+		.form_control {
+			> * {
+				width: 100%;
+			}
+		}
+	}
+
+	.comment-list {
+		margin-top: 0.625rem;
+		display: grid;
+		gap: 1rem;
+
+		.comment {
+			position: relative;
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 1rem;
+			border-radius: 0.875rem;
+			background-color: rgba(255, 255, 255, 0.2);
+
+			.comment-author,
+			.comment-meta {
+				color: $color-primary4;
+			}
+
+			> p {
+				margin: 1rem 0;
+				font-size: 1rem;
+			}
+
+			.reply a {
+				color: $color-secondary2;
+			}
+
+			.comment {
+				margin-top: 1rem;
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+		}
 	}
 }

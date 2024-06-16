@@ -11,7 +11,7 @@ $pages = get_field( "front_page_landings" );
 				<span>you don't have to worry about anything</span>
 			</div>
 			<a class="btn_no_icon bg_white only-desktop"
-				 href="<?php echo site_url() . '/product'; ?>">
+			   href="<?php echo site_url() . '/product'; ?>">
 				view all
 			</a>
 		</header>
@@ -26,12 +26,11 @@ $pages = get_field( "front_page_landings" );
 				<article data-mouse="explore">
 					<a href="<?php echo get_permalink( $page ) ?>">
 						<img src="<?php echo get_the_post_thumbnail_url( $page ) ?>"
-								 alt="">
+							 alt="">
 						<div>
 							<button class="btn_no_icon bg-primary1">explore</button>
 							<div>
-								<h3 class="one-line-text"><?php echo get_the_title( $page ) ?></h3>
-								<p class="one-line-text"><?php echo get_the_excerpt( $page ) ?></p>
+								<h3 class="one-line-text"><?php echo get_field( 'custom_title', $page ) ?></h3>
 							</div>
 						</div>
 					</a>
@@ -40,7 +39,7 @@ $pages = get_field( "front_page_landings" );
 			<?php endforeach; ?>
 
 			<a href="<?php echo site_url() . '/product'; ?>"
-				 class="btn_no_icon bg_secondary1 no-desktop">view all</a>
+			   class="btn_no_icon bg_secondary1 no-desktop">view all</a>
 		</main>
 	</div>
 </div>

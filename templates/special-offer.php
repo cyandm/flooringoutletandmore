@@ -10,6 +10,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 <?php get_header() ?>
 
+<?php get_template_part( '/templates/special-popup' ) ?>
+
 <main class="special-offer-page">
 	<div class="content">
 		<?php if ( isset( $specialPosts ) && ! empty( $specialPosts ) ) : ?>
@@ -28,9 +30,9 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 						$price = get_field( 'product_price', $post );
 						?>
 						<a href="<?php echo $url ?>"
-							 class="product-loop">
+						   class="product-loop">
 							<img src="<?= $img_url ?>"
-									 alt="<?= $title ?>">
+								 alt="<?= $title ?>">
 
 							<div class="product-loop-info">
 								<span class='product-loop-price'>
@@ -71,7 +73,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="1"
-								class="">Consultation</h3>
+							class="">Consultation</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_consultation', $frontPageId );
@@ -86,7 +88,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="2"
-								class="">Measurement</h3>
+							class="">Measurement</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_measurement', $frontPageId );
@@ -101,7 +103,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="3"
-								class="">Delivery</h3>
+							class="">Delivery</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_delivery', $frontPageId );
@@ -116,7 +118,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="4"
-								class="">Installation</h3>
+							class="">Installation</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_installation', $frontPageId );
@@ -131,7 +133,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="5"
-								class="">Removal</h3>
+							class="">Removal</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_removal', $frontPageId );
@@ -146,7 +148,7 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 
 					<div class="c">
 						<h3 data-num="6"
-								class="">Final inspection</h3>
+							class="">Final inspection</h3>
 						<p>
 							<?php
 							$txt = get_field( 'services_making_you_happy', $frontPageId );
