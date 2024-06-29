@@ -28,6 +28,8 @@
             I want you to inform me about new products and new offers
           </label>
 
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAAduRsbVAHyEFDb5" data-callback="javascriptCallback"></div>
+
           <button type="submit" id="contact-us-form-submit" class="btn bg_secondary1">
             send
             <i class="icon-Component-2-1"></i>

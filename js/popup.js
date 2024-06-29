@@ -16,7 +16,9 @@ function getCookie(cname) {
 
 function specialPopup() {
   const popUp = document.querySelector("#popUp");
-  const popUpBTn = document.querySelector("#popUp #contact-us-form-submit");
+  const popUpBack = document.querySelector(".popup-back");
+  const popUpWrapper = document.querySelector(".popup-wrapper");
+  const popUpBtn = document.querySelector("#popUp #contact-us-form-submit");
   const popupClose = document.querySelector(".popupClose");
 
   if (!popUp || !popupClose) return;
@@ -25,7 +27,7 @@ function specialPopup() {
 
   setTimeout(() => {
     popUp.classList.add("active");
-  }, 3000);
+  }, 10000);
 
   popupClose.addEventListener("click", () => {
     popUp.classList.remove("active");
@@ -37,10 +39,15 @@ function specialPopup() {
     document.cookie = "specialPopup=true; expires=" + now.toUTCString();
   });
 
-  popUpBTn.addEventListener("click", () => {
+  popUpBtn.addEventListener("click", () => {
     setTimeout(() => {
       popUp.classList.remove("active");
-    }, 700);
+    }, 3000);
+  });
+
+  popUpBack.addEventListener("click", (e) => {
+    if (e.target != popUpBack) return;
+    popUp.classList.remove("active");
   });
 }
 
