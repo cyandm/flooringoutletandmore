@@ -1,24 +1,24 @@
 {
-	"name": "flooring-outlet",
-	"version": "2.0",
-	"description": "",
-	"main": "index.php",
-	"scripts": {
-		"w-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css --style=expanded -w",
-		"b-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css --style=compressed",
-		"w-pre-css": "postcss ./css/cyn-theme-bundle.css -o ./css/cyn-theme-bundle-prefixed.css --use autoprefixer -w",
-		"b-pre-css": "postcss ./css/cyn-theme-bundle.css -o ./css/cyn-theme-bundle-prefixed.css --use autoprefixer -m",
-		"watch-css": "npm run w-css; npm run w-pre-css",
-		"watch-js": "esbuild ./js/index.js --bundle --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11,opera55 --watch",
-		"build-js": "esbuild ./js/index.js --bundle --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11,opera55 --sourcemap --minify"
-	},
-	"author": "CyanDM",
-	"license": "ISC",
-	"devDependencies": {
-		"esbuild": "^0.17.19"
-	},
-	"browserslist": [
-		"> 1%",
-		"last 2 version"
-	]
+  "name": "flooring-outlet",
+  "version": "2.2",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "w-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css --style=expanded -w",
+    "b-css": "sass ./cyn-theme.scss ./css/cyn-theme-bundle.css --style=compressed",
+    "w-pre-css": "postcss ./css/cyn-theme-bundle.css -o ./css/cyn-theme-bundle-prefixed.css --use autoprefixer -w",
+    "b-pre-css": "postcss ./css/cyn-theme-bundle.css -o ./css/cyn-theme-bundle-prefixed.css --use autoprefixer -m",
+    "watch-css": "npm run w-css; npm run w-pre-css",
+    "watch-js": "esbuild ./js/index.js --bundle --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11,opera55 --watch",
+    "build-js": "esbuild ./js/index.js --bundle --outfile=./js/dist/scripts.bundle.min.js --target=es6,chrome58,edge18,firefox54,safari11,opera55 --sourcemap --minify"
+  },
+  "author": "CyanDM",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.17.19"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 version"
+  ]
 }

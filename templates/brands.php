@@ -28,3 +28,50 @@ usort($brands, function ($a, $b) {
 </main>
 
 <?php get_footer() ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php foreach ($pages as $cat): ?>
+  <?php
+  $cat_posts = new WP_Query([
+    'post_type' => 'post',
+    'posts_per_page' => '3',
+    'cat' => $cat->term_id,
+  ]);
+  ?>
+
+  <?php if ($cat_posts->have_posts()): ?>
+
+    <div class="category-blog">
+      <div class="top">
+        <h3>
+          <?= $cat->name ?>
+        </h3>
+        <a href="<?= get_term_link($cat) ?>" class="btn_no_icon bg_white  only-desktop">view all</a>
+      </div>
+      <div class="posts-wrapper">
+        <?php
+        while ($cat_posts->have_posts()) {
+          $cat_posts->the_post();
+          get_template_part('./templates/loop/article', null, ['rel' => 'follow']);
+        }
+        ?>
+      </div>
+      <a href="<?= get_term_link($cat) ?>" class="btn_no_icon bg_white only-mobile"> all of
+        <?= $cat->name ?></a>
+    </div>
+
+  <?php endif; ?>
+
+
+<?php endforeach; ?>

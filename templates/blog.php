@@ -1,4 +1,4 @@
-<?php /* Template Name: Blog */ ?>
+<?php /* Template Name: Blog */  get_header() ?>
 
 <?php
 $recommend_posts = new WP_Query( [ 
@@ -10,12 +10,9 @@ $recommend_posts = new WP_Query( [
 $blog_term = cyn_common::blog_term();
 
 $recommend_sidebar = $blog_term['recommend_sidebar'];
-$cat_exclude = $blog_term['cat_exclude'];
-$pages = $blog_term['cats'];
-$current_terms = $blog_term['current_terms'];
-?>
-<?php get_header() ?>
-
+	$categories = get_categories();
+ ?>
+ 
 <main class="blog">
 	<?php get_template_part( './templates/sidebar', 'blog' ); ?>
 
@@ -36,7 +33,7 @@ $current_terms = $blog_term['current_terms'];
 			</div>
 		</div>
 
-		<?php foreach ( $pages as $cat ) : ?>
+		<?php foreach ($categories as $cat): ?>
 			<?php
 			$cat_posts = new WP_Query( [ 
 				'post_type' => 'post',
@@ -71,7 +68,7 @@ $current_terms = $blog_term['current_terms'];
 			<?php endif; ?>
 
 
-		<?php endforeach; ?>
+		<?php endforeach; ?>  
 	</div>
 </main>
 

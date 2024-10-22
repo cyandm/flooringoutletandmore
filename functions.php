@@ -11,6 +11,8 @@ require_once ( __DIR__ . '/inc/classes/cyn-register.php' );
 require_once ( __DIR__ . '/inc/classes/cyn-options.php' );
 require_once ( __DIR__ . '/inc/classes/cyn-form.php' );
 require_once ( __DIR__ . '/inc/classes/cyn-common.php' );
+require_once(__DIR__ . '/inc/classes/cyn-query.php');
+new cyn_query();
 
 /***************************** User Login / Logout */
 function cyn_logout_user() {

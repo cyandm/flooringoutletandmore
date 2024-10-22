@@ -1,49 +1,74 @@
 <?php /* Template Name: Special Offer */ ?>
 
 <?php
-$frontPageId = get_option( 'page_on_front' );
-
-$specialPosts = get_field( 'special_offer_posts' );
-$faqDetails = get_field( 'special_offer_faq_posts' );
-$testimonials = get_field( 'special_offer_reviews_posts' );
+$frontPageId = get_option('page_on_front');
+$specialPosts = get_field('special_offer_posts');
+$faqDetails = get_field('special_offer_faq_posts');
+$testimonials = get_field('special_offer_reviews_posts');
+$specialBanners = get_field('special_offer_banner');
 ?>
 
 <?php get_header() ?>
 
-<?php get_template_part( '/templates/special-popup' ) ?>
+<?php get_template_part('/templates/special-popup') ?>
 
 <main class="special-offer-page">
 	<div class="content">
-		<?php if ( isset( $specialPosts ) && ! empty( $specialPosts ) ) : ?>
+
+		<?php if (isset($specialBanners) && ! empty($specialBanners)) : ?>
+
+			<section>
+
+				<div class="special-offer-banner">
+
+					<?php
+					for ($bannerItem = 1; $bannerItem <= 3; $bannerItem++):
+						$bannerImg = $specialBanners['banner_image_' . $bannerItem];
+						$bannerLink = $specialBanners['banner_link_' . $bannerItem];
+					?>
+
+						<a href="<?php echo $bannerLink ?>">
+							<?php echo wp_get_attachment_image($bannerImg, 'full') ?>
+						</a>
+
+					<?php endfor ?>
+
+				</div>
+
+			</section>
+
+		<?php endif ?>
+
+		<?php if (isset($specialPosts) && ! empty($specialPosts)) : ?>
 			<section>
 				<div class="titles">
-					<h2>Special Offers</h2>
+					<h2>Special & Deals</h2>
 				</div>
 
 				<div class="product-article">
-					<?php foreach ( $specialPosts as $post ) : ?>
+					<?php foreach ($specialPosts as $post) : ?>
 						<?php
-						$title = get_the_title( $post );
-						$img_url = get_the_post_thumbnail_url( $post );
-						$url = get_permalink( $post );
-						$price = get_field( 'product_price', $post );
-						$price = get_field( 'product_price', $post );
+						$title = get_the_title($post);
+						$img_url = get_the_post_thumbnail_url($post);
+						$url = get_permalink($post);
+						$price = get_field('product_price', $post);
+						$price = get_field('product_price', $post);
 						?>
 						<a href="<?php echo $url ?>"
-						   class="product-loop">
+							class="product-loop">
 							<img src="<?= $img_url ?>"
-								 alt="<?= $title ?>">
+								alt="<?= $title ?>">
 
 							<div class="product-loop-info">
 								<span class='product-loop-price'>
 									<i>Price</i>
-									<?php if ( ! empty( $price ) ) : ?>
+									<?php if (! empty($price)) : ?>
 										<i>$<?php echo $price ?></i>
 									<?php endif; ?>
 								</span>
 
 								<div class="product_desc">
-									<?php echo ! empty( get_field( 'product_desc', $post ) ) ? _( get_field( 'product_desc', $post ) ) : ''; ?>
+									<?php echo ! empty(get_field('product_desc', $post)) ? _(get_field('product_desc', $post)) : ''; ?>
 								</div>
 							</div>
 						</a>
@@ -53,13 +78,13 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 		<?php endif; ?>
 
 		<?php
-		if ( isset( $faqDetails ) && ! empty( $faqDetails ) )
-			get_template_part( 'templates/loop/faq-section', null, [ 'postsId' => $faqDetails ] );
+		if (isset($faqDetails) && ! empty($faqDetails))
+			get_template_part('templates/loop/faq-section', null, ['postsId' => $faqDetails]);
 		?>
 
 		<?php
-		if ( isset( $testimonials ) && ! empty( $testimonials ) )
-			get_template_part( 'templates/loop/reviews-section', null, [ 'testimonials' => $testimonials ] );
+		if (isset($testimonials) && ! empty($testimonials))
+			get_template_part('templates/loop/reviews-section', null, ['testimonials' => $testimonials]);
 		?>
 
 		<section>
@@ -76,8 +101,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Consultation</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_consultation', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_consultation', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>
@@ -91,8 +116,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Measurement</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_measurement', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_measurement', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>
@@ -106,8 +131,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Delivery</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_delivery', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_delivery', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>
@@ -121,8 +146,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Installation</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_installation', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_installation', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>
@@ -136,8 +161,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Removal</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_removal', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_removal', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>
@@ -151,8 +176,8 @@ $testimonials = get_field( 'special_offer_reviews_posts' );
 							class="">Final inspection</h3>
 						<p>
 							<?php
-							$txt = get_field( 'services_making_you_happy', $frontPageId );
-							echo ! empty( $txt ) ? $txt : '';
+							$txt = get_field('services_making_you_happy', $frontPageId);
+							echo ! empty($txt) ? $txt : '';
 							?>
 						</p>
 					</div>

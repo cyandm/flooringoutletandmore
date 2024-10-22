@@ -43,6 +43,7 @@ $front_page_id = get_option( 'page_on_front' );
 					<a
 					   href="https://www.pinterest.com/flooringoutletandmorentd/flooring-outlet-and-more-duchateau/">Pintrest</a>
 					<a href="https://www.yelp.com/biz/flooring-outlet-and-more-san-jose-2">Yelp</a>
+					<a href="https://www.linkedin.com/company/flooring-outlet-and-more">Linkedin</a>
 				</div>
 			</div>
 			<div>
