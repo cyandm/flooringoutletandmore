@@ -27,9 +27,13 @@ $specialBanners = get_field('special_offer_banner');
 						$bannerLink = $specialBanners['banner_link_' . $bannerItem];
 					?>
 
-						<a href="<?php echo $bannerLink ?>">
-							<?php echo wp_get_attachment_image($bannerImg, 'full') ?>
-						</a>
+						<?php if (!empty($bannerLink) && !empty($bannerImg)) : ?>
+
+							<a href="<?php echo $bannerLink ?>">
+								<?php echo wp_get_attachment_image($bannerImg, 'full') ?>
+							</a>
+
+						<?php endif ?>
 
 					<?php endfor ?>
 
